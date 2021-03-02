@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="12px" viewBox="0 0 11 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="spot-selected" transform="translate(-20.000000, -490.000000)" fill="#555F6C">
+            <g id="caja" transform="translate(0.000000, 212.000000)">
+                <path d="M26,286 L22,289.2 L22,286 C20.8954305,286 20,285.104569 20,284 L20,280 C20,278.895431 20.8954305,278 22,278 L29,278 C30.1045695,278 31,278.895431 31,280 L31,284 C31,285.104569 30.1045695,286 29,286 L26,286 Z" id="Rectangle"></path>
+            </g>
+        </g>
+    </g>
+</svg>

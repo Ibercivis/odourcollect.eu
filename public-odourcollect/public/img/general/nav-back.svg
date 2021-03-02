@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="18px" viewBox="0 0 11 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>flecha back</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="spot-comments" transform="translate(-16.000000, -34.000000)" stroke="#365165">
+            <g id="header" transform="translate(0.000000, 20.000000)">
+                <g id="flecha-back" transform="translate(17.000000, 15.000000)">
+                    <g>
+                        <path d="M0.5,8.485 L8.364,0.5" id="Stroke-1" stroke-width="2"></path>
+                        <path d="M0.5,8.485 L8.364,15.849" id="Stroke-3" stroke-width="2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

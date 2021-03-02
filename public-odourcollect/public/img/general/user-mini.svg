@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>facemini</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="spot-selected" transform="translate(-18.000000, -224.000000)">
+            <g id="caja" transform="translate(0.000000, 212.000000)">
+                <g id="facemini" transform="translate(18.000000, 12.000000)">
+                    <circle id="Oval-3" fill="#E3E8EF" fill-rule="evenodd" cx="12" cy="12" r="12"></circle>
+                    <path d="M6.77893452,13.9023131 C7.59376172,12.457962 9.60366306,11.287084 11.2554153,11.287084 L13.1025657,11.287084 C14.7600306,11.287084 16.8173253,12.4163835 17.7087173,13.8269391 L18.6500417,15.3165086 C19.5364841,16.7192318 18.9419314,18.1749302 17.3337957,18.4983845 C17.3337957,18.4983845 16.1036714,19 12.3731263,19 C8.64258124,19 7.45583397,18.5017113 7.45583397,18.5017113 C5.85002878,18.1452957 5.21083273,16.6819081 6.02364162,15.2411346 L6.77893452,13.9023131 Z" id="Rectangle-3" stroke="#6B7C93" stroke-width="1"></path>
+                    <circle id="Oval-4" stroke="#6B7C93" stroke-width="1" cx="12.2534409" cy="7.91268328" r="3.37440074"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,55 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color:white;
+	color:#3b637b;
+}
+.center-v {
+	display:table;
+	width:100%;
+}
+#app {
+	display:table-cell;
+	vertical-align: middle;
+}
+.container {
+	max-width:480px;
+}
+.navbar {
+	margin-top:20px;
+}
+.navbar .container {
+	text-align: center;
+}
+a.navbar-logo{
+	display:inline-block;
+	max-width:200px;
+}
+img {
+	max-width:200px;
+}
+.card-header{
+	font-size:20px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom:25px;
+	letter-spacing: 0.5px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #3eb97a;
+    border-radius: 20px;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 0.5px;
+    padding: 8px 30px;
+}
+.btn-primary.active, .btn-primary:active, .btn-primary:hover, .open>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #2ca567;
+    border: none;
+}
+.text-thankyou{
+	text-align: center;
+	font-size:18px;
+	margin-top:20px;
+}
