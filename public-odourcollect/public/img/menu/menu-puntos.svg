@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="16px" viewBox="0 0 4 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mapa-privado" transform="translate(-298.000000, -15.000000)" fill="#6B7C93">
+            <g id="Rectangle-6">
+                <path d="M300,31 C298.895431,31 298,30.1045695 298,29 C298,27.8954305 298.895431,27 300,27 C301.104569,27 302,27.8954305 302,29 C302,30.1045695 301.104569,31 300,31 Z M300,25 C298.895431,25 298,24.1045695 298,23 C298,21.8954305 298.895431,21 300,21 C301.104569,21 302,21.8954305 302,23 C302,24.1045695 301.104569,25 300,25 Z M300,19 C298.895431,19 298,18.1045695 298,17 C298,15.8954305 298.895431,15 300,15 C301.104569,15 302,15.8954305 302,17 C302,18.1045695 301.104569,19 300,19 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

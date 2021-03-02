@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="22px" viewBox="0 0 19 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>register</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Others" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.6">
+        <g id="Menu-NOT-Logged" transform="translate(-32.000000, -122.000000)" stroke="#FFFFFF">
+            <g id="register" transform="translate(32.000000, 122.000000)">
+                <path d="M18.5,18.9989506 L18.5,3.00714618 C18.5,1.6142918 17.38508,0.5 15.9998779,0.5 L3.00012207,0.5 C1.61488945,0.5 0.5,1.61720051 0.5,3.00138694 L0.5,18.9986131 C0.5,20.3805691 1.61913564,21.5 3.00012207,21.5 L15.9998779,21.5 C17.3851232,21.5 18.5,20.3829378 18.5,18.9989506 Z" id="Combined-Shape"></path>
+                <path d="M13.5,3.5 L6.5,10.5" id="Line" stroke-linecap="square"></path>
+                <path d="M13.5,17.5 L6.5,10.5" id="Line" stroke-linecap="square"></path>
+                <path d="M7.5,10.5 L18.5,10.5" id="Line" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+﻿id_odor_type;id_user;other;verified;track;status;name;description;origin;color;id_odor_intensity;id_odor_duration;id_odor_annoy;latitude;longitude;address;id_zone
+1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1;1
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;

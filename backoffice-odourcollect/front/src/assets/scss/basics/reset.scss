@@ -1,0 +1,145 @@
+/* ==========================================================================
+   RESET CSS
+   ========================================================================== */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+figure,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+    text-decoration: none;
+    list-style: none;
+}
+
+img {
+    -ms-interpolation-mode: bicubic;
+    border: 0;
+    vertical-align: middle;
+}
+
+body {
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p a {
+    outline: 0;
+    color: black;
+}
+
+p a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+
+/*input[type='submit'],
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}*/
+
+html {
+
+}
+
+html,
+body {
+
+}
+textarea {
+    resize: none;
+    border: none;
+    color: rgb(161, 166, 169);
+    border-bottom: 2px solid #000;
+    font-family: GT-America-Standard-Medium;
+    font-size: 20px;
+    box-sizing: border-box;
+    outline: 0;
+    -webkit-appearance: none;
+    border: none;
+    border-bottom: 2px solid #000;
+    border-radius: 0;
+    padding: 4px 5px;
+    background:none;
+}

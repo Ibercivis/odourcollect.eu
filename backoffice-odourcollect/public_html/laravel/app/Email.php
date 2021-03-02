@@ -1,0 +1,28 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Email extends Model
+{
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_user', 'email', 'subject', 'body'
+    ];
+
+    /**
+     * The attributes that are translatable.
+     *
+     * @var array
+     */
+    protected $translatable  = [
+        'id_user', 'email', 'subject', 'body'
+    ];
+
+}

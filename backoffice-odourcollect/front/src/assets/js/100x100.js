@@ -1,0 +1,10 @@
+import './external/global.js';
+// import './library/chartjs/Chart.min.js';
+// import './library/chartjs/chartjs-plugin-datalabels.js';
+// import './library/chartjs/chartjs-plugin-deferred.js';
+import './library/bootstrap/bootstrap.js';
+import './library/cleave/cleave.js';
+import './library/datatables/datatables.js';
+import './custom/functions/general.js';
+import './custom/functions/forms.js';
+import './custom/app.js';

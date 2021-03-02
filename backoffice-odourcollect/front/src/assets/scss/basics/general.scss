@@ -1,0 +1,68 @@
+/* ------------------------------------------------------------------------- */
+
+
+/* GENEREAL STYLE - Classes used throught all the project */
+
+
+/* ------------------------------------------------------------------------- */
+
+html{
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+table .btn
+{
+	padding: 0.10rem 0.20rem !important;
+}
+
+table button svg
+{
+	width: 20px !important;
+    height: 20px !important;
+}
+
+.float_left
+{
+	float: left;
+}
+
+.float_right
+{
+	float: right;
+}
+
+.text_left
+{
+	text-align: left;
+}
+
+.text_right
+{
+	text-align: right;
+}
+
+.show{
+	display: block;
+}
+
+.margin_zero
+{
+	margin: 0px;
+}
+.m-bottom_10
+{
+	margin-bottom: 10px;
+}
+
+.uppercase
+{
+	text-transform: uppercase;
+}
+
+.hide{
+	display: none;
+}
+
+.show{
+	display: block;
+}

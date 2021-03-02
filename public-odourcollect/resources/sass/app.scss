@@ -1,0 +1,33 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.parent9{
+  display: none !important;
+}
+
+.vdp-datepicker input{
+	width: 100% !important;
+    height: 32px;
+    font-size: 14px;
+    z-index: 9999999;
+    position: relative;
+    display: block;
+}
+
+*{
+  font-family: $font-family;
+}
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
