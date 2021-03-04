@@ -6,10 +6,10 @@
             <div class="sub-container">
                 <div class="type three-columns column-text">{{$t('DETAIL_ODOUR.TYPE')}}<div class="info_type" @click="info1 = true"><img :src="info_icon"></div>
                         
-                    <br><div class="odor_type" v-if="oddour.type != 8 && oddour.type != 9"><span>{{oddour.parent_type_name}}:</span><br>{{oddour.type_name}}</div>
+                    <br><div class="odor_type" v-if="oddour.parent_type != 8 && oddour.parent_type != 9"><span>{{oddour.parent_type_name}}:</span><br>{{oddour.type_name}}</div>
 
-                    <div class="odor_type" v-if="oddour.type == 8"><span>{{oddour.type_name}}:</span><br>{{oddour.other}}</div>
-                    <div class="odor_type" v-if="oddour.type == 9">{{$t('NOODOR.TEXT')}}</div>
+                    <div class="odor_type" v-if="oddour.parent_type == 8"><span>{{oddour.type_name}}:</span><br>{{oddour.other}}</div>
+                    <div class="odor_type" v-if="oddour.parent_type == 9">{{$t('NOODOR.TEXT')}}</div>
                     </div>
                 <div class="type three-columns column-chart chart">{{$t('DETAIL_ODOUR.INTENSITY')}} <br>
                     <v-progress-circular class="chart-graph" :rotate="90" :size="80" :color="intensity_fill" :width="10" :value="(oddour.intensity - 1)*16.6666667">{{oddour.intensity - 1}}</v-progress-circular>
