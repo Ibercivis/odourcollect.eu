@@ -680,7 +680,7 @@
                     vm.oddour.annoy = data.id_odor_annoy;
                     vm.oddour.loc = data.location.place;
 
-                    var now = new Date(data.created_at.replace(/ /g,"T"));
+                    var now = new Date(data.published_at.replace(/ /g,"T"));
                     var userAgent = window.navigator.userAgent;
 
                     if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
@@ -1061,7 +1061,7 @@
                         vm.oddour.annoy = data.id_odor_annoy;
                         vm.oddour.loc = data.location.place;
 
-                        var now = new Date(data.created_at.replace(/ /g,"T"));
+                        var now = new Date(data.published_at.replace(/ /g,"T"));
                         var userAgent = window.navigator.userAgent;
 
                         if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
