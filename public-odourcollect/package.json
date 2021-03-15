@@ -39,6 +39,7 @@
     "vue-localstorage": "^0.6.2",
     "vue-progress": "^0.2.1",
     "vue-router": "^3.0.2",
+    "vue-slider-component": "^3.2.11",
     "vue-template-compiler": "^2.5.21",
     "vue2-daterange-picker": "^0.6.2",
     "vue2-scrollbar": "0.0.3",

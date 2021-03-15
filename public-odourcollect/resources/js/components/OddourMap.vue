@@ -1,4 +1,4 @@
-
+<script src="https://cdn.jsdelivr.net/npm/vue-slider-component@latest/dist/vue-slider-component.umd.min.js"></script>   
 <template>
     <div>
         <div id="map" style="height: 93vh; z-index: 0;">
@@ -106,104 +106,89 @@
                     <vue-scrollbar class="my-scrollbar" ref="Scrollbar">
                         <div class="scroll-me">
                             <div class="preload">
-                               <div class="row">
-                                   <div class="col-12 mt-5">
-                                       <a href="#" v-on:click="only_date">
-                                       <div class="row">
-                                            <div class="col-2" style="padding:0px">
-                                                <div class="circle">
-                                                     <img class="icon icon2" v-if="date_init || date_end" :src="check_icon">
-                                                </div>  
-                                            </div> 
-                                            <div class="col-2">
-                                                <img class="icon icon2" :src="date_icon">
-                                            </div>     
-                                            <div class="col-6">
-                                               <div class="square">By Date</div>
-                                            </div>   
-                                            <div class="col-2" style="padding:0px">
-                                               <img class="icon" :src="arrow_icon">
-                                            </div>  
-                                       </div>
-                                       </a>
+                               <div class="row">								
+
+                                    <div>
+                                        <input type="button" @click="clearFilters()" id="clearButton" value="Clear filters X" />
                                     </div>
-                                    <div class="col-12 mt-5">
-                                    <a href="#" v-on:click="only_type">
-                                       <div class="row">
-                                           <div class="col-2" style="padding:0px">
-                                              <div class="circle">
-                                                     <img class="icon icon2" v-if="selected.length" :src="check_icon">
-                                                </div>
-                                            </div> 
-                                            <div class="col-2">
-                                                <img class="icon icon2" :src="list_icon">
-                                            </div>   
+
+									<div class="col-12">
+                                        <div class="row">
                                             <div class="col-6">
-                                              
-                                               <div class="square">By Type</div>
-                                            </div>   
-                                            <div class="col-2" style="padding:0px">
-                                               <img class="icon" :src="arrow_icon">
-                                            </div>  
-                                       </div>
-                                    </a>
+                                                <div class="square">Type:</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <select title="Select an item" v-model="typeSelected" style="border: 2px solid black;" @change="typeSelectedChange()">										
+                                                    <option v-for="it in item" v-bind:value="it.id" :selected="typeSelected === it.id">
+                                                        {{ it.name_t }}
+                                                    </option>
+                                                </select>								
+                                            </div>
+										</div>			
+									</div>		
+
+									<div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="square">Subtype:</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <select title="Select an item" v-model="subtypeSelected" style="border: 2px solid black;" v-if="typeSelected">										
+                                                    <option v-for="values in getEligibleSubTypes()" v-bind:value="values.id" :selected="subtypeSelected === values.id">
+                                                        {{ values.name }}
+                                                    </option>
+                                                </select>				
+                                            </div>
+										</div>			
+									</div>
+
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="square">Intensity:</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <vue-slider ref="slider" v-model="intensity"  v-bind="intensitySliderOptions" />
+                                            </div>                                        
+                                        </div>
+                                    </div>	
+
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="square">Hedonic tone:</div>
+                                            </div>
+                                            <div class="col-6">
+                                                 <vue-slider ref="annoySlider" v-model="annoy"  v-bind="annoySliderOptions" />
+                                             </div>                                        
+                                        </div>
                                     </div>
-                                       <div class="col-12 mt-5 mb-5">
-                                       <a href="#" v-on:click="type_subtype">
-                                       <div class="row">
-                                           <div class="col-2" style="padding:0px">
-                                              <div class="circle">
-                                                     <img class="icon icon2" v-if="selected2.length" :src="check_icon">
-                                                </div>
-                                            </div> 
-                                            <div class="col-2">
-                                                <img class="icon icon2" :src="list_icon">
-                                            </div>   
+
+                                     <div class="col-12" style="height: 350px;">
+                                        <div class="row">
                                             <div class="col-6">
-                                               <div class="square">By Subtype</div>
-                                              
-                                            </div>   
-                                            <div class="col-2" style="padding:0px">
-                                               <img class="icon" :src="arrow_icon">
-                                            </div>  
-                                       </div>
-                                       </a>
-                                   </div>
+                                                <div class="date_init">
+                                                    <label class="label">Fecha Inicio:</label>
+                                                    <datepicker class="date" style="border: 2px solid black;" :value="date_init" v-model="date_init"></datepicker>
+                                                    <img class="date_icon" :src="date_icon">
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="date_init">
+                                                    <label class="label">Fecha Fin:</label>
+                                                    <datepicker class="date" style="border: 2px solid black;" :value="date_end" v-model="date_end"></datepicker>
+                                                    <img class="date_icon" :src="date_icon">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>							
+														
+								   
                                    <div class="col-12"></div>
                                    <div class="col-12"></div>
                                </div>
                             </div>
-                            <div class="result only_type">
-                                <div class="radio-input" v-for="(it, index) in item">
-                                <input type="checkbox" color="#384658" v-on:click="step1(it.id)" v-bind:id="it.id" v-model="selected" :data="it" :value="it.id" :label="it.name_t" :id="it.name.replace('/', '')" :key="it.id" >
-                                <v-label :for="it.name.replace('/', '')">{{it.name_t}}</v-label>
-                                <div class="check"><div class="inside" style="background-image:url(../../../img/general/checked-white.svg);"></div></div>
-                                </div>
-                            </div>
-                            <div class="result type_subtype">
-                                    <div v-for="(value, key, index) in oddourSubTypes">
-                                        <div v-for="(values in value" :id="'subtype'+key" :class="'subtype'+key+' subtype radio-input'">
-                                            <input type="checkbox" color="#384658" v-model="selected2" :data="values" :value="values.id" :label="values.name" :id="values.name" :key="values.id" >
-                                            <v-label :for="values.name">{{values.name}}</v-label>
-                                            <div class="check"><div class="inside" style="background-image:url(../../../img/general/checked-white.svg);"></div></div>
-                                        </div>
-                                    </div>
-                            </div>
-                             <div class="result only_date">
-                                <div id="step1_only_date" style="height: 390px;">
-                                    <div class="date_init">
-                                    <label class="label">Fecha Inicio:</label>
-                                    <datepicker class="date" :value="date_init" v-model="date_init"></datepicker>
-                                    <img class="date_icon" :src="date_icon">
-                                    </div>
-
-                                    <div class="date_init">
-                                    <label class="label">Fecha Fin:</label>
-                                    <datepicker class="date" :min="01-04-2021" :value="date_end" v-model="date_end"></datepicker>
-                                    <img class="date_icon" :src="date_icon">
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </vue-scrollbar>
 
@@ -219,6 +204,7 @@
     </div>
 
 </template>
+
 <script>
 
 
@@ -229,9 +215,14 @@
     import store from '../store/store';
     import UserZones from '../views/User/UserZones.vue';
     import Datepicker from 'vuejs-datepicker';
+    import VueSlider from 'vue-slider-component';
+    import 'vue-slider-component/theme/antd.css';
 
+
+
+    
     export default {
-        components: {OddourDetail, OddourBottomNav, VueScrollbar, OddourComment, UserZones, Datepicker},
+        components: {OddourDetail, OddourBottomNav, VueScrollbar, OddourComment, UserZones, Datepicker, VueSlider},
 
         props: {
             singleMarker: { type: Boolean },
@@ -303,6 +294,8 @@
                 oddourTypes: [],
                 oddourSubTypes: [],
                 selected: [],
+				typeSelected: 0,
+				subtypeSelected: 0,
                 selected_new: [],
                 selected2: [],
                 options: {
@@ -313,6 +306,84 @@
                 show_comments: false,
                 polygon: '',
                 user_zones: false,
+                intensity:[0,6],
+                annoy:[-4,4],
+                intensitySliderOptions:{
+                    dotSize: 14,
+                    width: 'auto',
+                    height: 4,
+                    contained: false,
+                    direction: 'ltr',
+                    data: null,
+                    min: 0,
+                    max: 6,
+                    interval: 1,
+                    disabled: false,
+                    clickable: true,
+                    duration: 0.5,
+                    adsorb: false,
+                    lazy: false,
+                    tooltip: 'active',
+                    tooltipPlacement: 'top',
+                    tooltipFormatter: void 0,
+                    useKeyboard: false,
+                    keydownHook: null,
+                    dragOnClick: false,
+                    enableCross: true,
+                    fixed: false,
+                    minRange: void 0,
+                    maxRange: void 0,
+                    order: true,
+                    marks: false,
+                    dotOptions: void 0,
+                    process: true,
+                    dotStyle: void 0,
+                    railStyle: void 0,
+                    processStyle: void 0,
+                    tooltipStyle: void 0,
+                    stepStyle: void 0,
+                    stepActiveStyle: void 0,
+                    labelStyle: void 0,
+                    labelActiveStyle: void 0,
+                },
+                 annoySliderOptions:{
+                    dotSize: 14,
+                    width: 'auto',
+                    height: 4,
+                    contained: false,
+                    direction: 'ltr',
+                    data: null,
+                    min: -4,
+                    max: 4,
+                    interval: 1,
+                    disabled: false,
+                    clickable: true,
+                    duration: 0.5,
+                    adsorb: false,
+                    lazy: false,
+                    tooltip: 'active',
+                    tooltipPlacement: 'top',
+                    tooltipFormatter: void 0,
+                    useKeyboard: false,
+                    keydownHook: null,
+                    dragOnClick: false,
+                    enableCross: true,
+                    fixed: false,
+                    minRange: void 0,
+                    maxRange: void 0,
+                    order: true,
+                    marks: false,
+                    dotOptions: void 0,
+                    process: true,
+                    dotStyle: void 0,
+                    railStyle: void 0,
+                    processStyle: void 0,
+                    tooltipStyle: void 0,
+                    stepStyle: void 0,
+                    stepActiveStyle: void 0,
+                    labelStyle: void 0,
+                    labelActiveStyle: void 0,
+                },
             }
         },
 
@@ -320,17 +391,11 @@
             //Takes from the store if we are in the home page or not, in order to change the toolbar
             isHome: function () {
                 return this.$store.state.isHome;
-            }
-        },
-
-        watch:{
-            //Detects if the user wants to filter
-            filters: function (val){
-                //Obtener los olores segun el filtro
-                if (this.singleM === false){
-                    this.chargeFilteredMarkers();
-                }
             },
+	
+		},
+        watch:{
+
         },
 
         mounted(){
@@ -721,6 +786,28 @@
                 });
 
             },
+			
+			getEligibleSubTypes() {
+				if(this.typeSelected){
+					return this.oddourSubTypes[this.typeSelected-1];
+                }else
+					return [];
+  
+			},
+
+            typeSelectedChange(){
+                this.subtypeSelected = 0;
+            },
+
+            clearFilters(){
+                this.typeSelected = 0;
+                this.subtypeSelected = 0;
+                this.intensity=[0,6];
+                this.annoy=[-4,4];
+                this.date_init = null;
+                this.date_end = null;
+                this.getAllMarkers();
+            },
 
             //Get all point of interest
             // getPointsOfInterest(){
@@ -913,8 +1000,16 @@
 
             //Apply odour types filters
             applyFilters(value){
-                this.filters = this.selected;
+			    console.log("applyfilters");
+                //this.filters = this.typeSelected;
+
+                console.log(this.filters);
                 this.visible_filters = false
+                //Obtener los olores segun el filtro
+                if (this.singleM === false){
+                    this.chargeFilteredMarkers();
+                }
+
             },
 
             //Get zone information
@@ -1166,7 +1261,6 @@
                     axios.post('api/odor/list').then(response => {
 
                         var points = response.data.content;
-                        console.log(points)
 
                         vm.markers = [];
                         vm.mySubGroup.clearLayers();
@@ -1242,7 +1336,8 @@
 
             //Get odour list according odour type
             getFilteredMarkers(id){
-            console.log('getFilteredMarkers');
+                console.log('getFilteredMarkers');
+                
                 var vm = this;
                 var marker;
                 $(".preload").css('display', 'block');
@@ -1250,22 +1345,42 @@
                 $(".only_type").css('display', 'none');
                 $(".type_subtype").css('display', 'none');
       
-               if(this.selected2.length > 0){
-                 var subtype = this.selected2;
-               }
+                var type = this.typeSelected;
+                var subtype = this.subtypeSelected;
+                var annoy = this.annoy;
+                var intensity = this.intensity;
+                                
+                var minAnnoy = annoy[0];
+                var maxAnnoy = annoy[1];
+                var minIntensity = intensity[0];
+                var maxIntensity = intensity[1];
 
+                var temp_date_init=this.date_init;
+                if(!temp_date_init){
+                    temp_date_init = "2000-01-01 00:00:01";
+                }
                
+                var temp_date_end = this.date_end;
+                if(!temp_date_end){
+                    temp_date_end= "3000-01-01 00:00:01";
+                }
+
                 axios.post('api/odor/list', {
-                    type: id,
+                    type: type,
                     subtype: subtype,
-                    date_init: moment(this.date_init).format('YYYY-MM-DD H:mm:ss'),
-                    date_end: moment(this.date_end).format('YYYY-MM-DD H:mm:ss')
+                    minAnnoy: minAnnoy,
+                    maxAnnoy: maxAnnoy,
+                    minIntensity: minIntensity,
+                    maxIntensity: maxIntensity,
+                    date_init: moment(temp_date_init).format('YYYY-MM-DD H:mm:ss'),
+                    date_end: moment(temp_date_end).format('YYYY-MM-DD H:mm:ss')
                     }).then(response => {
                         var points = response.data.content;
+						
                         //Cargar la informacion
                        
                         points.forEach(function (point){
-                                if (point.location) {
+                                if (point.latitude) {
                                     vm.markers.push(point);
                                 }
                             });
@@ -1283,35 +1398,35 @@
 
                             switch (m.color){
                                 case 1:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.greenIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.greenIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 2:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.lightGreenIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.lightGreenIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 3:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.yellowIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.yellowIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 4:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.orangeIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.orangeIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 5:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.lightPinkIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.lightPinkIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 6:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.pinkIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.pinkIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 case 7:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.purpleIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.purpleIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                                     break;
                                 default:
-                                    marker = L.marker([m.location.latitude, m.location.longitude], {icon: vm.greenIcon}).addTo(vm.mySubGroup);
+                                    marker = L.marker([m.latitude, m.longitude], {icon: vm.greenIcon}).addTo(vm.mySubGroup);
                                     marker.id = m.id;
                             }
                             stop();
@@ -1327,18 +1442,19 @@
 
             //Clear filter layer and charge the new one
             chargeFilteredMarkers() {
-
+                console.log("chargeFilteredMarkers");
                 var vm = this;
 
                 vm.markers = [];
                 vm.mySubGroup.clearLayers();
-
+			/*	console.log(vm.filters);
                 if (vm.filters.length === 0 && vm.filters !== null && this.date_init === "" && this.date_end === ""){
                     vm.getAllMarkers();
                 } else {
                     vm.getFilteredMarkers(vm.filters);
                 }
-
+            */
+                vm.getFilteredMarkers(vm.typeSelected);
                 vm.map.addLayer(vm.markers_layout );
                 vm.map.addLayer(vm.mySubGroup);
             }
@@ -1346,6 +1462,7 @@
     }
 </script>
 
+ 
 <style lang="scss">
     .v-dialog {
         border-radius:20px !important;
@@ -1666,4 +1783,135 @@ button, input, optgroup, select, textarea {
         right: 0px;
         bottom: -1px;
     }
+
+
+/* component style */
+.vue-slider-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.vue-slider{
+   background-color: #ccc;
+}
+
+/* rail style */
+.vue-slider-rail {
+  background-color: #ccc;
+  border-radius: 15px;
+  position: initial !important;
+}
+
+/* process style */
+.vue-slider-process {
+  background-color: #3498db;
+  border-radius: 15px;
+}
+
+/* mark style */
+.vue-slider-mark {
+  z-index: 4;
+}
+.vue-slider-mark:first-child .vue-slider-mark-step, .vue-slider-mark:last-child .vue-slider-mark-step {
+  display: none;
+}
+.vue-slider-mark-step {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.16);
+}
+.vue-slider-mark-label {
+  font-size: 14px;
+  white-space: nowrap;
+}
+/* dot style */
+.vue-slider-dot-handle {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
+}
+.vue-slider-dot-handle-focus {
+  box-shadow: 0px 0px 1px 2px rgba(52, 152, 219, 0.36);
+}
+
+.vue-slider-dot-handle-disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.vue-slider-dot-tooltip-inner {
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 2px 5px;
+  min-width: 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  border-color: #3498db;
+  background-color: #3498db;
+  box-sizing: content-box;
+}
+.vue-slider-dot-tooltip-inner::after {
+  content: "";
+  position: absolute;
+}
+.vue-slider-dot-tooltip-inner-top::after {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px;
+  border-top-color: inherit;
+}
+.vue-slider-dot-tooltip-inner-bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px;
+  border-bottom-color: inherit;
+}
+.vue-slider-dot-tooltip-inner-left::after {
+  left: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px;
+  border-left-color: inherit;
+}
+.vue-slider-dot-tooltip-inner-right::after {
+  right: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 0;
+  width: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px;
+  border-right-color: inherit;
+}
+
+.vue-slider-dot-tooltip-wrapper {
+  opacity: 0;
+  transition: all 0.3s;
+}
+.vue-slider-dot-tooltip-wrapper-show {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=default.css.map */
+
 </style>
