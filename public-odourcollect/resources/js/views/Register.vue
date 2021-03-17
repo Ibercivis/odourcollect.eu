@@ -6,46 +6,15 @@
                     <v-card-text>
 
                         <v-form ref="form" style="padding-top: 50px;">
-                            <!--<v-text-field
-                                name="name"
-                                :label="this.$t('UPDATE_PROFILE.NAME')"
-                                :rules="nameRules"
-                                type="text"
-                                v-model="name"
-                                required
-                            ></v-text-field>
-
-                            <v-text-field
-                                name="surName"
-                                :label="this.$t('UPDATE_PROFILE.SURNAME')"
-                                :rules="surnameRules"
-                                type="text"
-                                v-model="surname"
-                                required
-                            ></v-text-field>!-->
-
-                            <v-text-field
+                           <!--  <v-text-field
                                 name="username"
                                 :label="this.$t('UPDATE_PROFILE.USERNAME')"
                                 :rules="usernameRules"
                                 type="text"
                                 v-model="username"
                                 required
-                            ></v-text-field>
+                            ></v-text-field> -->
 
-
-                            <select @change="selectAge($event)" class="age-select">
-                                <option v-for="age in ages" v-bind:value="age.value">
-                                    {{$t('UPDATE_PROFILE.AGE')}} {{ age.text }}
-                                </option>
-                            </select>
-
-                            <!--<v-text-field
-                                    name="phone"
-                                    :label="this.$t('UPDATE_PROFILE.PHONE')"
-                                    v-model.number="phone"
-                                    type="number"
-                            ></v-text-field>!-->
 
                             <v-text-field 
                                 name="login"
@@ -55,6 +24,14 @@
                                 v-model="email" 
                                 required
                             ></v-text-field>
+
+                            <select @change="selectAge($event)" class="age-select">
+                                <option v-for="age in ages" v-bind:value="age.value">
+                                    {{$t('UPDATE_PROFILE.AGE')}} {{ age.text }}
+                                </option>
+                            </select>
+                            
+                            <br/>
 
                             <input type="radio" id="male" value="male" v-model="gender">
                             <label class="label-gender" for="male">{{$t('UPDATE_PROFILE.MALE')}}</label>
@@ -156,7 +133,8 @@
                 password : "",
                 ages: [
                     { text: '', value: '0' },
-                    { text: '<20', value: '<20' },
+                    { text: '<13', value: '<13' },
+                    { text: '13-19', value: '13-19' },                    
                     { text: '20-29', value: '20-29' },
                     { text: '30-39', value: '30-39' },
                     { text: '40-49', value: '40-49' },
@@ -217,12 +195,21 @@
         methods : {
 
             selectAge(event) {
-                this.age_selected =  event.target.value;
+                var age = event.target.value
+                console.log(age);
+                if (age =="<13"){
+                    alert("<13");
+                }
+                if (age =="13-19"){
+                    alert("13-19");
+                }
+
+                this.age_selected =  age;
             },
 
             checkForm(e){
                 var vm = this;
-                if (!vm.age_selected || !vm.email || !vm.username || !vm.email || !vm.gender || !vm.password || !vm.password_confirmation){
+                if (!vm.age_selected || !vm.email || !vm.email || !vm.password || !vm.password_confirmation){
                     this.error.status = true;
                     this.error.msg = this.$t('REGISTER.ERROR_DATA');
                 } else {
@@ -242,7 +229,8 @@
                     this.error1.status = false;
                 
                     axios.post('../api/register', {
-                        username: this.username,
+                        //username: this.username,
+                        username: "username",
                         age: this.age_selected,
                         gender: this.gender,
                         email: this.email,
