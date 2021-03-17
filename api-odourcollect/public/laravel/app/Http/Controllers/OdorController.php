@@ -36,99 +36,68 @@ class OdorController extends Controller
      */
     public function index(Request $request)
     {
+		
+		$filters = [];
+		
+		/*
+			'type' filter => Corresponds to the parent type
+		*/		
+		$filter_type=$request->input("type");
 
-        /* GET MAX POSITIONS SPAIN */
-        /**
-        $longitude = (float) -3.749220;
-        $latitude = (float) 40.463669;
-        $radius = 250; // in miles
+		if($filter_type){
+            $filters[ 'id_odor_parent_type']= $filter_type;
+        }
+        /*
+            'subtype' filter => Corresponds to the specific type
+        */		
+        $filter_subtype=$request->input("subtype");
 
-        $lng_min = $longitude - $radius / abs(cos(deg2rad($latitude)) * 69);
-        $lng_max = $longitude + $radius / abs(cos(deg2rad($latitude)) * 69);
-        $lat_min = $latitude - ($radius / 69);
-        $lat_max = $latitude + ($radius / 69);
-
-        echo 'lng (min/max): ' . $lng_min . '/' . $lng_max . PHP_EOL;
-        echo 'lat (min/max): ' . $lat_min . '/' . $lat_max;
-
-        /** 400 MILES **/
-        //lng (min/max): -11.368787765079/3.8703477650786
-        //lat (min/max): 34.666567550725/46.260770449275
-
-        /** 250 MILES **/
-        //lng (min/max): -8.5114498531741/1.0130098531741
-        //lat (min/max): 36.840480594203/44.086857405797
-        /**
-        die(); exit;
-        **/
-
-        $odorColor = new OdorColor();
-
+        if($filter_subtype){
+            $filters[ 'id_odor_type']= $filter_subtype;
+        }
         
-        $type_aux = null; 
-        if(( $request->get('type') !== null ) && ( $request->get('subtype') === null )){
-
-            $tt = OdorType::parents($request->get('type'))->get();
-            
-            if($tt){
-                $type_aux = [];
-                foreach ($tt as $key => $aux) {
-                    $type_aux[] = $aux->id;
-                }
-                
-            }
-        } else {
-            $type_aux = $request->get('subtype');
+        $filter_minIntensity=$request->input("minIntensity");
+        $filter_maxIntensity=$request->input("maxIntensity");			
+        if(!$filter_minIntensity){
+            $filter_minIntensity=0;
         }
- 
-       
+        if(!$filter_maxIntensity){
+            $filter_maxIntensity=6;
+        }
 
-/*       $odour = Odor::name($request->get('name'))->
-                    verified('1')->
-                    published($request->get('date_init'), $request->get('date_end'))->
-                    status('published')->
-                    type($type_aux)->
-                    intensity($request->get('intensity'))->
-                    annoy($request->get('annoy'))->
-                    zone($request->get('zone'))->
-                    with('location:id_odor,latitude,longitude')->
-                    //with('likes')->
-                    select('id', 'id_odor_type', 'id_user', 'color', 'id_odor_intensity', 'id_odor_duration', 'id_odor_annoy', 'published_at')->
-                    get();
-	 */
-	    $odour = DB::table('odors')
+        $filter_minAnnoy=$request->input("minAnnoy");
+        $filter_maxAnnoy=$request->input("maxAnnoy");        
+        if(!$filter_minAnnoy){
+            $filter_minAnnoy=-1;
+        }
+
+        if(!$filter_maxAnnoy){
+            $filter_maxAnnoy=4;
+        }
+
+        $filter_date_init=$request->input("date_init");
+        if(!$filter_date_init){
+            $filter_date_init="2000-01-01 00:00:01"; 
+        }
+        
+        $filter_date_end=$request->input("date_end");        
+        if(!$filter_date_end){
+            $filter_date_end="3000-01-01 00:00:01"; 
+        }
+
+        $odours = DB::table('odors')
             ->join('locations','odors.id','=','locations.id_odor')
-            ->select('odors.id', 'id_odor_type', 'id_user', 'color', 'id_odor_intensity', 'id_odor_duration', 'id_odor_annoy', 'published_at','latitude','longitude')
-	    ->get();
+            ->join('odor_types','odors.id_odor_type','=','odor_types.id')
+            ->select('odors.id', 'id_odor_type', 'id_user', 'odors.color', 'id_odor_intensity', 'id_odor_duration', 'id_odor_annoy', 'published_at','latitude','longitude')
+            ->where($filters)
+            ->where('id_odor_intensity', '>=', ($filter_minIntensity + 1)) //id=1 power=0
+            ->where('id_odor_intensity', '<', ($filter_maxIntensity + 1)) 
+            ->where('id_odor_annoy', '>=', ($filter_minAnnoy + 5)) //id=1 index=-4
+            ->where('id_odor_annoy', '<', ($filter_maxAnnoy + 5))
+            ->where('published_at', '>=', $filter_date_init) //id=1 index=-4
+            ->where('published_at', '<', $filter_date_end)
+        ->get();
 
- /*       foreach ($odour as $key => $o) {
-
-            $type = false;
-            $annoy = false;
-            $intensity = false;
-
-            //$o->user = User::findOrFail($o->id_user);
-            //$o->confirmations = $o->likes->count();
-            //unset($o->likes);
-
-            $o->name_odor_type = null;
-            $o->id_odor_parent_type = 0;
-            $o->name_odor_parent_type = null;
-
-            $type = OdorType::find($o->id_odor_type);
-            if($type){
-                $o->name_odor_type = $type->name;
-                $o->name_zone = $request->get('zone');
-                $o->id_odor_parent_type = $type->id_odor_parent_type;
-                $parent = OdorParentType::find($type->id_odor_parent_type);
-                if($parent){
-                    $o->name_odor_parent_type = $parent->name;
-                }
-            }
-
-
-        }
-	 */
         
         return response()->json(
         [
@@ -136,10 +105,12 @@ class OdorController extends Controller
             'data' => [
                 'date_init' => $request->get('date_init'),
                 'message' => 'Succesfull request.',
-                'content' => $odour,
+                'content' => $odours,
             ]
         ], 200);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

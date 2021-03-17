@@ -72,8 +72,8 @@
                                      {!! Form::open(['route' => 'admin.user.update', 'method' => 'POST', 'id' => 'updateUserForm', 'class' => '']) !!}
                                     @endif
                                         <div class="form-group">
-                                            <label for="new_name" class="col-form-label">Username</label>
-                                            <input id="new_username" name="username" type="text" class="form-control" value="{{$user->username}}">
+                                            <label for="user_id">Id</label>
+                                            <input type="text" id="user_id" name="user_id" value="{{$user->id}}" readonly style="border:0"> 
                                         </div>
                                         <div class="form-group">
                                             <label for="new_email">Email address</label>

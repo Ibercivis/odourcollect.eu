@@ -200,7 +200,7 @@
                                             <th scope="col">Observation Type</th>
                                             <th scope="col">Observation Subtype</th>
                                             <th scope="col">Address</th>
-                                            <th scope="col">Username</th>
+                                            <th scope="col">User ID</th>
                                             <th scope="col">Verified</th>
                                             <th scope="col">Published at</th>
                                             <th></th>
@@ -214,7 +214,7 @@
                                                 <td>{{$odour->odour_type_father}}</td>
                                                 <td>{{$odour->odour_type}}</td>
                                                 <td>{{$odour->address}}</td>
-                                                <td>{{$odour->user}}</td>
+                                                <td>{{$odour->id_user}}</td>
                                                 @if ($odour->verified == 1)
                                                     <td>Yes</td>
                                                 @else

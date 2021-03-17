@@ -88,14 +88,7 @@
                                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">Users <span class="badge badge-success">6</span></a>
                                         <div id="submenu-2" class="collapse submenu" style="">
                                             <ul class="nav flex-column">
-                                                <li class="nav-item">
-                                                    @if(Auth::guard('web')->check())
-                                                    <a class="nav-link" href="{{ route('user.create') }}">Add new</a>
-                                                    @else
-                                                    <a class="nav-link" href="{{ url('admin/user/create') }}">Add new</a>
-                                                    @endif
-                                                    
-                                                </li>
+  
                                                 <li class="nav-item">
                                                     @if(Auth::guard('web')->check())
                                                     <a class="nav-link" href="{{ route('user.list') }}">Users list</a>

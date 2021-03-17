@@ -105,9 +105,9 @@
 
                                                 @if(Auth::guard('admin')->check())
                                  
-                                                <a href="{{ url('admin/user', ['id' => $odour->user->id])}}">{{$odour->user->username}}</a>
+                                                <a href="{{ url('admin/user', ['id' => $odour->user->id])}}">{{$odour->user->id}}</a>
                                                 @else
-                                                 {{$odour->user->username}}
+                                                 {{$odour->user->id}}
                                                 @endif
                                             </span></p>
                                             <p><span class="d-xl-inline-block d-block"><i class="fa fa-map-marker-alt mr-2 text-primary"></i>{{$odour->location->address}}</span></p>

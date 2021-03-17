@@ -85,14 +85,14 @@
                                 <table id="table" data-page-length='10' class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Name Surname</th>
+                                            <th scope="col">User ID</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
-                                                <td>{{$user->name}} {{$user->surname}} ({{$user->type}})</td>
+                                                <td>{{$user->id}} ({{$user->type}})</td>
                                                 <?php if(Auth::guard('web')->check()){ ?>
                                                 @if ($user->belong == true)
                                                     <td><a id="myBtn-{{$user->id}}" data-url="{{ route('zone.remove.user', ['id' => $zone->id, 'user' => $user->id])}}" class="modal__trigger btn-danger">DELETE</a></td>

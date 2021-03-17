@@ -76,8 +76,7 @@
                                 <table id="table" data-page-length='10' class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Username</th>
+                                            <th scope="col">#</th>                                            
                                             <th scope="col">Email</th>
                                             <th scope="col">Active</th>
                                             <th scope="col">Type</th>
@@ -96,7 +95,7 @@
                                                 @endif
                                                 <th scope="row">{{$id}}</th>
 
-                                                <td>{{$user->username}}</td>
+                                                
                                                 <td>{{$user->email}}</td>
 
                                                 @if ($user->active == 1)

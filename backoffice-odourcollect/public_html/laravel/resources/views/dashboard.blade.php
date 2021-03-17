@@ -70,11 +70,9 @@
                                                 <th scope="row">{{$odour->id}}</th>
                                                 <td>{{$odour->odour_type}}</td>
                                                 <td>{{$odour->address}}</td>
-                                                @if (isset($odour->username))
-                                                <td>{{$odour->username}}</td>
-                                                @else
-                                                <td></td>
-                                                @endif
+                                                
+                                                <td>{{$odour->id_user}}</td>
+                                                
                                                 @if ($odour->verified == 1)
                                                     <td>Yes</td>
                                                 @else
