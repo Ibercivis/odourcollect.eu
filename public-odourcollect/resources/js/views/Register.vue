@@ -80,6 +80,12 @@
 
                             <p class="error" v-if="error1.status">{{error1.msg}}</p>
 
+                            <div id="div_term_adult" class="inline" style="display: none">
+                                <v-checkbox color="#384658" :id="term_adult" v-model="adult_term" :data="adult_term" :value="adult_term"></v-checkbox>
+                                <p><label :for="term_adult">{{$t('REGISTER.CONDITIONS_P1')}} that I am of legal age in my country</label></p>
+                            </div>
+                            <p class="error" v-if="error2.status">{{error2.msg}}</p>
+
                             <div class="inline">
                                 <v-checkbox color="#384658" :id="news_id" v-model="newsletter" :data="newsletter" :value="newsletter"></v-checkbox>
                                 <label :for="news_id">{{$t('REGISTER.NEWSLETTER')}}</label>
@@ -90,7 +96,7 @@
                         <v-card-actions class="fix-bottom">
                             <v-spacer></v-spacer>
                             <div class="align">
-                                <div class="align fix-bottom pointer"><v-btn color="secondary" class="body-2 font-weight-regular" @click="checkForm">{{$t('REGISTER.REGISTER')}}</v-btn></div>
+                                <div class="align fix-bottom pointer"><v-btn id="register" color="secondary" class="body-2 font-weight-regular" @click="checkForm">{{$t('REGISTER.REGISTER')}}</v-btn></div>
                             </div>
                         </v-card-actions>
 
@@ -147,6 +153,8 @@
                 register : true,
                 terms: false,
                 terms1: false,
+                adult_term: false,
+                term_adult: "term_adult",
                 term_id: "term_id",
                 term_id_1: "term_id_1",
                 news_id: "news_id",
@@ -173,6 +181,10 @@
                     status : false,
                     msg: ''
                 },
+                error2 : {
+                    status : false,
+                    msg: ''
+                },
                 e2: false,
 
             }
@@ -196,12 +208,13 @@
 
             selectAge(event) {
                 var age = event.target.value
-                console.log(age);
+                document.getElementById('register').classList.remove('v-btn--disabled');
+                $('#div_term_adult').hide();
                 if (age =="<13"){
-                    alert("<13");
+                    document.getElementById('register').classList.add('v-btn--disabled');
                 }
                 if (age =="13-19"){
-                    alert("13-19");
+                    $('#div_term_adult').show();
                 }
 
                 this.age_selected =  age;
@@ -222,11 +235,13 @@
                 e.preventDefault()
                 this.error.status = false;
                 this.error1.status = false;
+                this.error2.status = false;
 
-                if (this.password === this.password_confirmation && this.$refs.form.validate() && this.terms && this.terms1)
+                if (this.password === this.password_confirmation && this.$refs.form.validate() && this.terms && this.terms1 && (this.age_selected != "13-19" || this.adult_term) )
                 {
                     this.error.status = false;
                     this.error1.status = false;
+                    this.error2.status = false;
                 
                     axios.post('../api/register', {
                         //username: this.username,
@@ -258,6 +273,11 @@
                     if (!this.terms1) {
                         this.error1.status = true;
                         this.error1.msg = this.$t('REGISTER.ERROR_ETHIC');
+                    }
+
+                    if (this.age_selected == "13-19" && !this.adult_term){
+                        this.error2.status = true;
+                        this.error2.msg = "Accept this if you are in legal age in your country ";
                     }
 
                 }
