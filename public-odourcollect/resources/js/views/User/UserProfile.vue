@@ -1,34 +1,8 @@
 <template>
     <v-container>
         <h1 class="font-weight-medium display-1">{{$t('MENU.USER_PROFILE')}}</h1>
-
-        <form>
-            <v-text-field
-                    v-model="input_username"
-                    :error-messages="usernameErrors"
-                    :label="$t('UPDATE_PROFILE.USERNAME')"
-                    required
-                    @input="$v.input_username.$touch()"
-                    @blur="$v.input_username.$touch()"
-            ></v-text-field>
-
-            <v-text-field
-                    v-model="input_name"
-                    :error-messages="nameErrors"
-                    :label="$t('UPDATE_PROFILE.NAME')"
-                    required
-                    @input="$v.input_name.$touch()"
-                    @blur="$v.input_name.$touch()"
-            ></v-text-field>
-
-            <v-text-field
-                    v-model="input_surname"
-                    :error-messages="surnameErrors"
-                    :label="$t('UPDATE_PROFILE.SURNAME')"
-                    required
-                    @input="$v.input_surname.$touch()"
-                    @blur="$v.input_surname.$touch()"
-            >{{$v.input_surname}}</v-text-field>
+        <p class="user_id">Id: {{user.id}}</p>
+        <form>          
 
             <v-text-field
                     v-model="input_email"
@@ -42,22 +16,11 @@
                     @blur="$v.input_email.$touch()"
             ></v-text-field>
 
-            <v-text-field
-                    v-model="input_telf"
-                    :append-icon="e3 ? 'visibility' : 'visibility_off'"
-                    @click:append="() => (e3 = !e3)"
-                    :error-messages="telfErrors"
-                     :type="e3 ? 'number' : 'password'"
-                    :label="$t('UPDATE_PROFILE.PHONE')"
-                    @input="$v.input_telf.$touch()"
-                    @blur="$v.input_telf.$touch()"
-            ></v-text-field>
-
-            <!--<label for="date">Fecha de nacimiento</label>-->
-            <!--<datepicker id="date" :value="input_datebirth"></datepicker>-->
-
             <div class="align fix-bottom">
                 <v-btn color="secondary" class="body-2 font-weight-regular" @click="saveProfileChanges">{{$t('UPDATE_PROFILE.SAVE')}}</v-btn>
+            </div>
+            <div class="align fix-bottom">
+                <v-btn color="red" class="body-2 font-weight-regular" >Delete user</v-btn>
             </div>
         </form>
 
@@ -106,12 +69,7 @@
         mixins: [validationMixin],
 
         validations: {
-            input_username: { required },
-            input_name: { required },
-            input_surname: { required },
             input_email: { required, email },
-            input_telf: { required },
-//            input_datebirth: { required },
         },
 
         data(){
@@ -125,7 +83,6 @@
                 input_telf: '',
                 e2: false,
                 e3: false,
-//                input_datebirth: '03/12/1900',
                 user: '',
                 token: '',
                 message:'',
@@ -178,12 +135,12 @@
 
                 axios.post('../../api/user/update/' + vm.user.id, {
                     token: vm.token,
-                    username: vm.input_username,
-                    name: vm.input_name,
-                    surname: vm.input_surname,
+                    //username: vm.input_username,
+                    name: "name",
+                    surname: "surname",
                     email: vm.input_email,
 //                    datebirth: vm.input_datebirth,
-                    phone: vm.input_telf
+                    //phone: vm.input_telf
                 }).then(response => {
                     vm.state.status = true;
                     vm.state.msg = this.$t('UPDATE_PROFILE.OK');
@@ -220,7 +177,7 @@
                 vm.input_surname = data.surname;
                 vm.input_email = data.email;
 
-                vm.input_telf = data.phone;
+                //vm.input_telf = data.phone;
 //                if(data.datebirth){
 //                    vm.input_datebirth = data.datebirth;
 //                }
@@ -244,6 +201,9 @@
 
     *{
         color: $font-color-dark;
+    }
+    .user_id{
+        margin: 10px 0 20px;
     }
     h1{
         margin: 10px 0 20px;
