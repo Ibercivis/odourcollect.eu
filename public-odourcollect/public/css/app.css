@@ -11976,11 +11976,20 @@ a.text-dark:focus {
 
 .vdp-datepicker input {
   width: 100% !important;
-  height: 32px;
-  font-size: 14px;
   z-index: 9999999;
   position: relative;
   display: block;
+  border: 1px solid #999 !important;
+  border-radius: 5px;
+}
+
+.myselect {
+  border: 1px solid #999 !important;
+  border-radius: 5px;
+}
+
+.vue-slider-rail {
+  position: initial !important;
 }
 
 * {

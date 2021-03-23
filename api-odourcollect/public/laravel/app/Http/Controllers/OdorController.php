@@ -91,11 +91,11 @@ class OdorController extends Controller
             ->select('odors.id', 'id_odor_type', 'id_user', 'odors.color', 'id_odor_intensity', 'id_odor_duration', 'id_odor_annoy', 'published_at','latitude','longitude')
             ->where($filters)
             ->where('id_odor_intensity', '>=', ($filter_minIntensity + 1)) //id=1 power=0
-            ->where('id_odor_intensity', '<', ($filter_maxIntensity + 1)) 
+            ->where('id_odor_intensity', '<=', ($filter_maxIntensity + 1)) 
             ->where('id_odor_annoy', '>=', ($filter_minAnnoy + 5)) //id=1 index=-4
-            ->where('id_odor_annoy', '<', ($filter_maxAnnoy + 5))
+            ->where('id_odor_annoy', '<=', ($filter_maxAnnoy + 5))
             ->where('published_at', '>=', $filter_date_init) //id=1 index=-4
-            ->where('published_at', '<', $filter_date_end)
+            ->where('published_at', '<=', $filter_date_end)
         ->get();
 
         

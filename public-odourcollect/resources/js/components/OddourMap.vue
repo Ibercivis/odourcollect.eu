@@ -1,4 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/vue-slider-component@latest/dist/vue-slider-component.umd.min.js"></script>   
 <template>
     <div>
         <div id="map" style="height: 93vh; z-index: 0;">
@@ -96,44 +95,44 @@
             <v-dialog v-model="visible_filters" transition="dialog-bottom-transition" scrollable>
                 <v-card flat style="height: 100%;">
                     <h2 color="primary" class="subheading title">{{$t('UI.BOTTOM_SHEET.TITLE_FILTER')}}
-                        <div class="info-close" id="step_preload" style="left: 14px;right: auto; display: none;"><img v-on:click="steppreload" :src="back_icon"></div>
-                        <div class="info-close" id="step1_back" style="left: 14px;right: auto; display: none;"><img v-on:click="step1back" :src="back_icon"></div>
-                        <div class="info-close" id="step2_back" style="left: 14px;right: auto; display: none;"><img v-on:click="step2back" :src="back_icon"></div>
                         <div class="info-close" @click="visible_filters = false; verifymap()"><img :src="close_icon"></div>
                     </h2>
                     <div class="separator"></div>
 
                     <vue-scrollbar class="my-scrollbar" ref="Scrollbar">
-                        <div class="scroll-me">
+                        <div class="scroll-me sub-container">
                             <div class="preload">
                                <div class="row">								
 
-                                    <div>
-                                        <input type="button" @click="clearFilters()" id="clearButton" value="Clear filters X" />
-                                    </div>
+                                                                  <div class="col-12 pb-4 sub-container">
+                                        <div class="row">
+																						<div class="col-4">
+																							<div class="map-btn pb-4">Date range</div>
+																						</div>
+                                            <div class="col-4 pl-5 pr-5">
+                                                <datepicker class="date" :value="date_init" v-model="date_init"></datepicker>
+                                            </div>
+                                            <div class="col-4 pl-5 pr-5">
+                                                    <datepicker class="date" :value="date_end" v-model="date_end"></datepicker>
+                                            </div>
+                                        </div>
+                                    </div>							
+
 
 									<div class="col-12">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div class="square">Type:</div>
+                                            <div class="col-4 pb-4">
+                                                <div class="map-btn pb-4">Type & Subtype:</div>
                                             </div>
-                                            <div class="col-6">
-                                                <select title="Select an item" v-model="typeSelected" style="border: 2px solid black;" @change="typeSelectedChange()">										
+                                            <div class="col-4 pr-5 pl-5">
+                                                <select title="Select an item"  class="myselect" v-model="typeSelected" style="border: 1px solid #555;" @change="typeSelectedChange()">										
                                                     <option v-for="it in item" v-bind:value="it.id" :selected="typeSelected === it.id">
                                                         {{ it.name_t }}
                                                     </option>
                                                 </select>								
                                             </div>
-										</div>			
-									</div>		
-
-									<div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="square">Subtype:</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <select title="Select an item" v-model="subtypeSelected" style="border: 2px solid black;" v-if="typeSelected">										
+                                            <div class="col-4 pl-5 pr-5">
+                                                <select title="Select an item" class="myselect" v-model="subtypeSelected" style="border: 1px solid #555;" v-if="typeSelected">										
                                                     <option v-for="values in getEligibleSubTypes()" v-bind:value="values.id" :selected="subtypeSelected === values.id">
                                                         {{ values.name }}
                                                     </option>
@@ -144,54 +143,30 @@
 
                                     <div class="col-12">
                                         <div class="row">
-                                            <div class="col-6">
-                                                <div class="square">Intensity:</div>
+                                            <div class="col-4">
+                                                <div class="map-btn pb-5">Intensity & Hedonic tone:</div><br /><br/><br />
                                             </div>
-                                            <div class="col-6">
-                                                <vue-slider ref="slider" v-model="intensity"  v-bind="intensitySliderOptions" />
+                                            <div class="col-4 pl-5 pr-5">
+                                                <vue-slider class="pl-3 pr-3" ref="slider" v-model="intensity"  v-bind="intensitySliderOptions"></vue-slider>
                                             </div>                                        
-                                        </div>
-                                    </div>	
-
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="square">Hedonic tone:</div>
-                                            </div>
-                                            <div class="col-6">
-                                                 <vue-slider ref="annoySlider" v-model="annoy"  v-bind="annoySliderOptions" />
+                                            <div class="col-4 pl-5 pr-5">
+                                                 <vue-slider class="pl-3 pr-3" ref="annoySlider" v-model="annoy"  v-bind="annoySliderOptions" />
                                              </div>                                        
                                         </div>
                                     </div>
+			<div class="col-12">
+				<div class="row">
+                                        <div class="apply-btn apply" @click="clearFilters()" id="clearButton">Clear Filters X</div>
+</div>
+                                    </div>
 
-                                     <div class="col-12" style="height: 350px;">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="date_init">
-                                                    <label class="label">Fecha Inicio:</label>
-                                                    <datepicker class="date" style="border: 2px solid black;" :value="date_init" v-model="date_init"></datepicker>
-                                                    <img class="date_icon" :src="date_icon">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="date_init">
-                                                    <label class="label">Fecha Fin:</label>
-                                                    <datepicker class="date" style="border: 2px solid black;" :value="date_end" v-model="date_end"></datepicker>
-                                                    <img class="date_icon" :src="date_icon">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>							
-														
-								   
-                                   <div class="col-12"></div>
-                                   <div class="col-12"></div>
+
+
                                </div>
                             </div>
-                            
                         </div>
                     </vue-scrollbar>
-
+       	
                     <div class="apply-btn">
                         <v-divider style="margin-top: 0px;"></v-divider>
                         <h2 class="apply" @click="applyFilters">{{$t('UI.BOTTOM_SHEET.APPLY')}}</h2>
@@ -216,7 +191,7 @@
     import UserZones from '../views/User/UserZones.vue';
     import Datepicker from 'vuejs-datepicker';
     import VueSlider from 'vue-slider-component';
-    import 'vue-slider-component/theme/antd.css';
+    import 'vue-slider-component/theme/default.css';
 
 
 
@@ -311,7 +286,7 @@
                 intensitySliderOptions:{
                     dotSize: 14,
                     width: 'auto',
-                    height: 4,
+                    height: 1,
                     contained: false,
                     direction: 'ltr',
                     data: null,
@@ -334,7 +309,7 @@
                     minRange: void 0,
                     maxRange: void 0,
                     order: true,
-                    marks: false,
+                    marks: true,
                     dotOptions: void 0,
                     process: true,
                     dotStyle: void 0,
@@ -349,7 +324,7 @@
                  annoySliderOptions:{
                     dotSize: 14,
                     width: 'auto',
-                    height: 4,
+                    height: 1,
                     contained: false,
                     direction: 'ltr',
                     data: null,
@@ -372,7 +347,7 @@
                     minRange: void 0,
                     maxRange: void 0,
                     order: true,
-                    marks: false,
+                    marks: true,
                     dotOptions: void 0,
                     process: true,
                     dotStyle: void 0,
@@ -1783,134 +1758,6 @@ button, input, optgroup, select, textarea {
         right: 0px;
         bottom: -1px;
     }
-
-
-/* component style */
-.vue-slider-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.vue-slider{
-   background-color: #ccc;
-}
-
-/* rail style */
-.vue-slider-rail {
-  background-color: #ccc;
-  border-radius: 15px;
-  position: initial !important;
-}
-
-/* process style */
-.vue-slider-process {
-  background-color: #3498db;
-  border-radius: 15px;
-}
-
-/* mark style */
-.vue-slider-mark {
-  z-index: 4;
-}
-.vue-slider-mark:first-child .vue-slider-mark-step, .vue-slider-mark:last-child .vue-slider-mark-step {
-  display: none;
-}
-.vue-slider-mark-step {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.16);
-}
-.vue-slider-mark-label {
-  font-size: 14px;
-  white-space: nowrap;
-}
-/* dot style */
-.vue-slider-dot-handle {
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: #fff;
-  box-sizing: border-box;
-  box-shadow: 0.5px 0.5px 2px 1px rgba(0, 0, 0, 0.32);
-}
-.vue-slider-dot-handle-focus {
-  box-shadow: 0px 0px 1px 2px rgba(52, 152, 219, 0.36);
-}
-
-.vue-slider-dot-handle-disabled {
-  cursor: not-allowed;
-  background-color: #ccc;
-}
-
-.vue-slider-dot-tooltip-inner {
-  font-size: 14px;
-  white-space: nowrap;
-  padding: 2px 5px;
-  min-width: 20px;
-  text-align: center;
-  color: #fff;
-  border-radius: 5px;
-  border-color: #3498db;
-  background-color: #3498db;
-  box-sizing: content-box;
-}
-.vue-slider-dot-tooltip-inner::after {
-  content: "";
-  position: absolute;
-}
-.vue-slider-dot-tooltip-inner-top::after {
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  height: 0;
-  width: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px;
-  border-top-color: inherit;
-}
-.vue-slider-dot-tooltip-inner-bottom::after {
-  bottom: 100%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  height: 0;
-  width: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px;
-  border-bottom-color: inherit;
-}
-.vue-slider-dot-tooltip-inner-left::after {
-  left: 100%;
-  top: 50%;
-  transform: translate(0, -50%);
-  height: 0;
-  width: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px;
-  border-left-color: inherit;
-}
-.vue-slider-dot-tooltip-inner-right::after {
-  right: 100%;
-  top: 50%;
-  transform: translate(0, -50%);
-  height: 0;
-  width: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px;
-  border-right-color: inherit;
-}
-
-.vue-slider-dot-tooltip-wrapper {
-  opacity: 0;
-  transition: all 0.3s;
-}
-.vue-slider-dot-tooltip-wrapper-show {
-  opacity: 1;
-}
 
 /*# sourceMappingURL=default.css.map */
 
