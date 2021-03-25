@@ -261,6 +261,42 @@ class UserController extends Controller {
 
     }
 
+
+    public function delete(Request $request, $id) {
+        
+        $client = new Client();
+        $token = '?token=' . $request->get('token');
+
+        try {  
+                     
+            $result = $client->put(env('API_URL') . 'user/' . $id . '/delete' , [
+                'headers' => [
+                    'api-key' => env('API_KEY'),
+                ],
+                'form_params' => $request->all(),
+            ]);
+            
+/*
+            $result = $client->get(env('API_URL') . 'user/' . $id . '/zones' . $token, [
+                'headers' => [
+                    'api-key' => env('API_KEY'),
+                ],
+            ]);
+*/
+            print_r("llamando");
+            $message = json_decode($result->getBody());
+
+            return response(json_encode($message->data), 200);
+
+        } catch (RequestException $e) {            
+            $message = json_decode($e->getResponse()->getBody()->getContents());
+            print_r($message);
+            return response("errrror", 401);
+        }
+
+    }
+
+
     public function password(Request $request, $id) {
 
         $validator = Validator::make($request->all(), [

@@ -8,6 +8,8 @@ Route::post('recover', 'UserController@recover');
 //User Routes
 Route::post('user/{id}', 'UserController@show')->name('user.profile');
 Route::post('user/update/{id}', 'UserController@update')->name('user.update');
+Route::post('user/delete/{id}', 'UserController@delete')->name('user.delete');
+
 Route::post('user/password/{id}', 'UserController@password')->name('user.password');
 
 Route::post('user/{id}/odours', 'UserController@odours')->name('user.odours');

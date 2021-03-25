@@ -20,7 +20,7 @@
                 <v-btn color="secondary" class="body-2 font-weight-regular" @click="saveProfileChanges">{{$t('UPDATE_PROFILE.SAVE')}}</v-btn>
             </div>
             <div class="align fix-bottom">
-                <v-btn color="red" class="body-2 font-weight-regular" >Delete user</v-btn>
+                <v-btn color="red" class="body-2 font-weight-regular" @click="deleteProfileDialog">{{$t('UPDATE_PROFILE.DELETE')}}</v-btn>
             </div>
         </form>
 
@@ -53,6 +53,42 @@
                 </v-dialog>
             </v-layout>
         </div>
+
+        <div class="dialogo">
+            <v-layout row justify-center>
+                <v-dialog v-model="delete_dialog.status" transition="dialog-bottom-transition" scrollable>
+                    <v-card flat>
+
+                        <h2 color="primary" class="subheading font-weight-medium title">{{delete_dialog.title}}
+                            <div class="info-close" @click="delete_dialog.status = false"><img :src="close_icon"></div>
+                        </h2>
+
+                        <div class="separator"></div>
+
+                        <v-card-text style="padding-top: 60px;padding-bottom: 100px;">
+                            <div class="apply-btn">
+                                <div class="apply-btn map">
+                                    <p>MENSAJE {{delete_dialog.msg}}</p>
+                                </div>
+                                    <div class="inline">                                       
+                                        <v-checkbox color="#384658" :id="'deleteData_id'" v-model="deleteData" :data="deleteData" :value="deleteData"></v-checkbox>
+                                        <label :for="'deleteData_id'">BORRAR TUS DATOS SUBIDOS </label>                                
+                                    </div>
+                            </div>
+                            
+                        </v-card-text>
+
+                        <div class="apply-btn">
+                            <v-divider style="margin-top: 0px;"></v-divider>
+                            <h2 class="apply" @click="delete_dialog.status = false;deleteProfile()">{{$t('UPDATE_PROFILE.AGREE')}}</h2>
+                        </div>
+
+                        <div style="flex: 1 1 auto;"></div>
+                    </v-card>
+                </v-dialog>
+            </v-layout>
+        </div>
+
     </v-container>
 </template>
 
@@ -91,6 +127,12 @@
                     msg: '',
                     title: ''
                 },
+                delete_dialog : {
+                    status : false,
+                    msg: '',
+                    title: ''
+                },
+                deleteData: false,
                 close_icon: '../../../img/general/close-mini.svg',
 
             }
@@ -153,6 +195,24 @@
                     //If response code is 401 / 403 / 500 show alert of bad login or login problems
                 });
             },
+            deleteProfileDialog () {
+                var vm = this;
+                vm.delete_dialog.status = true;
+                vm.delete_dialog.msg = "se va a borrar el perfil" //this.$t('UPDATE_PROFILE.OK');
+                vm.delete_dialog.title = this.$t('UPDATE_PROFILE.OK_TITLE');
+            },
+            deleteProfile(){
+                var vm = this;
+                
+                axios.post('../../api/user/delete/' + vm.user.id, {
+                    token: vm.token,
+                }).then(response => {
+                    console.log("respuesta ok");
+                }).catch(error => {
+                    console.log("error al intentar borrar profile");
+                });
+                
+            }
         },
         mounted(){
 
@@ -300,5 +360,15 @@
         right: 14px;
         top: 4px;
         padding: 10px;
+    }
+    label{
+        color: rgba(0,0,0,.54);
+        font-size: 16px;
+        line-height: 1;
+        min-height: 8px;
+        margin-top: 24px;
+    }
+    .inline{
+        display: inline-flex;
     }
 </style>
