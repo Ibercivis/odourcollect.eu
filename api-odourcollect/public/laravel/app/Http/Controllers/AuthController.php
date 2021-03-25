@@ -22,7 +22,6 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        error_log("entra al register",0);
         $credentials = $request->only('username', 'email', 'password', 'age', 'gender');
         
         $rules = [
@@ -39,7 +38,6 @@ class AuthController extends Controller
             'email.max' => 'max',
             'password.required' => 'required'
         ];
-        error_log("valida",0);
         $validator = Validator::make($credentials, $rules, $messages);
         if($validator->fails()) {
             return response()->json(
@@ -57,7 +55,6 @@ class AuthController extends Controller
         $gender = $request->gender;
         $email = $request->email;
         $password = $request->password;
-        error_log("Crear...",0);
         $user = User::create(['username' => $username, 'age' => $age, 'gender' => $gender, 'email' => $email, 'password' => Hash::make($password), 'active' => 1]);
         $this->addToNewsletter($request);
         $verification_code = str_random(30); //Generate verification code
@@ -180,6 +177,25 @@ class AuthController extends Controller
                 'message' => "User not found.",
             ]
         ], 400);
+    }
+
+        /**
+     * API Profile Delete
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete(Request $request, $id)
+    {
+
+        $error_log("entra en delete de authcontroller - api",0);
+        return response()->json(
+            [
+                'status_code' => 200,
+                'data' => [
+                    'message' => "User ".$id." Profile deleted"
+                ]
+            ], 200);
     }
 
     /**

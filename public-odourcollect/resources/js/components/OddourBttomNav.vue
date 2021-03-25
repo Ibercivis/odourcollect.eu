@@ -4,15 +4,17 @@
             <v-list>
 
                 <div v-if="isLoggedIn">
-                    <v-list-tile class="title-name">
+                   
+                    <v-list-tile>
                         <v-list-tile-content>
                             <v-list-tile-title>
-                                <span class="headline">{{name}}</span>
+                                <p class="font-weight-light title">Id: {{user_id}}</p>
                             </v-list-tile-title>
                         </v-list-tile-content>
-                    </v-list-tile>
-                    <v-divider></v-divider>
+                     </v-list-tile>
 
+                    <v-divider></v-divider>
+                    
                     <v-list-tile @click="goProfile" class="menu">
                         <v-list-tile-action>
                             <img :src="user_icon">
@@ -369,6 +371,7 @@
                 back_icon:  '../../img/general/nav-back.svg',
                 isLoggedIn : null,
                 name : null,
+                user_id : null,
                 popup: false,
                 user_odours: false,
                 create_odours: false,
@@ -577,6 +580,7 @@
             user(newUser, oldUser){
                 if( this.isLoggedIn ){
                     var user = JSON.parse(newUser);
+                    this.user_id = user['id'];
                     this.name = user['name'] + ' ' + user['surname'];
                 }
             },
@@ -586,6 +590,7 @@
             if( localStorage.getItem('auth-token') !== null ) { this.isLoggedIn = true }
             if( this.isLoggedIn ){
                 var user =  JSON.parse(localStorage.getItem('user'));
+                this.user_id = user['id'];
                 this.name = user['name'] + ' ' + user['surname'];
             }
             this.route = this.$route.fullPath;

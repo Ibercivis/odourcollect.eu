@@ -46,6 +46,7 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('logout', 'AuthController@logout');
     Route::get('user/{id}', 'UserController@show')->name('user.profile');
     Route::post('user/{id}', 'AuthController@profile')->name('user.update');
+    Route::put('user/{id}/delete', 'AuthController@delete')->name('user.delete');
     Route::post('user/{id}/password', 'AuthController@password')->name('user.password');
     Route::get('user/{id}/odours', 'UserController@odours')->name('user.odours');
     Route::get('user/{id}/zones', 'UserController@zones')->name('user.zones');

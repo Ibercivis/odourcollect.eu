@@ -332,7 +332,8 @@ export default {
       REQUIRED_EMAIL: 'The E-mail is required',
       FORMAT_EMAIL: 'The E-mail format must be valid',
       IDENTICAL_PW: 'The two passwords must be identical',
-      NOT_COMPLETE: 'Fill all the fields'
+      NOT_COMPLETE: 'Fill all the fields',
+      DELETE: 'Delete user'
   },
 
   ADD_ODOUR: {
