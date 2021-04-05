@@ -68,7 +68,7 @@ class OdorController extends Controller
         $filter_minAnnoy=$request->input("minAnnoy");
         $filter_maxAnnoy=$request->input("maxAnnoy");        
         if(!$filter_minAnnoy){
-            $filter_minAnnoy=-1;
+            $filter_minAnnoy=-4;
         }
 
         if(!$filter_maxAnnoy){
