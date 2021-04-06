@@ -594,8 +594,6 @@ class UserController extends Controller
 
             $data[] = array (
                 "ID User"                                   => $user->id,
-                "Name"                                      => $user->name,
-                "Surname"                                   => $user->surname,
                 "Age"                                   => $user->age,
                 "Gender"                                   => $user->gender,
                 "Email"                                     => $user->email,
