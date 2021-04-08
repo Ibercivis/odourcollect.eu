@@ -794,6 +794,11 @@ class OdourController extends Controller
             $type = OdorParentType::where('id', $subtype->id_odor_parent_type)->first();
             if(empty($zone)){$odour->zone = '';} else {$odour->zone = $zone->name;}
             if(empty($user)){$nameuser = '';} else {$nameuser = $user->username;}
+
+            if(empty($user)){$id_user = "";} else {$id_user = $user->id;}
+        
+            $day = explode(" ", $odour->published_at)[0];
+            $time = explode(" ", $odour->published_at)[1];
         
 
             if((!empty($location->longitude)) && (!empty($location->latitude)) && (!empty($location->address))){
@@ -813,12 +818,13 @@ class OdourController extends Controller
                             "Intentity"                                 => $intensity->name,
                             "Duration"                                  => $name,
                             "Annoy"                                     => $annoy->name,
-                            "Published at"                              => $odour->published_at  
+                            "day"                                       => $day,
+                            "time"                                      => $time 
                             );
                     } else {
                         $data[] = array (
                             "ID Odour"                                  => $odour->id,
-                            "User"                                      => $nameuser,
+                            "User"                                      => $id_user,
                             "Verified"                                  => $odour->verified,
                             "Type"                                      => $type->name,
                             "Zone"                                      => $odour->zone,
@@ -832,7 +838,8 @@ class OdourController extends Controller
                             "Intentity"                                 => $intensity->name,
                             "Duration"                                  => $name,
                             "Annoy"                                     => $annoy->name,
-                            "Published at"                              => $odour->published_at  
+                            "day"                                       => $day,
+                            "time"                                      => $time 
                             );
                     }
             
@@ -859,13 +866,14 @@ class OdourController extends Controller
                         "Intentity"                                 => $intensity->name,
                         "Duration"                                  => $name,
                         "Annoy"                                     => $annoy->name,
-                        "Published at"                              => $odour->published_at
+                        "day"                                       => $day,
+                        "time"                                      => $time 
                         
                     );
                 } else {
                     $data[] = array (
                         "ID Odour"                                  => $odour->id,
-                        "User"                                      => $nameuser,
+                        "User"                                      => $id_user,
                         "Verified"                                  => $odour->verified,
                          "Type"                                      => $type->name,
                          "Zone"                                     => $odour->zone,
@@ -880,7 +888,8 @@ class OdourController extends Controller
                         "Intentity"                                 => $intensity->name,
                         "Duration"                                  => $name,
                         "Annoy"                                     => $annoy->name,
-                        "Published at"                              => $odour->published_at
+                        "day"                                       => $day,
+                        "time"                                      => $time 
                         
                     );
                 }
@@ -907,12 +916,13 @@ class OdourController extends Controller
                             "Intentity"                                 => $intensity->name,
                             "Duration"                                  => $name,
                             "Annoy"                                     => $annoy->name,
-                            "Published at"                              => $odour->published_at
+                            "day"                                       => $day,
+                            "time"                                      => $time
                         ); 
                     } else {
                         $data[] = array (
                             "ID Odour"                                  => $odour->id,
-                            "User"                                      => $nameuser,
+                            "User"                                      => $id_user,
                             "Verified"                                  => $odour->verified,
                              "Type"                                      => $type->name,
                              "Zone"                                     => $odour->zone,
@@ -927,11 +937,11 @@ class OdourController extends Controller
                             "Intentity"                                 => $intensity->name,
                             "Duration"                                  => $name,
                             "Annoy"                                     => $annoy->name,
-                            "Published at"                              => $odour->published_at
+                            "day"                                       => $day,
+                            "time"                                      => $time 
                         ); 
                     }
                      
-                
                 }
 
             }
