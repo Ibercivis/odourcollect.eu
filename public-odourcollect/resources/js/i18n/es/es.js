@@ -115,7 +115,7 @@ export default {
           58: 'Orina',
           59: 'Tráfico',
           60: 'Aguas residuales',
-          61: 'Basurero',
+          61: 'contenedor de basura',
           62: 'Camión de basura',
           63: 'Sudor',
           64: 'Marihuana',
