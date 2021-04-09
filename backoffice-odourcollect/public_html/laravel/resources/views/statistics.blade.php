@@ -98,7 +98,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
     <script>
-
+    var total;
         $(document).on('ready', function() {
             $('#map').on('change', function(){
                 map = $('#map').val();
@@ -122,9 +122,355 @@
             });
         });
 
+        total = $.ajax({
+            url: '{{ route('home') }}' + '/odourStatistics/?map=&publish_date_src=&publish_date_dst=',
+            type: "GET",
+            beforeSend : function() {},
+            success: function(response) {
+                console.log("llamada general");
+                console.log(response.subtypes);
+                //Observations Types Chart
+                var types_labels = [];
+                var types_values = [];
+                var subtypes_labels = [];
+                var subtypes_values = [];
+                var ctxTypes = document.getElementById("subtypes-chart").getContext('2d');
+                
+                for ($i = 0; $i < response.subtypes.length; $i++){
+                    if (response.subtypes[$i].count !== undefined){
+                        subtypes_labels.push(response.subtypes[$i].name +  ' (' + response.subtypes[$i].count + ')');
+                        response.subtypes[$i].count =  response.subtypes[$i].count*100/response.total_odors;
+                    } else {
+                        response.subtypes[$i].count = 0;
+                        subtypes_labels.push(response.subtypes[$i].name +  ' (' + response.subtypes[$i].count + ')');
+                    }
+                    subtypes_values.push(response.subtypes[$i].count);
+                }
+                var subtypes_labels = subtypes_labels.slice(0,10);
+                console.log(subtypes_labels);
+                t = {
+                    datasets: [{
+                        data: subtypes_values,
+                        backgroundColor: [
+                            'rgba(227,161,66)',
+                            'rgba(164,225,224)',
+                            'rgba(180,227,124)',
+                            'rgba(224,116,107)',
+                            'rgba(249,169,169)',
+                            'rgba(95,85,87)',
+                            'rgba(9,5,61)',
+                            'rgba(28,23,90)',
+                            'rgba(22,12,148)',
+                            'rgba(66,52,236)',
+                            'rgba(82,73,196)',
+                            'rgba(105,100,170)',
+                            'rgba(103,100,131)',
+                            'rgba(172,170,206)',
+                            'rgba(198,194,255)',
+                            'rgba(227,161,66)',
+                            'rgba(164,225,224)',
+                            'rgba(180,227,124)',
+                            'rgba(224,116,107)',
+                            'rgba(249,169,169)',
+                            'rgba(95,85,87)',
+                            'rgba(132,224,241)',
+                            'rgba(81,220,247)',
+                            'rgba(88,181,199)',
+                            'rgba(43,147,167)',
+                            'rgba(52,96,104)',
+                            'rgba(23,91,104)',
+                            'rgba(5,54,63)',
+                            'rgba(98,167,148)',
+                            'rgba(209,241,233)',
+                        ]
+                    }],
+                    labels: subtypes_labels
+                };
+                var typesChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: t,
+                    options:{
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            callbacks: {
+                                // Use the footer callback to display the sum of the items showing in the tooltip
+                                footer: function(tooltipItems, data) {
+                                    var sum = 0;
+
+                                    tooltipItems.forEach(function(tooltipItem) {
+                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    });
+                                    return Math.round(sum * 100) / 100 + '%';
+                                },
+                                label: function(tooltipItems, data) {
+                                    return '';
+                                }
+                            },
+                            footerFontStyle: 'normal'
+                        },
+                        hover: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                    }
+                });
+                
+                $('#subtypes-total').text('TOTAL: ' + response.total_odors);
+
+                for ($i = 0; $i < response.types.length; $i++){
+                    if (response.types[$i].count !== undefined){
+                        types_labels.push(response.types[$i].name +  ' (' + response.types[$i].count + ')');
+                        response.types[$i].count =  response.types[$i].count*100/response.total_odors;
+                    } else {
+                        response.types[$i].count = 0;
+                        types_labels.push(response.types[$i].name +  ' (' + response.types[$i].count + ')');
+                    }
+                    types_values.push(response.types[$i].count);
+                }
+
+                var ctxTypes = document.getElementById("types-chart").getContext('2d');
+                
+                t = {
+                    datasets: [{
+                        data: types_values,
+                        backgroundColor: [
+                            'rgba(227,161,66)',
+                            'rgba(164,225,224)',
+                            'rgba(180,227,124)',
+                            'rgba(224,116,107)',
+                            'rgba(249,169,169)',
+                            'rgba(95,85,87)',
+                        ]
+                    }],
+                    labels: types_labels
+                };
+                var typesChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: t,
+                    options:{
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            callbacks: {
+                                // Use the footer callback to display the sum of the items showing in the tooltip
+                                footer: function(tooltipItems, data) {
+                                    var sum = 0;
+
+                                    tooltipItems.forEach(function(tooltipItem) {
+                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    });
+                                    return Math.round(sum * 100) / 100 + '%';
+                                },
+                                label: function(tooltipItems, data) {
+                                    return '';
+                                }
+                            },
+                            footerFontStyle: 'normal'
+                        },
+                        hover: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                    }
+                });
+
+                $('#types-total').text('TOTAL: ' + response.total_odors);
+
+                
+
+                //Observations Intensities Chart
+                var intensity_labels = [];
+                var intensity_values = [];
+
+                for ($i = 0; $i < response.intensity.length; $i++){
+                    if (response.intensity[$i].count !== undefined){
+                        intensity_labels.push(response.intensity[$i].name +  ' (' + response.intensity[$i].count + ')');
+                        response.intensity[$i].count =  response.intensity[$i].count*100/response.total_odors;
+                    } else {
+                        response.intensity[$i].count = 0;
+                        intensity_labels.push(response.intensity[$i].name +  ' (' + response.intensity[$i].count + ')');
+                    }
+                    intensity_values.push(response.intensity[$i].count);
+                }
+
+                var ctxTypes = document.getElementById("intensity-chart").getContext('2d');
+
+                intensities = {
+                    datasets: [{
+                        data: intensity_values,
+                        backgroundColor: [
+                            'rgba(132,224,241)',
+                            'rgba(81,220,247)',
+                            'rgba(88,181,199)',
+                            'rgba(43,147,167)',
+                            'rgba(52,96,104)',
+                            'rgba(23,91,104)',
+                            'rgba(5,54,63)',
+                        ]
+                    }],
+                    labels: intensity_labels
+                };
+                var intensityChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: intensities,
+                    options:{
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            callbacks: {
+                                // Use the footer callback to display the sum of the items showing in the tooltip
+                                footer: function(tooltipItems, data) {
+                                    var sum = 0;
+
+                                    tooltipItems.forEach(function(tooltipItem) {
+                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    });
+                                    return Math.round(sum * 100) / 100 + '%';
+                                },
+                                label: function(tooltipItems, data) {
+                                    return '';
+                                }
+                            },
+                            footerFontStyle: 'normal'
+                        },
+                        hover: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                    }
+                });
+
+                $('#intensity-total').text('TOTAL: ' + response.total_odors);
+
+
+                //Observations nice/foul Chart
+                var annoy_labels = [];
+                var annoy_values = [];
+
+                for ($i = 0; $i < response.annoy.length; $i++){
+                    if (response.annoy[$i].count !== undefined){
+                        annoy_labels.push(response.annoy[$i].name +  ' (' + response.annoy[$i].count + ')');
+                        response.annoy[$i].count =  response.annoy[$i].count*100/response.total_odors;
+                    } else {
+                        response.annoy[$i].count = 0;
+                        annoy_labels.push(response.annoy[$i].name +  ' (' + response.annoy[$i].count + ')');
+                    }
+                    annoy_values.push(response.annoy[$i].count);
+                }
+
+                var ctxTypes = document.getElementById("annoy-chart").getContext('2d');
+
+                annoy = {
+                    datasets: [{
+                        data: annoy_values,
+                        backgroundColor: [
+                            'rgba(9,5,61)',
+                            'rgba(28,23,90)',
+                            'rgba(22,12,148)',
+                            'rgba(66,52,236)',
+                            'rgba(82,73,196)',
+                            'rgba(105,100,170)',
+                            'rgba(103,100,131)',
+                            'rgba(172,170,206)',
+                            'rgba(198,194,255)',
+                        ]
+                    }],
+                    labels: annoy_labels
+                };
+                var annoyChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: annoy,
+                    options:{
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            callbacks: {
+                                // Use the footer callback to display the sum of the items showing in the tooltip
+                                footer: function(tooltipItems, data) {
+                                    var sum = 0;
+
+                                    tooltipItems.forEach(function(tooltipItem) {
+                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                                    });
+                                    return Math.round(sum * 100) / 100 + '%';
+                                },
+                                label: function(tooltipItems, data) {
+                                    return '';
+                                }
+                            },
+                            footerFontStyle: 'normal'
+                        },
+                        hover: {
+                            mode: 'index',
+                            intersect: true
+                        },
+                    }
+                });
+
+                $('#annoy-total').text('TOTAL: ' + response.total_odors);
+
+
+                //Commented obervations Chart
+                var comment_labels = ['Commented', 'Not commented' ];
+                var comment_values = [];
+
+                comment_values.push(response.commented);
+
+                var ctxTypes = document.getElementById("comment-chart").getContext('2d');
+
+                comment = {
+                    datasets: [{
+                        data: [comment_values, response.total_odors - comment_values],
+                        backgroundColor: [
+                            'rgba(98,167,148)',
+                            'rgba(209,241,233)',
+                        ]
+                    }],
+                    labels: comment_labels
+                };
+                var commentChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: comment,
+                });
+
+                $('#comment-total').text('TOTAL: ' + response.total_odors);
+
+
+                //Validated obervations Chart
+                var valid_labels = ['Validated', 'Not validated' ];
+                var valid_values = [];
+
+                valid_values.push(response.verified);
+
+                var ctxTypes = document.getElementById("valid-chart").getContext('2d');
+
+                valid = {
+                    datasets: [{
+                        data: [valid_values, response.total_odors - valid_values],
+                        backgroundColor: [
+                            'rgba(98,167,148)',
+                            'rgba(209,241,233)',
+                        ]
+                    }],
+                    labels: valid_labels
+                };
+                var validtChart = new Chart(ctxTypes,{
+                    type: 'doughnut',
+                    data: valid,
+                });
+
+                $('#valid-total').text('TOTAL: ' + response.total_odors);
+
+            },
+            error: function (data, textStatus, errorThrown) {
+                console.log(data);
+            },
+        });
+    
         function update(map, src, dst){
-
-
+            console.log("update.....");
+            if(total != null){total.abort(); total = null;}
             $.ajax({
                 url: '{{ url('admin') }}' + '/odourStatistics/?map=' + map + '&publish_date_src='  + src + '&publish_date_dst=' + dst,
                 type: "GET",
@@ -136,7 +482,7 @@
                     var types_values = [];
 
                     var subtypes_labels = [];
-                var subtypes_values = [];
+                     var subtypes_values = [];
                
                 document.getElementById("subtypes-chart-content").innerHTML = '&nbsp;';
                 document.getElementById("subtypes-chart-content").innerHTML = '<canvas id="subtypes-chart" width="200" height="200"></canvas>';
@@ -511,350 +857,7 @@
             })
         }
 
-        $.ajax({
-            url: '{{ route('home') }}' + '/odourStatistics/?map=&publish_date_src=&publish_date_dst=',
-            type: "GET",
-            beforeSend : function() {},
-            success: function(response) {
-                console.log(response.subtypes);
-                //Observations Types Chart
-                var types_labels = [];
-                var types_values = [];
-                var subtypes_labels = [];
-                var subtypes_values = [];
-                var ctxTypes = document.getElementById("subtypes-chart").getContext('2d');
-                
-                for ($i = 0; $i < response.subtypes.length; $i++){
-                    if (response.subtypes[$i].count !== undefined){
-                        subtypes_labels.push(response.subtypes[$i].name +  ' (' + response.subtypes[$i].count + ')');
-                        response.subtypes[$i].count =  response.subtypes[$i].count*100/response.total_odors;
-                    } else {
-                        response.subtypes[$i].count = 0;
-                        subtypes_labels.push(response.subtypes[$i].name +  ' (' + response.subtypes[$i].count + ')');
-                    }
-                    subtypes_values.push(response.subtypes[$i].count);
-                }
-                var subtypes_labels = subtypes_labels.slice(0,10);
-                console.log(subtypes_labels);
-                t = {
-                    datasets: [{
-                        data: subtypes_values,
-                        backgroundColor: [
-                            'rgba(227,161,66)',
-                            'rgba(164,225,224)',
-                            'rgba(180,227,124)',
-                            'rgba(224,116,107)',
-                            'rgba(249,169,169)',
-                            'rgba(95,85,87)',
-                            'rgba(9,5,61)',
-                            'rgba(28,23,90)',
-                            'rgba(22,12,148)',
-                            'rgba(66,52,236)',
-                            'rgba(82,73,196)',
-                            'rgba(105,100,170)',
-                            'rgba(103,100,131)',
-                            'rgba(172,170,206)',
-                            'rgba(198,194,255)',
-                            'rgba(227,161,66)',
-                            'rgba(164,225,224)',
-                            'rgba(180,227,124)',
-                            'rgba(224,116,107)',
-                            'rgba(249,169,169)',
-                            'rgba(95,85,87)',
-                            'rgba(132,224,241)',
-                            'rgba(81,220,247)',
-                            'rgba(88,181,199)',
-                            'rgba(43,147,167)',
-                            'rgba(52,96,104)',
-                            'rgba(23,91,104)',
-                            'rgba(5,54,63)',
-                            'rgba(98,167,148)',
-                            'rgba(209,241,233)',
-                        ]
-                    }],
-                    labels: subtypes_labels
-                };
-                var typesChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: t,
-                    options:{
-                        responsive: true,
-                        tooltips: {
-                            mode: 'index',
-                            callbacks: {
-                                // Use the footer callback to display the sum of the items showing in the tooltip
-                                footer: function(tooltipItems, data) {
-                                    var sum = 0;
-
-                                    tooltipItems.forEach(function(tooltipItem) {
-                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                    });
-                                    return Math.round(sum * 100) / 100 + '%';
-                                },
-                                label: function(tooltipItems, data) {
-                                    return '';
-                                }
-                            },
-                            footerFontStyle: 'normal'
-                        },
-                        hover: {
-                            mode: 'index',
-                            intersect: true
-                        },
-                    }
-                });
-                
-                $('#subtypes-total').text('TOTAL: ' + response.total_odors);
-
-                for ($i = 0; $i < response.types.length; $i++){
-                    if (response.types[$i].count !== undefined){
-                        types_labels.push(response.types[$i].name +  ' (' + response.types[$i].count + ')');
-                        response.types[$i].count =  response.types[$i].count*100/response.total_odors;
-                    } else {
-                        response.types[$i].count = 0;
-                        types_labels.push(response.types[$i].name +  ' (' + response.types[$i].count + ')');
-                    }
-                    types_values.push(response.types[$i].count);
-                }
-
-                var ctxTypes = document.getElementById("types-chart").getContext('2d');
-                
-                t = {
-                    datasets: [{
-                        data: types_values,
-                        backgroundColor: [
-                            'rgba(227,161,66)',
-                            'rgba(164,225,224)',
-                            'rgba(180,227,124)',
-                            'rgba(224,116,107)',
-                            'rgba(249,169,169)',
-                            'rgba(95,85,87)',
-                        ]
-                    }],
-                    labels: types_labels
-                };
-                var typesChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: t,
-                    options:{
-                        responsive: true,
-                        tooltips: {
-                            mode: 'index',
-                            callbacks: {
-                                // Use the footer callback to display the sum of the items showing in the tooltip
-                                footer: function(tooltipItems, data) {
-                                    var sum = 0;
-
-                                    tooltipItems.forEach(function(tooltipItem) {
-                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                    });
-                                    return Math.round(sum * 100) / 100 + '%';
-                                },
-                                label: function(tooltipItems, data) {
-                                    return '';
-                                }
-                            },
-                            footerFontStyle: 'normal'
-                        },
-                        hover: {
-                            mode: 'index',
-                            intersect: true
-                        },
-                    }
-                });
-
-                $('#types-total').text('TOTAL: ' + response.total_odors);
-
-                
-
-                //Observations Intensities Chart
-                var intensity_labels = [];
-                var intensity_values = [];
-
-                for ($i = 0; $i < response.intensity.length; $i++){
-                    if (response.intensity[$i].count !== undefined){
-                        intensity_labels.push(response.intensity[$i].name +  ' (' + response.intensity[$i].count + ')');
-                        response.intensity[$i].count =  response.intensity[$i].count*100/response.total_odors;
-                    } else {
-                        response.intensity[$i].count = 0;
-                        intensity_labels.push(response.intensity[$i].name +  ' (' + response.intensity[$i].count + ')');
-                    }
-                    intensity_values.push(response.intensity[$i].count);
-                }
-
-                var ctxTypes = document.getElementById("intensity-chart").getContext('2d');
-
-                intensities = {
-                    datasets: [{
-                        data: intensity_values,
-                        backgroundColor: [
-                            'rgba(132,224,241)',
-                            'rgba(81,220,247)',
-                            'rgba(88,181,199)',
-                            'rgba(43,147,167)',
-                            'rgba(52,96,104)',
-                            'rgba(23,91,104)',
-                            'rgba(5,54,63)',
-                        ]
-                    }],
-                    labels: intensity_labels
-                };
-                var intensityChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: intensities,
-                    options:{
-                        responsive: true,
-                        tooltips: {
-                            mode: 'index',
-                            callbacks: {
-                                // Use the footer callback to display the sum of the items showing in the tooltip
-                                footer: function(tooltipItems, data) {
-                                    var sum = 0;
-
-                                    tooltipItems.forEach(function(tooltipItem) {
-                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                    });
-                                    return Math.round(sum * 100) / 100 + '%';
-                                },
-                                label: function(tooltipItems, data) {
-                                    return '';
-                                }
-                            },
-                            footerFontStyle: 'normal'
-                        },
-                        hover: {
-                            mode: 'index',
-                            intersect: true
-                        },
-                    }
-                });
-
-                $('#intensity-total').text('TOTAL: ' + response.total_odors);
-
-
-                //Observations nice/foul Chart
-                var annoy_labels = [];
-                var annoy_values = [];
-
-                for ($i = 0; $i < response.annoy.length; $i++){
-                    if (response.annoy[$i].count !== undefined){
-                        annoy_labels.push(response.annoy[$i].name +  ' (' + response.annoy[$i].count + ')');
-                        response.annoy[$i].count =  response.annoy[$i].count*100/response.total_odors;
-                    } else {
-                        response.annoy[$i].count = 0;
-                        annoy_labels.push(response.annoy[$i].name +  ' (' + response.annoy[$i].count + ')');
-                    }
-                    annoy_values.push(response.annoy[$i].count);
-                }
-
-                var ctxTypes = document.getElementById("annoy-chart").getContext('2d');
-
-                annoy = {
-                    datasets: [{
-                        data: annoy_values,
-                        backgroundColor: [
-                            'rgba(9,5,61)',
-                            'rgba(28,23,90)',
-                            'rgba(22,12,148)',
-                            'rgba(66,52,236)',
-                            'rgba(82,73,196)',
-                            'rgba(105,100,170)',
-                            'rgba(103,100,131)',
-                            'rgba(172,170,206)',
-                            'rgba(198,194,255)',
-                        ]
-                    }],
-                    labels: annoy_labels
-                };
-                var annoyChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: annoy,
-                    options:{
-                        responsive: true,
-                        tooltips: {
-                            mode: 'index',
-                            callbacks: {
-                                // Use the footer callback to display the sum of the items showing in the tooltip
-                                footer: function(tooltipItems, data) {
-                                    var sum = 0;
-
-                                    tooltipItems.forEach(function(tooltipItem) {
-                                        sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                                    });
-                                    return Math.round(sum * 100) / 100 + '%';
-                                },
-                                label: function(tooltipItems, data) {
-                                    return '';
-                                }
-                            },
-                            footerFontStyle: 'normal'
-                        },
-                        hover: {
-                            mode: 'index',
-                            intersect: true
-                        },
-                    }
-                });
-
-                $('#annoy-total').text('TOTAL: ' + response.total_odors);
-
-
-                //Commented obervations Chart
-                var comment_labels = ['Commented', 'Not commented' ];
-                var comment_values = [];
-
-                comment_values.push(response.commented);
-
-                var ctxTypes = document.getElementById("comment-chart").getContext('2d');
-
-                comment = {
-                    datasets: [{
-                        data: [comment_values, response.total_odors - comment_values],
-                        backgroundColor: [
-                            'rgba(98,167,148)',
-                            'rgba(209,241,233)',
-                        ]
-                    }],
-                    labels: comment_labels
-                };
-                var commentChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: comment,
-                });
-
-                $('#comment-total').text('TOTAL: ' + response.total_odors);
-
-
-                //Validated obervations Chart
-                var valid_labels = ['Validated', 'Not validated' ];
-                var valid_values = [];
-
-                valid_values.push(response.verified);
-
-                var ctxTypes = document.getElementById("valid-chart").getContext('2d');
-
-                valid = {
-                    datasets: [{
-                        data: [valid_values, response.total_odors - valid_values],
-                        backgroundColor: [
-                            'rgba(98,167,148)',
-                            'rgba(209,241,233)',
-                        ]
-                    }],
-                    labels: valid_labels
-                };
-                var validtChart = new Chart(ctxTypes,{
-                    type: 'doughnut',
-                    data: valid,
-                });
-
-                $('#valid-total').text('TOTAL: ' + response.total_odors);
-
-            },
-            error: function (data, textStatus, errorThrown) {
-                console.log(data);
-            },
-        });
+        
     </script>
 
 @endsection
