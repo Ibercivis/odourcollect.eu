@@ -52,7 +52,7 @@
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{{route('user.list')}}" class="breadcrumb-link">User list</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{$user->name}} {{$user->surname}}</li>
+                                            <li class="breadcrumb-item active" aria-current="page">{{$user->id}}</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -74,10 +74,6 @@
                                         <div class="form-group">
                                             <label for="user_id">Id</label>
                                             <input type="text" id="user_id" name="user_id" value="{{$user->id}}" readonly style="border:0"> 
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="new_email">Email address</label>
-                                            <input id="new_email" name="email" type="email" placeholder="name@example.com" class="form-control" value="{{$user->email}}">
                                         </div>
                                         @if(Auth::guard('web')->check())
                                         @else
