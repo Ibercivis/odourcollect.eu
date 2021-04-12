@@ -77,7 +77,6 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>                                            
-                                            <th scope="col">Email</th>
                                             <th scope="col">Active</th>
                                             <th scope="col">Type</th>
                                             <th scope="col">Verified</th>
@@ -94,9 +93,6 @@
                                                 <?php $id =  $user->id; ?>
                                                 @endif
                                                 <th scope="row">{{$id}}</th>
-
-                                                
-                                                <td>{{$user->email}}</td>
 
                                                 @if ($user->active == 1)
                                                     <td>Yes</td>
