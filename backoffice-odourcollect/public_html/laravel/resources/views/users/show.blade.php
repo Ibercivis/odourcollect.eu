@@ -120,6 +120,7 @@
                         </div>
 
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <!--
                             <div class="card">
                                 <div class="card-header">Reset user password</div>
                                 <div class="card-body">
@@ -142,7 +143,7 @@
                                     {!! Form::close() !!}
                                 </div>
                             </div>
-
+                            -->
                             <div class="card">
                                 <div class="card-header">Grant permission to publish without validation</div>
                                 <div class="card-body">
