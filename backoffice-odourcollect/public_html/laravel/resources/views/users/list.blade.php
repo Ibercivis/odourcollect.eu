@@ -81,7 +81,7 @@
                                             <th scope="col">Type</th>
                                             <th scope="col">Verified</th>
                                             <th scope="col"></th>
-                                            <!-- <th scope="col"></th> -->
+                                            <!--  <th scope="col"></th>  -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -110,13 +110,13 @@
                                                 @else
                                                 <td><a class="btn-primary" href="{{ url('admin/user', ['id' => $id])}}">VIEW</a></td>
                                                 @endif
-                                                <!--
+                                                <!-- 
                                                 @if(Auth::guard('web')->check())
                                                 <td><a class="btn-primary" style="padding: 10px 14px!important;" href="{{ route('user.email', ['id' => $id])}}"><i class="fas fa-envelope"></i></a></td>
                                                 @else
                                                 <td><a class="btn-primary" style="padding: 10px 14px!important;" href="{{ route('admin.user.email', ['id' => $id])}}"><i class="fas fa-envelope"></i></a></td>
                                                 @endif
-                                                -->
+                                                 -->
                                             </tr>
                                         @endforeach
                                     </tbody>
