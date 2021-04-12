@@ -594,9 +594,8 @@ class UserController extends Controller
 
             $data[] = array (
                 "ID User"                                   => $user->id,
-                "Age"                                   => $user->age,
-                "Gender"                                   => $user->gender,
-                "Email"                                     => $user->email,
+                "Age"                                       => $user->age,
+                "Gender"                                    => $user->gender,
                 "Active"                                    => $user->active,
                 "Permission to publish without validation"  => $user->without_validation,
                 "Verified email"                            => $user->email_verified
