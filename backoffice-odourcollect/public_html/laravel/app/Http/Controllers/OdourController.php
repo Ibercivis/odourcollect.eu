@@ -762,6 +762,10 @@ class OdourController extends Controller
         
         }
        
+        $statusSelection;
+
+        if(empty($status)){$statusSelection='published';}elseif(!empty($status) && $status === '1'){$statusSelection='published';}elseif(!empty($status) && $status === '2'){$statusSelection='deleted';}
+        elseif(!empty($status) && $status === '0'){$statusSelection='No';}
 
         foreach ($odours as $odour){
   
@@ -799,9 +803,9 @@ class OdourController extends Controller
         
             $day = explode(" ", $odour->published_at)[0];
             $time = explode(" ", $odour->published_at)[1];
-        
-
-            if((!empty($location->longitude)) && (!empty($location->latitude)) && (!empty($location->address))){
+            
+            if($statusSelection === $odour->status || ($status === '0' && $statusSelection === $odor->verified)){
+                if((!empty($location->longitude)) && (!empty($location->latitude)) && (!empty($location->address))){
                     if(Auth::guard('web')->check()){
                         $data[] = array (
                             "ID Odour"                                  => $odour->id,
@@ -845,108 +849,106 @@ class OdourController extends Controller
             
 
             
-            } else if(!empty($location->address)){
+                } else if(!empty($location->address)){
 
-                if(empty($zone)){$odour->zone = '';} else {$odour->zone = $zone->name;}
+                    if(empty($zone)){$odour->zone = '';} else {$odour->zone = $zone->name;}
 
-                if(Auth::guard('web')->check()){
-                    $data[] = array (
-                        "ID Odour"                                  => $odour->id,
-                        "Verified"                                  => $odour->verified,
-                         "Type"                                      => $type->name,
-                         "Zone"                                     => $odour->zone,
-                        "Type"                                      => $type->name,
-                        "Subtype"                                   => $subtype->name,
-                        "Status"                                    => $odour->status,
-                        "Description"                               => $odour->description,
-                        "Latitude"                                  => $location->latitude,
-                        "Longitude"                                 => $location->longitude,
-                        "Address"                                   => $location->address,
-                        "Origin"                                    => $odour->origin,
-                        "Intentity"                                 => $intensity->name,
-                        "Duration"                                  => $name,
-                        "Annoy"                                     => $annoy->name,
-                        "day"                                       => $day,
-                        "time"                                      => $time 
-                        
-                    );
-                } else {
-                    $data[] = array (
-                        "ID Odour"                                  => $odour->id,
-                        "User"                                      => $id_user,
-                        "Verified"                                  => $odour->verified,
-                         "Type"                                      => $type->name,
-                         "Zone"                                     => $odour->zone,
-                        "Type"                                      => $type->name,
-                        "Subtype"                                   => $subtype->name,
-                        "Status"                                    => $odour->status,
-                        "Description"                               => $odour->description,
-                        "Latitude"                                  => $location->latitude,
-                        "Longitude"                                 => $location->longitude,
-                        "Address"                                   => $location->address,
-                        "Origin"                                    => $odour->origin,
-                        "Intentity"                                 => $intensity->name,
-                        "Duration"                                  => $name,
-                        "Annoy"                                     => $annoy->name,
-                        "day"                                       => $day,
-                        "time"                                      => $time 
-                        
-                    );
-                }
-            
-            } else {
-               
+                    if(Auth::guard('web')->check()){
+                        $data[] = array (
+                            "ID Odour"                                  => $odour->id,
+                            "Verified"                                  => $odour->verified,
+                            "Type"                                      => $type->name,
+                            "Zone"                                     => $odour->zone,
+                            "Type"                                      => $type->name,
+                            "Subtype"                                   => $subtype->name,
+                            "Status"                                    => $odour->status,
+                            "Description"                               => $odour->description,
+                            "Latitude"                                  => $location->latitude,
+                            "Longitude"                                 => $location->longitude,
+                            "Address"                                   => $location->address,
+                            "Origin"                                    => $odour->origin,
+                            "Intentity"                                 => $intensity->name,
+                            "Duration"                                  => $name,
+                            "Annoy"                                     => $annoy->name,
+                            "day"                                       => $day,
+                            "time"                                      => $time 
+                            
+                        );
+                    } else {
+                        $data[] = array (
+                            "ID Odour"                                  => $odour->id,
+                            "User"                                      => $id_user,
+                            "Verified"                                  => $odour->verified,
+                            "Type"                                      => $type->name,
+                            "Zone"                                     => $odour->zone,
+                            "Type"                                      => $type->name,
+                            "Subtype"                                   => $subtype->name,
+                            "Status"                                    => $odour->status,
+                            "Description"                               => $odour->description,
+                            "Latitude"                                  => $location->latitude,
+                            "Longitude"                                 => $location->longitude,
+                            "Address"                                   => $location->address,
+                            "Origin"                                    => $odour->origin,
+                            "Intentity"                                 => $intensity->name,
+                            "Duration"                                  => $name,
+                            "Annoy"                                     => $annoy->name,
+                            "day"                                       => $day,
+                            "time"                                      => $time 
+                            
+                        );
+                    }
                 
-                if(isset($location->latitude)){
-               
-                    if(Auth::guard('web')->check()){
-                        $data[] = array (
-                            "ID Odour"                                  => $odour->id,
-                            "Verified"                                  => $odour->verified,
-                             "Type"                                      => $type->name,
-                             "Zone"                                     => $odour->zone,
-                            "Type"                                      => $type->name,
-                            "Subtype"                                   => $subtype->name,
-                            "Status"                                    => $odour->status,
-                            "Description"                               => $odour->description,
-                            "Latitude"                                  => $location->latitude,
-                            "Longitude"                                 => $location->longitude,
-                            "Address"                                   => "",
-                            "Origin"                                    => $odour->origin,
-                            "Intentity"                                 => $intensity->name,
-                            "Duration"                                  => $name,
-                            "Annoy"                                     => $annoy->name,
-                            "day"                                       => $day,
-                            "time"                                      => $time
-                        ); 
-                    } else {
-                        $data[] = array (
-                            "ID Odour"                                  => $odour->id,
-                            "User"                                      => $id_user,
-                            "Verified"                                  => $odour->verified,
-                             "Type"                                      => $type->name,
-                             "Zone"                                     => $odour->zone,
-                            "Type"                                      => $type->name,
-                            "Subtype"                                   => $subtype->name,
-                            "Status"                                    => $odour->status,
-                            "Description"                               => $odour->description,
-                            "Latitude"                                  => $location->latitude,
-                            "Longitude"                                 => $location->longitude,
-                            "Address"                                   => "",
-                            "Origin"                                    => $odour->origin,
-                            "Intentity"                                 => $intensity->name,
-                            "Duration"                                  => $name,
-                            "Annoy"                                     => $annoy->name,
-                            "day"                                       => $day,
-                            "time"                                      => $time 
-                        ); 
+                } else {
+                
+                    
+                    if(isset($location->latitude)){
+                
+                        if(Auth::guard('web')->check()){
+                            $data[] = array (
+                                "ID Odour"                                  => $odour->id,
+                                "Verified"                                  => $odour->verified,
+                                "Type"                                      => $type->name,
+                                "Zone"                                     => $odour->zone,
+                                "Type"                                      => $type->name,
+                                "Subtype"                                   => $subtype->name,
+                                "Status"                                    => $odour->status,
+                                "Description"                               => $odour->description,
+                                "Latitude"                                  => $location->latitude,
+                                "Longitude"                                 => $location->longitude,
+                                "Address"                                   => "",
+                                "Origin"                                    => $odour->origin,
+                                "Intentity"                                 => $intensity->name,
+                                "Duration"                                  => $name,
+                                "Annoy"                                     => $annoy->name,
+                                "day"                                       => $day,
+                                "time"                                      => $time
+                            ); 
+                        } else {
+                            $data[] = array (
+                                "ID Odour"                                  => $odour->id,
+                                "User"                                      => $id_user,
+                                "Verified"                                  => $odour->verified,
+                                "Type"                                      => $type->name,
+                                "Zone"                                     => $odour->zone,
+                                "Type"                                      => $type->name,
+                                "Subtype"                                   => $subtype->name,
+                                "Status"                                    => $odour->status,
+                                "Description"                               => $odour->description,
+                                "Latitude"                                  => $location->latitude,
+                                "Longitude"                                 => $location->longitude,
+                                "Address"                                   => "",
+                                "Origin"                                    => $odour->origin,
+                                "Intentity"                                 => $intensity->name,
+                                "Duration"                                  => $name,
+                                "Annoy"                                     => $annoy->name,
+                                "day"                                       => $day,
+                                "time"                                      => $time 
+                            ); 
+                        }
+                        
                     }
-                     
                 }
-
             }
-
-
         }
        
         $name_file = 'odours';

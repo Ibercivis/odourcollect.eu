@@ -146,7 +146,7 @@
                                 @if(!empty($subtypes))
                                 {!! Form::select('subtype', [null => 'Subtype'] + $subtypes->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'subtype']) !!}
                                 @endif
-                                {!! Form::select('status', array('' => 'Status', '1' => 'Verified', '0' => 'Unverified'), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'status']) !!}
+                                {!! Form::select('status', array('' => 'Status', '1' => 'Published', '0' => 'Unverified', '2' => 'Deleted'), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'status']) !!}
 
                                 {!! Form::select('intensity', [null => 'Intensity'] + $intensities->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'intensity']) !!}
 
@@ -169,7 +169,7 @@
                                 @if(!empty($subtypes))
                                 {!! Form::select('subtype', [null => 'Subtype'] + $subtypes->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'subtype']) !!}
                                 @endif
-                                {!! Form::select('status', array('' => 'Status', '1' => 'Verified', '0' => 'Unverified'), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'status']) !!}
+                                {!! Form::select('status', array('' => 'Status', '1' => 'Published', '0' => 'Unverified', '2' => 'Deleted'), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'status']) !!}
 
                                 {!! Form::select('intensity', [null => 'Intensity'] + $intensities->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'this.form.submit()', 'id' => 'intensity']) !!}
 
