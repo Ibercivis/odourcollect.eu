@@ -128,7 +128,7 @@ class LocationController extends Controller
 
         $longitude = $request->get('longitude');
         $latitude = $request->get('latitude');
-                                
+        /*                        
         $url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'. $longitude . ',' . $latitude . '.json?access_token=' . $access_token;
         $centroid_info = json_decode(file_get_contents($url), true);
 
@@ -161,7 +161,7 @@ class LocationController extends Controller
                     break;
             }
         }
-
+        */
         $location->longitude = $longitude;
         $location->latitude = $latitude;
 
