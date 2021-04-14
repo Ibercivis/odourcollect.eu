@@ -172,13 +172,13 @@ class OdorController extends Controller
 
             $odor->location = $location;
 
-            /*             
+                       
             $email_admin = new OdorEmail();
             $email_admin->user = $user->name . ' ' . $user->surname;
             $email_admin->subject = 'New odour entry';
             $email_admin->location = $location->place;
             $email_admin->save(); 
-            */
+            
 
             //Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
 
@@ -190,7 +190,7 @@ class OdorController extends Controller
                 'data' => [
                     'created' => true,
                     'message' => "Odor ".$odor->id." with Location ".$location->id." has been created.",
-                    'object' => $odor,
+                    'object' => $odor,                    
                 ]
             ], 200);
         }
