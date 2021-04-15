@@ -71,6 +71,12 @@ class OdourController extends Controller
         $zone = Zone::where('id', $map)->first();
         $postalCodeArray = [];
         $i = 0;
+
+        $statusSelection;
+        
+        if(empty($status)){$statusSelection='published';}elseif(!empty($status) && $status === '1'){$statusSelection='published';}elseif(!empty($status) && $status === '2'){$statusSelection='deleted'; $status='';}
+         elseif(!empty($status) && $status === '0'){$statusSelection='No';}
+
         foreach ($array_zones as $key => $value) {
            $zone = Zone::where('id', $value)->first();
            
@@ -92,7 +98,7 @@ class OdourController extends Controller
 
         
         } else {
-
+            
         $map = $request->get('map');
         $type = $request->get('type');
         $subtype = $request->get('subtype');
@@ -103,6 +109,11 @@ class OdourController extends Controller
         $publish_date_dst = $request->get('publish_date_dst');
         if ($publish_date_src == null) $publish_date_src = '';
         if ($publish_date_dst == null) $publish_date_dst = '';
+
+        $statusSelection;
+        
+        if(empty($status)){$statusSelection='published';}elseif(!empty($status) && $status === '1'){$statusSelection='published';}elseif(!empty($status) && $status === '2'){$statusSelection='deleted'; $status='';}
+         elseif(!empty($status) && $status === '0'){$statusSelection='No';}
 
         $zone = Zone::where('id', $map)->first();
         if(!empty($subtype)){
@@ -124,7 +135,7 @@ class OdourController extends Controller
 
         $annoys = OdorAnnoy::get();
 
-        
+        $contador = 0;
         foreach ($odours as $odour){
             $user = User::where('id', $odour->id_user)->first();
             if(empty($odour->id_odor)){
@@ -136,8 +147,8 @@ class OdourController extends Controller
             } else {
                 $odour->user = "";
             }
-           
-           
+            
+            
             $type = OdorType::where('id', $odour->id_odor_type)->first();
             $typefather = OdorParentType::where('id', $type->id_odor_parent_type)->first();
             $odour->odour_type = $type->name;
@@ -154,6 +165,7 @@ class OdourController extends Controller
             echo "</pre>";
 
             die();*/
+        
             $userTimezone = new DateTimeZone('Europe/Berlin');
             $gmtTimezone = new DateTimeZone('UTC');
             $myDateTime = new DateTime($odour->published_at, $gmtTimezone);
@@ -163,6 +175,11 @@ class OdourController extends Controller
             $result = $myDateTime->format('Y-m-d H:i:s');
             $odour->published_at = $result;
 
+            if($statusSelection === $odour->status || ($status === '0' && $statusSelection === $odor->verified)){
+            }else{
+                unset($odours[$contador]);
+            }
+            $contador+=1;
         }
         if(!empty($_GET['type'])){
             $subtypes = DB::table('odor_types')->where('id_odor_parent_type', $_GET['type'])->get();
@@ -721,6 +738,11 @@ class OdourController extends Controller
         $publish_date_src = $request->get('publish_date_src_down');
         $publish_date_dst = $request->get('publish_date_dst_down');
 
+        $statusSelection;
+        
+        if(empty($status)){$statusSelection='published';}elseif(!empty($status) && $status === '1'){$statusSelection='published';}elseif(!empty($status) && $status === '2'){$statusSelection='deleted'; $status='';}
+         elseif(!empty($status) && $status === '0'){$statusSelection='No';}
+
         if ($publish_date_dst == '') $publish_date_dst = '';
 
         /*Verify this Zone Admin*/
@@ -731,6 +753,7 @@ class OdourController extends Controller
         $zone = Zone::where('id', $map)->first();
         $postalCodeArray = [];
         $i = 0;
+
         foreach ($array_zones as $key => $value) {
            $zone = Zone::where('id', $value)->first();
            
@@ -751,21 +774,15 @@ class OdourController extends Controller
         
    
         } else {
-
+        
         if(!empty($subtype)){
             $odours = Odor::zone($map)->subtype($subtype)->status($status)->intensity($intensity)->annoy($annoy)->published($publish_date_src, $publish_date_dst)->orderBy('published_at', 'desc')->join('locations', 'locations.id_odor', '=', 'odors.id')->select('odors.*')->get();
         } else {
             $odours = Odor::zone($map)->type($type)->status($status)->intensity($intensity)->annoy($annoy)->published($publish_date_src, $publish_date_dst)->orderBy('published_at', 'desc')->join('locations', 'locations.id_odor', '=', 'odors.id')->select('odors.*')->get();
         }
-
-        
-        
         }
        
-        $statusSelection;
-
-        if(empty($status)){$statusSelection='published';}elseif(!empty($status) && $status === '1'){$statusSelection='published';}elseif(!empty($status) && $status === '2'){$statusSelection='deleted';}
-        elseif(!empty($status) && $status === '0'){$statusSelection='No';}
+        
 
         foreach ($odours as $odour){
   
