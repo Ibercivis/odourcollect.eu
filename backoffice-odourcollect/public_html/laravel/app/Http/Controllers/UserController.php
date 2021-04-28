@@ -409,10 +409,10 @@ class UserController extends Controller
         
         } else {
             
-            $user->username = $request->get('username');
-          
+            //$user->username = $request->get('username');
+            //$user->email = $request->get('email');
+
             $user->type = $request->get('type');
-            $user->email = $request->get('email');
             $user->save();
 
             

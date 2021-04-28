@@ -302,7 +302,6 @@
 
         function chargeMap(){
             selected_value = $("input[name='radio-map']:checked").val();
-
             $.ajax({
                 url: '{{ route('home') }}' + '/odour/zone/' + selected_value + '/markers/' ,
                 type: "GET",

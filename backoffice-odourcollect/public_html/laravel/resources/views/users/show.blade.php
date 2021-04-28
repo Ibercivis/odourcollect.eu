@@ -406,23 +406,20 @@
         });
 
         function checkForm(){
+
             event.preventDefault();
+            //var username = $('#new_username');
+           // var email = $('#new_email');
 
-            var username = $('#new_username');
-           
-            var email = $('#new_email');
-
-            username.removeClass('error');
-            
-            email.removeClass('error');
+            //username.removeClass('error');
+           // email.removeClass('error');
 
             var error = document.getElementById("error");
 
             var valid = true;
 
-            if (!validateTextInput(username)) { valid = false; username.addClass('error'); }
-           
-            if (!validateEmailInput(email)) { valid = false; email.addClass('error');}
+            //if (!validateTextInput(username)) { valid = false; username.addClass('error'); }
+           // if (!validateEmailInput(email)) { valid = false; email.addClass('error');}
 
             if (valid){
                 error.classList.add("hide");
