@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="card">
                                 <div class="card-header">Edit user information</div>
                                 <div class="card-body">
@@ -144,6 +144,7 @@
                                 </div>
                             </div>
                             -->
+                            <!--
                             <div class="card">
                                 <div class="card-header">Grant permission to publish without validation</div>
                                 <div class="card-body">
@@ -156,12 +157,13 @@
                                     </div>
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
 
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="card">
+                    <div class="card" style="weight = 100%">
                         <div class="card-body">
                             <div class="d-inline-block">
                                 <h5 class="text-muted">Odours views</h5>
