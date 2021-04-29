@@ -562,7 +562,7 @@ class UserController extends Controller
 
         $users = User::select('users.*', 'users.id as id_user_real')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->where('type', 'User')->get();
        $maps = Zone::whereIn('id', $array_zones)->get();
-
+       
     
 
         $name_file = 'users';
@@ -585,9 +585,10 @@ class UserController extends Controller
         $users = User::select('users.*')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->get();
          $name_file = 'users';
         }
+
         if (count($users)) { 
         foreach ($users as $user){
-
+            $odours = Odor::where('status', "published")->where('id_user', $user->id)->orderBy('published_at', 'desc')->get();
             if($user->active == 1){$user->active = 'Yes';} else {$user->active = 'No';}
             if($user->without_validation == 1){$user->without_validation = 'Yes';} else {$user->without_validation = 'No';}
             if($user->email_verified == 1){$user->email_verified = 'Yes';} else {$user->email_verified = 'No';}
@@ -598,7 +599,9 @@ class UserController extends Controller
                 "Gender"                                    => $user->gender,
                 "Active"                                    => $user->active,
                 "Permission to publish without validation"  => $user->without_validation,
-                "Verified email"                            => $user->email_verified
+                "Verified email"                            => $user->email_verified,
+                "Created at"                                => $user->created_at,
+                "Number of observations"                    => $odours->count()
 
             );
 
