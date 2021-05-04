@@ -6,14 +6,14 @@
                     <v-card-text>
 
                         <v-form ref="form" style="padding-top: 50px;">
-                           <!--  <v-text-field
+                           <v-text-field
                                 name="username"
                                 :label="this.$t('UPDATE_PROFILE.USERNAME')"
                                 :rules="usernameRules"
                                 type="text"
                                 v-model="username"
                                 required
-                            ></v-text-field> -->
+                            ></v-text-field>
 
 
                             <v-text-field 
@@ -244,7 +244,7 @@
                     this.error2.status = false;
                 
                     axios.post('../api/register', {
-                        //username: this.username,
+                        username: this.username,
                         username: "username",
                         age: this.age_selected,
                         gender: this.gender,

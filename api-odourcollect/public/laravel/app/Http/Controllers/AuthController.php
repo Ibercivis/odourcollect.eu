@@ -60,10 +60,12 @@ class AuthController extends Controller
         $verification_code = str_random(30); //Generate verification code
         DB::table('user_verifications')->insert(['user_id'=>$user->id,'token'=>$verification_code]);
         $subject = "Verify Email - OdourCollect";
-		$from_email = env('MAIL_FROM_ADDRESS');
+		//$from_email = env('MAIL_FROM_ADDRESS');
+        $from_email = "odourcollect@ibercivis.es";
+        print_r($from_email);
         Mail::send('email.verify', ['name' => $username, 'verification_code' => $verification_code , 'lang' => $lang],
-            function($mail) use ($email, $name, $surname, $subject){
-                $mail->from($from_email, $from_email);
+            function($mail) use ($email, $username, $subject){
+                $mail->from("odourcollect@ibercivis.es", "odourcollect@ibercivis.es");
                 $mail->to($email, $username);
                 $mail->subject($subject);
             });

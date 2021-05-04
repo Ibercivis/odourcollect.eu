@@ -27,6 +27,8 @@ Route::get('/odor/{odor}', 'OddourController@show')->name('odor.show');
 Route::post('/odor/{odor}/comments', 'OddourController@comments')->name('odor.comments');
 Route::post('/odor/{odor}/delete', 'OddourController@delete')->name('odor.delete');
 
+Route::get('/odour/download', 'UserController@download')->name('odour.download');
+
 Route::post('/odor/store', 'OddourController@store')->name('odor.store');
 Route::post('/odor/update/{odor}', 'OddourController@update')->name('odor.update');
 

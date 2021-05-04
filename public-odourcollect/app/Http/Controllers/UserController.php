@@ -68,6 +68,7 @@ class UserController extends Controller {
         ]);
 
         if ($validator->fails()) {
+            print_r("Entraaaa");
             return response()->json(['error' => $validator->errors()], 403);
         }
 
@@ -181,6 +182,49 @@ class UserController extends Controller {
             return response($message->data->message, 401);
         }
 
+    }
+
+    public function download(Request $request)
+    {
+   
+
+
+        return response("aaa", 200 );
+
+        
+      /*   //Get the token
+        $token = '?token=' . $request->get('token');
+
+        $client = new Client();
+
+        $id = $request->get('user_id');
+
+        try {
+
+            $result = $client->get(env('API_URL') . 'user/' . $id . '/odours' . $token, [
+                'headers' => [
+                    'api-key' => env('API_KEY'),
+                ],
+            ]);
+
+            $odours = json_decode($result->getBody());
+
+            foreach($odours as $odour){
+
+                if($odour->verified == 1){$odour->verified = 'Yes';} else {$odour->verified = 'No';}
+
+                $day = explode(" ", $odour->published_at)[0];
+                $time = explode(" ", $odour->published_at)[1];
+            }
+
+            //return response(json_encode($message->data), 200);
+
+        } catch (RequestException $e) {
+
+            $message = json_decode($e->getResponse()->getBody()->getContents());
+
+            return response($message->data->message, 401);
+        } */
     }
 
     public function zones(Request $request, $id) {

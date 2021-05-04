@@ -12,3 +12,5 @@
 */
 
 Route::get('/{any}', 'SinglePageController@index')->where('any', '.*');
+
+Route::get('/odour/download', 'UserController@download')->name('odour.download');

@@ -343,6 +343,7 @@ export default {
     Q_ODOUR_SUBTYPE_DES: 'Describe el tipo de olor',
     NEXT: 'Siguiente',
     SAVE: 'Ponlo en el mapa',
+    //DELETE: 'Eliminar olor',
     Q_SELECT_ODOUR_TYPE: 'Escoge solamente un tipo de olor de la lista.',
     Q_ODOUR_INTENSITY: '¿Cuál es la intensidad del olor?',
     Q_ODOUR_ANNOYANCE: '¿Es agradable o desagradable?',
