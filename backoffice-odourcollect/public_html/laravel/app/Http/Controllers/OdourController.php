@@ -405,7 +405,7 @@ class OdourController extends Controller
             $odor->id_odor_type = $value['id_odor_type'];
             $odor->id_user = $value['id_user'];
             $odor->other = $value['other'];
-            $odor->verified = $value['verified'];
+            $odor->verified = 1;
             $odor->track = $value['track'];
             $odor->status = $value['status'];
             $odor->name = $value['name'];
