@@ -21,7 +21,6 @@
                         <v-btn  class="body-2 font-weight-regular" color="#00b187" style="font" type="submit" ><p class="font-white">Download xlsx</p></v-btn>
                     </div>
                 </form> -->
-                
                 <li v-for="oddour in oddours">
                     <a :id="'oddour-' + oddour.id">
                         <div @click="show_marker(oddour.id)">
@@ -32,13 +31,16 @@
                             <img class="arrow flip" :src="arrow_icon">
                         </div>
                     </a>
+                    <v-card-actions class="icon-container" style="width: 100%">
+                        <v-btn color="secondary" class="large-button body-2 font-weight-regular btn-delete"  @click="deleteOdour = true; id_odor_tempo = oddour.id">{{$t('INFORMATION.MAP.DELETE')}}</v-btn>
+                    </v-card-actions>
                     <v-divider></v-divider>
                 </li>
                 <!-- <v-btn color="secondary" class="large-button body-2 font-weight-regular btn-delete" v-if="myauthor && login" @click="deleteOdour = true">adasdas</v-btn> -->
 
             </div>
         </ul>
-        <!--
+        
         <div class="dialogo">
             <v-layout row justify-center>
                 <v-dialog v-model="deleteOdour" transition="dialog-bottom-transition" scrollable>
@@ -46,6 +48,7 @@
 
                         <h2 color="primary" class="subheading font-weight-medium title-box">{{$t('UI.INFO.ODOUR_DELETE.TITLE')}}
                             <div class="info-close" @click="deleteOdour = false"><img :src="close_icon"></div>
+                            <p>{{id_odor_tempo }}</p>
                         </h2>
 
                         <div class="separator"></div>
@@ -62,7 +65,6 @@
                 </v-dialog>
             </v-layout>
         </div>
-        -->
     </div>
 
 </template>
@@ -83,8 +85,10 @@ export default {
             loading_icon: '../../../img/general/loading.svg',
             noodour_icon: '../../../img/general/no-odour.png',
             back_icon:  '../../../img/general/nav-back.svg',
+            close_icon: '../../../img/general/close-mini.svg',
             cargador: true,
-            deleteOdour: false
+            deleteOdour: false,
+            id_odor_tempo: ""
         }
     },
     methods:{
@@ -92,19 +96,19 @@ export default {
       show_marker(oddour){
             this.$emit('clicked', ['odour', oddour])
         },
+
+
         odourDelete(){
-            var vm = this;
-
-            vm.deleteOdour = false;
-            axios.post('../../api/odor/' + vm.oddour.id + '/delete', {
-                token: vm.token,
-            }).then(response => {
-                this.$emit('clicked', 'delete')
-            }).catch(error => {
-                this.alert = true
-            });
-        }
-
+                var vm = this;
+                vm.deleteOdour = false;
+                axios.post('../../api/odor/' + vm. id_odor_tempo + '/delete', {
+                    token: vm.token,
+                }).then(response => {
+                    $(".back_toolbar .pointer").click();                    
+                }).catch(error => {
+                    this.alert = true
+                });
+            }
     },
     mounted(){
         var vm = this;
@@ -156,7 +160,7 @@ export default {
         if ( ! localStorage.getItem('auth-token') || localStorage.getItem('auth-token') == null ) {
             return next('login')
         }
-        next()
+        next() 
     }
 }
 </script>
@@ -231,5 +235,50 @@ export default {
     }
     .font-white {
         color: white;
+    }
+    .title-box{
+        text-align: center;
+        font-size: 14px!important;
+        margin-top: 16px;
+        font-weight: 600!important;
+    }
+    .info-close{
+        position: absolute;
+        right: 14px;
+        top: 4px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .separator {
+        border-bottom: 1px solid #dadada;
+        margin-top: 5px;
+    }
+    .center{
+        text-align: center;
+    }
+    .delete-msg{
+        margin-bottom: 20px;
+    }
+    .apply-btn{
+        text-align: center;
+        bottom: -20px;
+        width: 100%;
+        left: 0;
+        background-color: white;
+    }
+    .pointer{
+        cursor: pointer;
+    }
+    .apply{
+        color: $primary-font-color;
+        text-transform: uppercase;
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: 15px!important;
+        font-weight: 600;
+    }
+    .delete-btn{
+        float: right;
+        width: 50%;
     }
 </style>

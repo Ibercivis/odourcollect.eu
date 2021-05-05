@@ -199,7 +199,7 @@
         <v-card v-if="show_bottom" class="bottom-nav" flat>
 
             <v-bottom-nav :active.sync="bottomNav" :value="true" absolute color="transparent">
-                <v-btn color="secondary" flat value="olores" @click="goOdourList">
+                <v-btn color="secondary" flat id="myOdours" value="olores" @click="goOdourList">
                     <span>{{$t('UI.BOTTOM_BAR.BUTTONS.ODOURS')}}</span>
                     <img :src="myodours_icon">
                 </v-btn>
