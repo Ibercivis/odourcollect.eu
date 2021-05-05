@@ -96,6 +96,9 @@ class OdorController extends Controller
             ->where('id_odor_annoy', '<=', ($filter_maxAnnoy + 5))
             ->where('published_at', '>=', $filter_date_init) //id=1 index=-4
             ->where('published_at', '<=', $filter_date_end)
+            ->where('status', '=', "published")
+            ->where('verified', '=', 1)
+            
         ->get();
 
         
