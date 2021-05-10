@@ -86,7 +86,7 @@
                                                 <option value="AdminZone" <?php if($user->type == 'AdminZone') { echo 'selected'; } ?>>Zone Manager</option>
                                                @endif
                                             </select>
-                                            <small>Remember that in order to add a user as zone admin, you must have a zone assigned</small>
+                                            <small>Remember, to add a user as Zone Admin, first you need to ensure they have been added to the relevant zone from those available in the Zone List below</small>
                                             <?php if($user->type == 'AdminZone') { ?>
                                             <div class="form-group">
                                                
