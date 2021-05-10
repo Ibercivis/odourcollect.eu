@@ -601,7 +601,7 @@ class UserController extends Controller
                 "Permission to publish without validation"  => $user->without_validation,
                 "Verified email"                            => $user->email_verified,
                 "Created at"                                => $user->created_at,
-                "Number of observations"                    => $odours->count()
+                "Number of observations in Odour Collect"   => $odours->count()
 
             );
 
