@@ -25,11 +25,20 @@
                                 required
                             ></v-text-field>
 
-                            <select @change="selectAge($event)" class="age-select">
+                            <select @change="selectAge($event)" required class="age-select"><!--  :items="ages" -->
                                 <option v-for="age in ages" v-bind:value="age.value">
                                     {{$t('UPDATE_PROFILE.AGE')}} {{ age.text }}
-                                </option>
+                                </option> 
                             </select>
+                            <div id="errorAge" class="v-text-field_details error ">
+                                <div class="v-messages theme--light error--text">
+                                    <div class="v-mesages__wrapper">
+                                        <div class="v-messages__message" style="color: red;">
+                                            {{$t('UPDATE_PROFILE.REQUIRED_AGE')}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <br/>
 
@@ -216,6 +225,11 @@
                 if (age =="13-19"){
                     $('#div_term_adult').show();
                 }
+                if(age != "0"){
+                    document.getElementById("errorAge").style.display="none";
+                }else{
+                    document.getElementById("errorAge").style.display="block";
+                }
 
                 this.age_selected =  age;
             },
@@ -225,6 +239,9 @@
                 if (!vm.age_selected || !vm.email || !vm.email || !vm.password || !vm.password_confirmation){
                     this.error.status = true;
                     this.error.msg = this.$t('REGISTER.ERROR_DATA');
+                    if(!vm.age_selected){
+                        document.getElementById("errorAge").style.display="block";
+                    }
                 } else {
                     this.handleSubmit(e);
                 }
@@ -279,7 +296,6 @@
                         this.error2.status = true;
                         this.error2.msg = "Accept this if you are in legal age in your country ";
                     }
-
                 }
             },
             goLogin(){
@@ -418,9 +434,15 @@
     .age-select{
         font-size: 16px;
         color: #9b9b9b;
+        border: 1px grey solid;
+        border-width: 0px 0px 1px 0px;
     }
     .label-gender{
         margin-right: 15px;
+    }
+
+    #errorAge{
+        display: none;
     }
 
 

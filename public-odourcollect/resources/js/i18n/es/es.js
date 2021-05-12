@@ -328,6 +328,7 @@ export default {
       REQUIRED_NAME: 'El nombre es obligatorio',
       REQUIRED_SURNAME: 'Los apellidos son obligatorios',
       REQUIRED_PHONE: 'El telefono es obligatorio',
+      REQUIRED_AGE: 'No has seleccionado ninguna edad',
       REQUIRED_EMAIL: 'El email es obligatorio',
       FORMAT_EMAIL: 'El formato del email debe ser válido',
       IDENTICAL_PW: 'Las dos contraseñas deben ser idénticas',

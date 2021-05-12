@@ -328,6 +328,7 @@ export default {
       REQUIRED_NAME: 'È richiesto il nome',
       REQUIRED_SURNAME: 'È richiesto il cognome',
       REQUIRED_PHONE: 'È richiesto il numero di telefono',
+      REQUIRED_AGE: 'Non hai selezionato alcuna età',
       REQUIRED_EMAIL: 'È richiesto indirizzo email',
       FORMAT_EMAIL: 'L´indirizzo email deve essere valido',
       IDENTICAL_PW: 'Le due password devono essere identiche',

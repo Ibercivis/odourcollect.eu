@@ -329,6 +329,7 @@ export default {
       REQUIRED_NAME: 'The name is required',
       REQUIRED_SURNAME: 'The last name is required',
       REQUIRED_PHONE: 'The telephone is required',
+      REQUIRED_AGE: 'You have not selected any age',
       REQUIRED_EMAIL: 'The E-mail is required',
       FORMAT_EMAIL: 'The E-mail format must be valid',
       IDENTICAL_PW: 'The two passwords must be identical',

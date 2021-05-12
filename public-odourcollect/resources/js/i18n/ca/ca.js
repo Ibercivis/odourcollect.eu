@@ -328,6 +328,7 @@ export default {
       REQUIRED_NAME: 'El nom és obligatori',
       REQUIRED_SURNAME: 'Els cognoms són obligatoris',
       REQUIRED_PHONE: 'El telèfon és obligatori',
+      REQUIRED_AGE: 'No has seleccionat cap edat',
       REQUIRED_EMAIL: 'L’adreça d’email és obligatòria',
       FORMAT_EMAIL: 'El format de correu electrònic ha de ser vàlid',
       IDENTICAL_PW: 'Les dues contrasenyes han de ser idèntiques',
