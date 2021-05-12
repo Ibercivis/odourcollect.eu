@@ -144,12 +144,12 @@
             map_id = $('#input[name=map_id]').val();
 
             var modal = document.getElementById('myModal');
-            $('[id^="myBtn"]').on('click', function() {
+            $(document).on('click','[id^="myBtn"]', function() {
                 modal.style.display = "block";
                 url = $(this).data('url');
 
                 $('#accept').attr("href",url);
-            });
+            }); 
 
             $('.close_action').on('click', function() {
                 modal.style.display = "none";
