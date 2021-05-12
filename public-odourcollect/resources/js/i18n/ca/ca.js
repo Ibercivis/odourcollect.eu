@@ -349,7 +349,7 @@ export default {
     Q_SELECT_LOCATION: 'Selecciona una nova ubicació clicant sobre el mapa',
     Q_REPORT_LOCATION: 'Vols afegir una observació en aquesta ubicació?',
     Q_WHERE_WHEN_REPORT: 'On i quan va tenir lloc aquesta observació?',
-    INFO_INTENSITY: 'Puntua en una escala de l’0 al 6 la intensitat de l’olor percebuda.',
+    INFO_INTENSITY: 'Puntua en una escala de l’1 al 6 la intensitat de l’olor percebuda.',
     INFO_ANNOYANCE: 'Puntua en una escala del -4 al 4 si t’agrada o no l’olor percebuda.',
     REPORT_DETAIL: 'Característiques de l´observació',
     INPUT_FORM: {

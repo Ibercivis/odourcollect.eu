@@ -350,7 +350,7 @@ export default {
     Q_SELECT_LOCATION: 'Wählen Sie einen neuen Standort aus, indem Sie auf die Karte klicken.',
     Q_REPORT_LOCATION: 'Möchten Sie an dieser Stelle eine Beobachtung hinzufügen?',
     Q_WHERE_WHEN_REPORT: 'Wo und wann fand die Beobachtung statt?',
-    INFO_INTENSITY: 'Bewerten Sie die Intensität des wahrgenommenen Geruchs auf einer Skala von 0 bis 6.',
+    INFO_INTENSITY: 'Bewerten Sie die Intensität des wahrgenommenen Geruchs auf einer Skala von 1 bis 6.',
     INFO_ANNOYANCE: 'Bewerten Sie auf einer Skala von -4 bis 4, wie Ihnen der wahrgenommene Geruch gefallen oder nicht gefallen hat.',
     REPORT_DETAIL: 'Details der Beobachtung',
     INPUT_FORM: {

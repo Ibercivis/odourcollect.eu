@@ -349,7 +349,7 @@ export default {
     Q_SELECT_LOCATION: 'Seleziona un luogo cliccando sulla mappa.',
     Q_REPORT_LOCATION: 'Vuoi aggiungere una segnalazione per questo luogo?',
     Q_WHERE_WHEN_REPORT: 'Quando e dove è stato percepito l´odore?',
-    INFO_INTENSITY: 'Assegna un punteggio in una scala da 0 a 6 di intensità di odore percepito.',
+    INFO_INTENSITY: 'Assegna un punteggio in una scala da 1 a 6 di intensità di odore percepito.',
     INFO_ANNOYANCE: 'Assegna un punteggio in una scala da -4 a 4 di gradevolezza o sgradevolezza dell´odore percepito.',
     REPORT_DETAIL: 'Dettagli della segnalazione',
     INPUT_FORM: {

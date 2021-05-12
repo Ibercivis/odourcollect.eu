@@ -351,7 +351,7 @@ export default {
     Q_SELECT_LOCATION: 'Select a new location clicking on the map.',
     Q_REPORT_LOCATION: 'Do you want to add an observation in this location?',
     Q_WHERE_WHEN_REPORT: 'Where and when did the observation happen?',
-    INFO_INTENSITY: 'Score in a scale from 0 to 6 the intensity of the perceived odour.',
+    INFO_INTENSITY: 'Score in a scale from 1 to 6 the intensity of the perceived odour.',
     INFO_ANNOYANCE: 'Score in a scale from -4 to 4 how you liked or disliked the perceived odour.',
     REPORT_DETAIL: 'Details of the observation',
     INPUT_FORM: {
