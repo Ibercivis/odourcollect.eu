@@ -25,7 +25,7 @@
                         <div id="container1" class="scroll-me boderScroll">
                             <div  class="radio-input" v-for="(oddourType, index) in odourType[0].slice().reverse()">
                                 <input type="radio" color="#384658" v-model="selected_parent" :data="oddourType" :id="oddourType.id" :value="oddourType.id" :label="oddourType.name" :key="oddourType.id" >
-                                <label :for="oddourType.id">{{oddourType.name_t}}</label>
+                                <label :for="oddourType.id">{{oddourType.name_t}}</label><!-- Aqui -->
                                 <div class="check"><div class="inside" style="background-image:url(../../../img/general/checked-white.svg);"></div></div>
                             </div>
                         </div>
@@ -89,18 +89,17 @@
                    
                     <!-- Type of odour -->
 
-                    <vue-scrollbar classes="my-scrollbar" ref="Scrollbar" >
-                        <div class="scroll-me boderScroll" v-if="selected_parent == 9">
+                    <vue-scrollbar classes="my-scrollbar" ref="Scrollbar">
+                        <div class="scroll-me" v-if="selected_parent == 9">
 
                             <p color="primary" class="pform subheading font-weight-medium">{{$t('ADD_ODOUR.INPUT_FORM.Q_COMMENT')}}</p>
                             <textarea v-model="comment" placeholder="" :rows="3" :max-rows="3"></textarea>
                         </div>
                         <div id="container" class="scroll-me boderScroll">
-                            
                             <textarea v-model="other" placeholder="" :rows="2" :max-rows="2" v-if="selected_parent == 8"></textarea>
                             <div  class="radio-input" v-for="(oddourType, index) in odourType[0][selected_parent - 1].childs" v-if="selected_parent != 9">
                                 <input type="radio" color="#384658" v-model="selected_child" :data="oddourType" :id="oddourType.id+1000" :value="oddourType.id+1000" :label="oddourType.name" :key="oddourType.id+1000" >
-                                <label :for="oddourType.id+1000" id="label" style="">{{oddourType.name_t}}</label> <!-- Aqui -->
+                                <label :for="oddourType.id+1000" id="label" style="">{{oddourType.name}}</label>
                                 <div class="check"><div class="inside" style="background-image:url(../../../img/general/checked-white.svg);"></div></div>
                             </div>
                             
@@ -630,7 +629,7 @@
                 //Cargar la informacion
                 for (var i = 0; i < points.length; i++){
                     for (var e = 0; e < points[i].childs.length; e++){
-                        points[i].childs[e].name_t = this.$t('FILTER.SUBTYPE.' + points[i].childs[e].id)
+                        points[i].childs[e].name_t = this.$t('FILTER.SUBTYPE.' + points[i].childs[e].id);
                     }
                     points[i].name_t = this.$t('FILTER.TYPE.' + points[i].id);
                     this.item.push(points[i]);
