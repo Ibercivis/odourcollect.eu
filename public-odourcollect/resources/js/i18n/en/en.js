@@ -343,7 +343,7 @@ export default {
     Q_ODOUR_WHERE: 'Where have you smelled it?',
     Q_ODOUR_TYPE: 'What does it smell like?',
     Q_ODOUR_SUBTYPE: 'Select the type of odour that you feel',
-    Q_ODOUR_SUBTYPE_DES: 'Describe the type of odor',
+    Q_ODOUR_SUBTYPE_DES: 'Describe the type of odour',
     NEXT: 'Next',
     SAVE: 'Put it on the map',
     Q_SELECT_ODOUR_TYPE: 'Choose only one type of odour from the list.',
