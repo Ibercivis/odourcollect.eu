@@ -3,15 +3,15 @@ return [
         
         'driver' => 'smtp',
         
-        'host' => 'smtp.sendgrid.net',
+        'host' => env('MAIL_HOST'),
         
         'port' => 587,
         
-            'encryption' => 'tls', 
+        'encryption' => 'tls', 
         
-        'username' => 'apikey',
+        'username' => env('MAIL_USERNAME'),
         
-        'from' => ['address' => env('MAIL_FROM_ADDRESS'), 'name' => 'odourcollect'],
+        'from' => ['address' => env('MAIL_FROM_ADDRESS'), 'name' => env('MAIL_FROM_NAME')],
         
         'password' => env('MAIL_PASSWORD'),
         
