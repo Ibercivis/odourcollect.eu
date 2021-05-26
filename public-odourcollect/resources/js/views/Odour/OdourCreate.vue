@@ -104,7 +104,14 @@
                             </div>
                             
                         </div>
+                        
                     </vue-scrollbar>
+                 
+                    <div id="arrow" class="align-center arrow-container">
+                            <a href="#" >
+                                <div class="arrow"></div>
+                            </a>
+                    </div>
                      <!-- NEXT STEP FORM -->
                     <div class="align-center bottom" v-if="selected_parent == 9">
                         <img v-if="publishing" :src="load_icon">
@@ -112,7 +119,7 @@
                         <v-btn v-if="!publishing && selected_parent == 9" class="back-btn" flat @click.native="step = 1; scrolltop();"><img :src="arrow_icon"></v-btn>
                         <v-btn v-if="!publishing" color="secondary" class="large-button body-2 font-weight-regular" @click.native="submit">{{$t('ADD_ODOUR.SAVE')}}</v-btn>
                     </div>
-                    <div class="align-center bottom" style="" v-if="selected_parent != 9">
+                    <div id="button" class="align-center bottom" style="" v-if="selected_parent != 9">
                         <!--<p class="step-subtitle">{{$t('ADD_ODOUR.Q_SELECT_ODOUR_TYPE')}}</p>-->
                         <v-btn class="back-btn" flat @click.native="step = 1; scrolltop();"><img :src="arrow_icon"></v-btn>
                         <v-btn color="secondary" class="large-button body-2 font-weight-regular" @click.native="step = 3; scrolltop();">{{$t('ADD_ODOUR.NEXT')}}</v-btn>
@@ -446,7 +453,8 @@
                 duration_selected: '',
                 placeholder: this.$t('ADD_ODOUR.INPUT_FORM.DURATION'),
                 publishing: false,
-                no_geolocation: false
+                no_geolocation: false,
+                subtypeScrollObserver: null
             }
         },
         computed: {
@@ -466,6 +474,7 @@
         },
         methods: {
 
+
             closeError(){
                 this.stateError.status = false
                 this.$emit('clicked', 'go_login');
@@ -474,6 +483,7 @@
             closeCreate(){
                 this.no_geolocation = false
                 this.$emit('clicked', 'reset')
+                console.log("entra a closecreate")
             },
             //Publish the new odour
             submit (){
@@ -572,6 +582,30 @@
             }
         },
         watch:{
+            step() {
+                if(this.step == 2){
+                    document.getElementById("arrow").style.display = "block";
+                    console.log("entra en paso 2");
+                    function callback(entries,observer){
+                        if(entries[0].isIntersecting){
+                            document.getElementById("arrow").style.display = "none";
+                        }else{
+                            document.getElementById("arrow").style.display = "block";
+                        }
+            
+                    }
+                    var labels = document.querySelectorAll('label');
+                    const element = labels[labels.length- 1];
+                    this.subtypeScrollObserver = new IntersectionObserver(callback, {});
+                    this.subtypeScrollObserver.observe(element); 
+                }
+                if(this.step == 1 || this.step == 3){
+                    console.log("destroy observer");
+                    this.subtypeScrollObserver.disconnect();
+                }
+                
+            },
+
             //Update the odour child type according to the parent type
             selected_parent(){
                 if(this.odourType[0][this.selected_parent - 1].id == 8){
@@ -585,9 +619,11 @@
                 }
                 
             }
+
         },
 
         mounted() {
+
             if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
             if( this.isLoggedIn ){
                 //If logged in save the user name in the data
@@ -656,8 +692,6 @@
 
                 }).catch(error => {
             });
-
-
         },
         beforeRouteEnter(to, from, next) {
             if (!localStorage.getItem('auth-token') || localStorage.getItem('auth-token') == null) {
@@ -665,9 +699,11 @@
             }
             next()
         }
+      
     }
 
 </script>
+ 
 
 <style lang="scss">
     .v-stepper__wrapper{
@@ -995,4 +1031,49 @@
     div#container1{
         padding-bottom: -7px !important;
     }
+
+
+
+$total-arrows: 3;
+$arrow-line-length: 20px;
+$arrow-line-width: 4px;
+
+// arrow animtion + choose direction
+@mixin arrow-transitions($rot: 0deg) {
+  transform: translate(-50%, -50%) rotateZ($rot);
+}
+
+// base
+
+.arrow {
+  left: 50%;
+  margin-top: -10px;
+  transition: all .4s ease;
+  &:before,
+  &:after {
+    transition: all .4s ease;
+    content: '';
+    position: absolute;
+    transform-origin: bottom right;
+    background: #00b187;
+    width: $arrow-line-width;
+    height: $arrow-line-length;
+    border-radius: 10px;
+    transform: translate(-50%, -50%) rotateZ(-45deg);
+  }
+  &:after {
+    transform-origin: bottom left;
+    transform: translate(-50%, -50%) rotateZ(45deg);
+  }
+  @for $i from 1 through $total-arrows {
+    &:nth-child(#{$i}) {
+      top: 15 + (100% * $i/5);
+    }
+  }
+
+  .arrow-container{
+      margin-top: 1px !important;
+      height: 15px;
+  }
+}
 </style>
