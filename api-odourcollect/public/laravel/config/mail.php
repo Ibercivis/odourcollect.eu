@@ -1,16 +1,19 @@
 <?php
 return [ 
         
-    'driver' => 'smtp',
-    'host' => 'smtp.gmail.com',
-    'port' => 587,
-    'encryption' => 'tls',
-    'username' => 'odourcollect@ibercivis.es',
-    'from' =>
-    array (
-     'address' => 'odourcollect@ibercivis.es',
-     'name' => 'odourcollect',
-    ),
-    'password' => 'Y3bmR>Yu',
-    'sendmail' => '/usr/sbin/sendmail -bs' 
+        'driver' => 'smtp',
+        
+        'host' => env('MAIL_HOST'),
+        
+        'port' => 587,
+        
+        'encryption' => 'tls', 
+        
+        'username' => env('MAIL_USERNAME'),
+        
+        'from' => ['address' => env('MAIL_FROM_ADDRESS'), 'name' => env('MAIL_FROM_NAME')],
+        
+        'password' => env('MAIL_PASSWORD'),
+        
+        'sendmail' => '/usr/sbin/sendmail -bs' 
 ];
