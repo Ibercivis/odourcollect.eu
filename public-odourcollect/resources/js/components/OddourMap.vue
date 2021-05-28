@@ -1,5 +1,7 @@
 <template>
+    
     <div>
+
         <div id="map" style="height: 93vh; z-index: 0;">
             <div class="zone-msg" v-if="isZone">
                 <p>{{$t('UI.MAP.SHOWING')}}<span>{{zone[0][0]}}</span></p>
@@ -104,11 +106,11 @@
                             <div class="preload">
                                <div class="row">								
 
-                                                                  <div class="col-12 pb-4 sub-container">
+                                    <div class="col-12 pb-4 sub-container">
                                         <div class="row">
-																						<div class="col-4">
-																							<div class="map-btn pb-4">Date range</div>
-																						</div>
+                                            <div class="col-4">
+                                                <div class="map-btn pb-4">Date range</div>
+                                            </div>
                                             <div class="col-4 pl-5 pr-5">
                                                 <datepicker class="date" :value="date_init" v-model="date_init"></datepicker>
                                             </div>
@@ -154,10 +156,10 @@
                                              </div>                                        
                                         </div>
                                     </div>
-			<div class="col-12">
-				<div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
                                         <div class="apply-btn apply" @click="clearFilters()" id="clearButton">Clear Filters X</div>
-</div>
+                                        </div>
                                     </div>
 
 
@@ -175,6 +177,22 @@
                 </v-card>
             </v-dialog>
         </v-layout>
+       
+        
+        <cookie-law theme="dark-lime--rounded">
+            <div slot="message">
+                This website stores cookies. These cookies are used to improve your website experience and provide more personalized services to you. To find out more about the cookies we use, see our <a @click="goLegal"><u>Privacy Policy</u></a>
+            </div>
+        </cookie-law>
+        
+        <div v-if="legal">
+            <div class="back_toolbar">
+                <img  class="pointer" @click="legal = false" :src="back_icon">
+                <p class="text-md-center">{{$t('MENU.LEGAL')}}</p>
+            </div>
+            <legal-page class="content-large"></legal-page>
+        </div>
+
 
     </div>
 
@@ -192,12 +210,13 @@
     import Datepicker from 'vuejs-datepicker';
     import VueSlider from 'vue-slider-component';
     import 'vue-slider-component/theme/default.css';
-
+    import CookieLaw from 'vue-cookie-law';
+    import LegalPage from '../views/Legal.vue';
 
 
     
     export default {
-        components: {OddourDetail, OddourBottomNav, VueScrollbar, OddourComment, UserZones, Datepicker, VueSlider},
+        components: {OddourDetail, OddourBottomNav, VueScrollbar, OddourComment, UserZones, Datepicker, VueSlider, CookieLaw, LegalPage},
 
         props: {
             singleMarker: { type: Boolean },
@@ -359,6 +378,7 @@
                     labelStyle: void 0,
                     labelActiveStyle: void 0,
                 },
+                legal: false,
             }
         },
 
@@ -522,6 +542,10 @@
         },
 
         methods:{
+            goLegal(){                
+                this.legal = true;
+                this.$emit('clicked', 'close_details')
+            },
             verifymap(){
                var vm = this;
                  /*if(vm.markers == ''){
@@ -1758,6 +1782,14 @@ button, input, optgroup, select, textarea {
         right: 0px;
         bottom: -1px;
     }
+
+.content-large{
+    background: $secondary-bg!important;
+    position: absolute;
+    width: 100%;
+    top: 64px!important;
+    z-index: 1;
+}
 
 /*# sourceMappingURL=default.css.map */
 

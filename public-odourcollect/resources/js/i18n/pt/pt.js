@@ -491,31 +491,41 @@ export default {
     "<p>Se não está interessado em denunciar um episódio de odor, mas está curioso sobre os odores percecionados na sua área, basta verificar o mapa e os relatórios de odores preenchidos por outros cidadãos. Poderá, ainda, verificar e filtrar o mapa por tipo de odor. Poderá, igualmente, adicionar qualquer observação de odores em qualquer parte do mundo, não apenas nas comunidades afetadas. Também cheiros agradáveis! Sinta-se livre para navegar e se tornar um Caçador de odores!</p>"
   },
   LEGAL: {
-    TEXT: "<h2>Protection of Personal Data volunteer information document for OdourCollect</h2>" +
-    "<h3>Dear volunteer</h3>" +
-    "<p>You are willing to participate in OdourCollect, used in D-NOSES project which has received funding from the European Union's Horizon 2020 Research and Innovation Programme under Grant Agreement No 789315, a citizen science project based on citizen interventions to tackle odour pollution involving citizens, policy makers, scientist, industries and SMEs. For OdourCollect promoters is essential that you understand which personal data are we collecting and how we will be treating this information. Please, read this information carefully. If you have any doubt or something is unclear to you, please ask any of the project partners - face-to-face when possible or by email at ethics@ibercivis.es.</p>" +
-    "<h3>Personal data gathered</h3>" +
-    "<p>In order to use the mobile app Odour Collect you will be asked for your email and nickname, together with your age, gender and place of residence for statistical purposes. The date and time of your signup will be also stored.</p>" +
-    "<h3>Purpose</h3>" +
-    "<p>Your personal data will be used only for:</p>" +
-    "<ul> " +
-    "<li>Optimum operation of the mobile app Odour Collect: sign-up, login, logout, recover password, download own personal data, download own odour episodes data uploaded, delete personal data, cancel account.</li>" +
-    "<li>We will contact you to inform about specific events or about results related with D-NOSES project.</li>" +
+    TEXT: 
+    "<p> O Regulamento Geral de Proteção de Dados (GDPR) entrou em vigor em 25 de maio de 2018, substituindo a Lei de Proteção de Dados de 1998. Este novo regulamento visa principalmente dar controle aos cidadãos e residentes sobre seus dados pessoais e simplificar o ambiente regulatório para negócios internacionais unificando o regulamento dentro da UE. </p> "+
+    "<h2> Documento de informações voluntárias sobre proteção de dados pessoais para OdourCollect </h2>" +
+    "<h3> Caro voluntário </h3>" +
+    "<p> Você está disposto a participar do OdourCollect, usado no projeto D-NOSES, que recebeu financiamento do Programa de Pesquisa e Inovação Horizonte 2020 da União Europeia sob o Contrato de Subvenção No 789315, um projeto de ciência cidadã baseado em intervenções cidadãs para combater a poluição por odores envolvendo cidadãos, legisladores, cientistas, indústrias e PMEs. Para os promotores do OdourCollect é essencial que você entenda quais dados pessoais estamos coletando e como iremos tratar essas informações. Por favor, leia essas informações com atenção. Se você tiver alguma dúvida ou algo é não está claro para você, pergunte a qualquer um dos parceiros do projeto - cara a cara quando possível ou por e-mail em ethics@ibercivis.es. </p> "+
+    "<h3> Dados pessoais coletados </h3>" +
+    "<p> Para usar o aplicativo Odor Collect para celular, você deverá informar seu e-mail e apelido, juntamente com sua idade, sexo e local de residência para fins estatísticos. A data e hora de sua inscrição também serão armazenadas. < / p> "+
+    "<h3> Política de cookies </h3>" +
+    "<p> Nosso site usa cookies, como quase todos os sites, para ajudar a fornecer a você a melhor experiência possível. </p>" +
+    "<p> Cookies são pequenos arquivos de texto que são colocados automaticamente no seu computador ou dispositivo móvel quando você visita quase qualquer site da Web. Eles são armazenados pelo seu navegador da Internet. Os cookies contêm informações básicas sobre o seu uso da Internet, mas normalmente não o identificam pessoalmente. Seu navegador envia esses cookies de volta ao site sempre que você o visita novamente, para que ele possa reconhecer seu computador ou dispositivo móvel e personalizá-lo de acordo para melhorar sua experiência no site. </p> "+
+    "<p> Usamos alguns cookies que são necessários para ajudá-lo a acessar e navegar em nossos sites e usar todos os seus recursos. Sem esses cookies, nossos sites não funcionariam corretamente e você não seria capaz de usar alguns recursos importantes. Nós também use cookies para nos ajudar a entender como nosso site está sendo usado e como podemos melhorar sua experiência nele. Isso nos fornece informações anônimas para nos ajudar a entender quais partes de nosso site são de maior interesse para nossos visitantes e monitorar como nossos visitantes chegam nós. Esses cookies são comumente chamados de cookies 'Analytics' e 'Desempenho'. </p> "+
+    "<p> Aceitamos a sua resposta à mensagem pop-up que aparece no nosso site e ao uso contínuo do mesmo, como seu consentimento. Se desejar, você pode desativar alguns cookies não essenciais que serão bloqueados durante sua navegação em nosso site, alterando a configuração de cookies do seu navegador. </p> "+
+    "<h3> Objetivo </h3>" +
+    "<p> Seus dados pessoais serão usados ​​apenas para: </p>" +
+    "<ul>" +
+    "<li> Operação ideal do aplicativo móvel Odor Collect: inscrição, login, logout, recuperar senha, baixar dados pessoais, baixar dados de episódios de odores carregados, excluir dados pessoais, cancelar conta. </li>" +
+    "<li> Entraremos em contato para informá-lo sobre eventos específicos ou sobre resultados relacionados ao projeto D-NOSES. </li>" +
     "</ul>" +
-    "<h3>Who is responsible for data processing</h3>" +
-    "<p>Ibercivis is the data controller of OdourCollect. All personal - and no personal - data obtained. Ibercivis is a non-profit private foundation with NIF: G99330094. It was created on November 14, 2011 in Madrid. Its objectives are to continue with its work of collaboration with citizen research and carry out dissemination and training activities. It has a fiscal address in Campus Río Ebro, R & D Building, C / Mariano Esquillor, s / n, 50018 Zaragoza.</p>" +
-    "<h3>Personal data transfer</h3>" +
-    "<p>We follow strict security procedures when storing personal data. Under no circumstances we will transfer personal data to third parties.</p>" +
-    "<h3>Rights and how to exercise them</h3>" +
-    "<p>You have the right to:</p>" +
-    "<ul> " +
-    "<li>Request information about whether we have personal data about you and, if so, what information we have, why we have it and how we are using it.</li>" +
-    "<li>Request access to your personal data. This allow the volunteer to receive a copy of your personal data and to correct any incomplete or incorrect information we have about him/her.</li>" +
-    "<li>Request personal data deletion. This allow you to delete or ask us to delete your personal data.</li>" +
-    "<li>Request to transfer your personal data to you or to a third party in an electronic and structured format - commonly known as the right to data portability.</li>" +
-    "<li>You can exercise any of these rights through the OdourCollect App, the International Odour Observatory or by mail to ethics@ibercivis.es.</li>" +
-    "<li>You will not have to pay any fee to access your personal data - or to exercise any other of your rights.</li>" +
-    "</ul>"
+    "<h3> Por quanto tempo seus dados e informações pessoais serão mantidos </h3>" +
+    "<p> Os dados do usuário são salvos até o final do projeto e até um ano após seu último login. Para fazer isso, programamos lembretes (e-mails) para 6 meses e 1 mês e, em seguida, os usuários irão cancelar a inscrição se não tiver logado daqui a um ano. </p> "+
+    "<h3> Quem é responsável pelo processamento de dados </h3>" +
+    "<p> Ibercivis é o controlador de dados da OdourCollect. Todos os dados pessoais - e não pessoais - obtidos. Ibercivis é uma fundação privada sem fins lucrativos com NIF: G99330094. Foi criada em 14 de novembro de 2011 em Madrid. Seus objetivos são continuar seu trabalho de colaboração com a pesquisa cidadã e realizar atividades de divulgação e capacitação. Tem um endereço fiscal no Campus Río Ebro, Edifício de P&D, C / Mariano Esquillor, s / n, 50018 Zaragoza. </p> "+
+    "<h3> Transferência de dados pessoais </h3>" +
+    "<p> Seguimos procedimentos de segurança rígidos ao armazenar dados pessoais. Em nenhuma circunstância iremos transferir dados pessoais a terceiros. </p>" +
+    "<h3> Direitos e como exercê-los </h3>" +
+    "<p> Você tem o direito de: </p>" +
+    "<ul>" +
+    "<li> Solicite informações sobre se temos dados pessoais sobre você e, em caso afirmativo, quais informações temos, por que as temos e como as estamos usando. </li>" +
+    "<li> Solicite acesso aos seus dados pessoais. Isso permite que o voluntário receba uma cópia dos seus dados pessoais e corrija qualquer informação incompleta ou incorreta que tenhamos sobre ele. </li>" +
+    "<li> Solicitar dados pessoais deletion. Isso permite que você exclua ou nos peça para excluir seus dados pessoais. </li> "+
+    "<li> Solicite a transferência de seus dados pessoais para você ou para terceiros em formato eletrônico e estruturado - comumente conhecido como direito de portabilidade de dados. </li>" +
+    "<li> Você pode exercer qualquer um desses direitos por meio do aplicativo OdourCollect, do Observatório Internacional de Odor ou por e-mail para ethics@ibercivis.es. </li>" +
+    "<li> Você não terá que pagar nenhuma taxa para acessar seus dados pessoais - ou para exercer qualquer outro de seus direitos. </li>" +
+    "</ul>" +
+    "</br> </br> </br> </br> </br> </br>"
   },
   ETHICS: {
     TEXT: "<h2>Fornecer o documento com informação sobre Questões Humanas e Outros Aspectos Éticos”, no Âmbito do Projeto D-NOSES</h2>" +

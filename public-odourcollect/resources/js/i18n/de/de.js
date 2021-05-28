@@ -494,17 +494,26 @@ export default {
     "<p>Wenn Sie keine Geruchsepisode melden wollen, aber neugierig sind, welche Gerüche in Ihrer Nähe wahrgenommen werden, schauen Sie einfach die Karte und die von anderen BürgerInnen ausgefüllten Geruchsbeobachtungen an. Sie können die Karte nach der Art des Geruchs filtern. Sie können auch Geruchsbeobachtungen in jedem Teil der Welt hinzufügen, nicht nur in den betroffenen Gemeinden. Auch angenehme Gerüche! Zögern Sie nicht, durch die App zu navigieren und eine richtige Schnüffelnase zu werden!</p>"
   },
   LEGAL: {
-    TEXT: "<h2>Informationsdokument zum Schutz Personenbezogener Daten (POPD) für Freiwillige des D-NOSES Projekts</h2>" +
+    TEXT: 
+    "<p>Die Allgemeine Datenschutzverordnung (DSGVO) trat am 25. Mai 2018 in Kraft und löste das Datenschutzgesetz von 1998 ab. Diese neue Verordnung zielt in erster Linie darauf ab, Bürgern und Einwohnern die Kontrolle über ihre personenbezogenen Daten zu geben und das regulatorische Umfeld für internationale Unternehmen durch Vereinheitlichung der Verordnung zu vereinfachen innerhalb der EU.</p>" +
+    "<h2>Informationsdokument zum Schutz Personenbezogener Daten (POPD) für Freiwillige des D-NOSES Projekts</h2>" +
     "<h3>Sehr geehrte/r Freiwillige/r</h3>" +
     "<p>Sie sind bereit, an D-NOSES teilzunehmen, einem bürgerwissenschaftlichen Projekt, das einen Bottom-Up-Ansatz verfolgt, um Bürgerinterventionen unter Einbeziehung von Vierfachhelix-Stakeholdern zur Bekämpfung der Geruchsbelästigung zu ermöglichen. Vor der Teilnahme und nachdem Sie den Zweck des Projekts verstanden haben, das im Informationsdokument zu H und OEI für Freiwillige erläutert wird, ist es für uns unerlässlich, dass Sie verstehen, welche personenbezogenen Daten wir erheben und wie wir diese Informationen behandeln. Bitte lesen Sie diese Informationen sorgfältig durch. Wenn Sie Zweifel haben oder etwas unklar ist, fragen Sie bitte einen der Projektpartner - wenn möglich persönlich oder per E-Mail an ethics@ibercivis.es.</p>" +
     "<h3>Erfasste personenbezogene Daten</h3>" +
     "<p>Um die mobile App Odour Collect oder das Internationale Geruchsobservatorium nutzen zu können, werden Sie nach Ihrer E-Mail-Adresse und Ihrem Spitznamen sowie Ihrem Alter, Geschlecht und Wohnort für statistische Zwecke gefragt. Das Datum und die Uhrzeit Ihrer Anmeldung werden ebenfalls gespeichert.</p>" +
+    "<h3>Cookie-Richtlinie</h3>" +
+    "<p>Unsere Website verwendet wie fast alle Websites Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.</p>" +
+    "<p>Cookies sind kleine Textdateien, die automatisch auf Ihrem Computer oder Mobilgerät abgelegt werden, wenn Sie fast jede Website besuchen. Sie werden von Ihrem Internetbrowser gespeichert. Cookies enthalten grundlegende Informationen zu Ihrer Internetnutzung, identifizieren Sie jedoch normalerweise nicht persönlich. Ihr Browser sendet diese Cookies bei jedem erneuten Besuch an die Website zurück, damit er Ihren Computer oder Ihr Mobilgerät erkennen und entsprechend personalisieren kann, um Ihre Website-Erfahrung zu verbessern.</p>" +
+    "<p>Wir verwenden einige Cookies, die erforderlich sind, damit Sie auf unsere Websites zugreifen, sich darin bewegen und alle Funktionen nutzen können. Ohne diese Cookies würden unsere Websites nicht ordnungsgemäß funktionieren und Sie könnten bestimmte wichtige Funktionen nicht nutzen. Wir verwenden auch Cookies, um zu verstehen, wie unsere Website verwendet wird und wie wir Ihre Erfahrungen damit verbessern können. Auf diese Weise erhalten wir anonyme Informationen, die uns helfen, zu verstehen, welche Teile unserer Website für unsere Besucher am interessantesten sind, und zu überwachen, wie unsere Besucher uns erreichen. Diese Cookies werden üblicherweise als 'Analytics' - und 'Performance' -Cookies bezeichnet.</p>" +
+    "<p>Wir nehmen Ihre Antwort auf die Popup-Nachricht, die auf unserer Website angezeigt wird, und die kontinuierliche Nutzung unserer Website als Ihre Zustimmung. Wenn Sie dies wünschen, können Sie bestimmte nicht wesentliche Cookies deaktivieren, die während Ihrer Navigation auf unserer Website blockiert werden, indem Sie die Cookie-Einstellung Ihres Browsers ändern.</p>" +
     "<h3>Zweck</h3>" +
     "<p>Ihre personenbezogenen Daten werden nur für folgende Zwecke verwendet:</p>" +
     "<ul> " +
     "<li>Optimaler Betrieb der mobilen App Odour Collect oder des Internationalen Geruchsobservatoriums: Registrierung, An- und Abmeldung, Wiederherstellung des Passworts, Herunterladen eigener personenbezogener Daten, Hochladen von Daten zu eigenen Geruchsbeobachtungen, Löschen personenbezogener Daten, Kündigen des Kontos.</li>" +
     "<li>Wenn Sie dies zuvor akzeptiert haben, werden wir Sie kontaktieren, um Sie über bestimmte Veranstaltungen im Zusammenhang mit D-NOSES, über die Projektergebnisse oder über unseren Newsletter zu informieren.</li>" +
     "</ul>" +
+    "<h3>Wie lange werden Ihre Daten und persönlichen Daten aufbewahrt?</h3>" +
+    "<p>Benutzerdaten werden bis zum Ende des Projekts und bis zu einem Jahr nach ihrer letzten Anmeldung gespeichert. Zu diesem Zweck planen wir Erinnerungen (E-Mails) auf 6 Monate und 1 Monat. Benutzer werden sich dann abmelden, wenn sie sich innerhalb eines Jahres nicht angemeldet haben.</p>" +
     "<h3>Wer ist für die Datenverarbeitung verantwortlich?</h3>" +
     "<p>Ibercivis ist für die Verarbeitung aller personenbezogenen - und nicht personenbezogenen - Daten verantwortlich. Ibercivis ist eine gemeinnützige private Stiftung mit NIF: G99330094. Sie wurde am 14. November 2011 in Madrid gegründet. Ihre Ziele sind die Fortsetzung der Zusammenarbeit mit der Bürgerforschung und die Durchführung von Verbreitungs- und Ausbildungsmaßnahmen. Sie hat eine steuerliche Adresse im Campus Río Ebro, F & E Gebäude, C / Mariano Esquillor, s / n, 50018 Zaragoza.</p>" +
     "<h3>Übermittlung personenbezogener Daten</h3>" +
@@ -518,7 +527,8 @@ export default {
     "<li>Die Übermittlung Ihrer personenbezogenen Daten an Sie oder einen Dritten in elektronischer und strukturierter Form zu beantragen - allgemein bekannt als das Recht auf Datenübertragbarkeit.</li>" +
     "<li>Sie können jedes dieser Rechte über die Odour Collect App, das Internationale Geruchsobservatorium oder per E-Mail an ethics@ibercivis.es ausüben.</li>" +
     "<li>Sie müssen keine Gebühr zahlen, um auf Ihre personenbezogenen Daten zuzugreifen oder Ihre anderen Rechte auszuüben.</li>" +
-    "</ul>"
+    "</ul>" +
+    "</br></br></br></br></br></br>"
   },
   ETHICS: {
     TEXT: "<h2>HInformationsdokument zu Menschlichen (H) und Anderen Ethischen Fragen (OEI) für Freiwillige des D-NOSES-Projekt</h2>" +

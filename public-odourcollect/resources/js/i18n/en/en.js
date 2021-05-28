@@ -495,17 +495,26 @@ export default {
     "<p>If you are not interested in reporting an odour episode but are curious about the odours perceived in your area, just check the map and the odour reports filled up by other citizens. You will be able to check and to filter the map by type of odour You can also add any odour observation in any part of the world, not only in affected communities. Also nice smells! Feel free to navigate and to become and odour hound!</p>"
   },
   LEGAL: {
-    TEXT: "<h2>Protection of Personal Data volunteer information document for OdourCollect</h2>" +
+    TEXT: 
+    "<p>General Data Protection Regulation (GDPR) came into force 25th May 2018, superseding the Data Protection Act 1998. This new regulation aims primarily to give control to citizens and residents over their personal data and to simplify the regulatory environment for international business by unifying the regulation within the EU.</p>" +
+    "<h2>Protection of Personal Data volunteer information document for OdourCollect</h2>" +
     "<h3>Dear volunteer</h3>" +
     "<p>You are willing to participate in OdourCollect, used in D-NOSES project which has received funding from the European Union's Horizon 2020 Research and Innovation Programme under Grant Agreement No 789315, a citizen science project based on citizen interventions to tackle odour pollution involving citizens, policy makers, scientist, industries and SMEs. For OdourCollect promoters is essential that you understand which personal data are we collecting and how we will be treating this information. Please, read this information carefully. If you have any doubt or something is unclear to you, please ask any of the project partners - face-to-face when possible or by email at ethics@ibercivis.es.</p>" +
     "<h3>Personal data gathered</h3>" +
     "<p>In order to use the mobile app Odour Collect you will be asked for your email and nickname, together with your age, gender and place of residence for statistical purposes. The date and time of your signup will be also stored.</p>" +
+    "<h3>Cookies policy</h3>" +
+    "<p>Our website use cookies, as almost all websites do, to help provide you with the best experience we can.</p>" +
+    "<p>Cookies are small text files that are automatically placed on your computer or mobile device when you visit almost any website. They are stored by your internet browser. Cookies contain basic information about your internet use, but they do not normally identify you personally. Your browser sends these cookies back to the site every time you revisit it, so it can recognise your computer or mobile device and personalise it accordingly to improve your site experience.</p>" +
+    "<p>We use some cookies which are necessary to help you access and move around our sites and use all its features. Without these cookies, our websites would not work properly and you would not be able to use certain important features. We also use cookies to help us understand how our website is being used and how we can improve your experience on it. This provides us with anonymous information to help us understand which parts of our site are of most interest to our visitors and monitor how our visitors reach us. These cookies are commonly referred to as ‘Analytics’ and ‘Performance’ cookies.</p>" +
+    "<p>We take your answer to the pop-up message which displays on our website, and the continuous use of our website, as your consent. Should you wish so, you can disable certain non-essential cookies which will be blocked during your navigation on our website, by changing your browser’s cookie setting.</p>" +
     "<h3>Purpose</h3>" +
     "<p>Your personal data will be used only for:</p>" +
     "<ul> " +
     "<li>Optimum operation of the mobile app Odour Collect: sign-up, login, logout, recover password, download own personal data, download own odour episodes data uploaded, delete personal data, cancel account.</li>" +
     "<li>We will contact you to inform about specific events or about results related with D-NOSES project.</li>" +
     "</ul>" +
+    "<h3>How long your data and personal information will be kept</h3>" +
+    "<p>User data is saved until the end of the project and up to one year after their last login. In order to do that we schedule reminders (emails) at 6 months and 1 month and then users will unsubscribe if has not logged in in one year.</p>" +
     "<h3>Who is responsible for data processing</h3>" +
     "<p>Ibercivis is the data controller of OdourCollect. All personal - and no personal - data obtained. Ibercivis is a non-profit private foundation with NIF: G99330094. It was created on November 14, 2011 in Madrid. Its objectives are to continue with its work of collaboration with citizen research and carry out dissemination and training activities. It has a fiscal address in Campus Río Ebro, R & D Building, C / Mariano Esquillor, s / n, 50018 Zaragoza.</p>" +
     "<h3>Personal data transfer</h3>" +
@@ -519,7 +528,8 @@ export default {
     "<li>Request to transfer your personal data to you or to a third party in an electronic and structured format - commonly known as the right to data portability.</li>" +
     "<li>You can exercise any of these rights through the OdourCollect App, the International Odour Observatory or by mail to ethics@ibercivis.es.</li>" +
     "<li>You will not have to pay any fee to access your personal data - or to exercise any other of your rights.</li>" +
-    "</ul>"
+    "</ul>" +
+    "</br></br></br></br></br></br>"
   },
   ETHICS: {
     TEXT: "<h2>Human (H) and Other Ethical Issues (OEI) volunteer information document for the D-NOSES project</h2>" +
