@@ -492,17 +492,26 @@ export default {
     "<p>Si no estás interesado en informar de un episodio de olor pero sientes curiosidad por conocer los olores percibidos en su zona, sólo tienes que consultar el mapa y los informes de olores rellenados por otros ciudadanos. También puedes añadir cualquier observación de olores en cualquier parte del mundo, no sólo en las comunidades afectadas. ¡También buenos olores! ¡Siéntete libre de navegar y de convertirte en un experto en olores!</p>"
   },
   LEGAL: {
-    TEXT: "<h2>Documento informativo sobre protección de datos personales para el voluntariado de OdourCollect</h2>" +
+    TEXT: 
+    "<p>El Reglamento General de Protección de Datos (GDPR) entró en vigor el 25 de mayo de 2018, reemplazando la Ley de Protección de Datos de 1998. Este nuevo reglamento tiene como objetivo principal dar control a los ciudadanos y residentes sobre sus datos personales y simplificar el entorno regulatorio para las empresas internacionales unificando el reglamento. dentro de la UE.</p>" +    
+    "<h2>Documento informativo sobre protección de datos personales para el voluntariado de OdourCollect</h2>" +
     "<h3>Querido voluntario/a</h3>" +
     "<p>Estás dispuesto a participar en OdourCollect -una de las herramientas del proyecto D-NOSES financiado por el Programa de Investigación e Innovación Horizonte 2020 de la Unión Europea a través del acuerdo de subvención nº 789315- un proyecto de ciencia ciudadana basado en la implicación directa de ciudadanos, responsables políticos, científicos, industrias y PYME para hacer frente a la contaminación por olores. Para OdourCollect es esencial que entiendas qué datos personales estamos recogiendo y cómo vamos a tratar esta información. Por favor, lee esta información cuidadosamente. Si tienes alguna duda o algo no te queda claro, por favor pregunta a cualquiera de los socios del proyecto – en persona cuando sea posible o por correo electrónico a ethics@ibercivis.es.</p>" +
     "<h3>Datos personales recogidos</h3>" +
     "<p>Para poder utilizar la aplicación móvil OdourCollect te pediremos un correo electrónico y un apodo, junto con tu edad, sexo y lugar de residencia para fines estadísticos. También se almacenará la fecha y la hora de tu registro.</p>" +
+    "<h3>Política de cookies</h3>" +
+    "<p>Nuestro sitio web utiliza cookies, como lo hacen casi todos los sitios web, para ayudarlo a brindarle la mejor experiencia posible.</p>" +
+    "<p>Las cookies son pequeños archivos de texto que se colocan automáticamente en su computadora o dispositivo móvil cuando visita casi cualquier sitio web. Se almacenan en su navegador de Internet. Las cookies contienen información básica sobre su uso de Internet, pero normalmente no lo identifican personalmente. Su navegador envía estas cookies al sitio cada vez que lo vuelve a visitar, para que pueda reconocer su computadora o dispositivo móvil y personalizarlo en consecuencia para mejorar su experiencia en el sitio.</p>" +
+    "<p>Usamos algunas cookies que son necesarias para ayudarlo a acceder y moverse por nuestros sitios y utilizar todas sus funciones. Sin estas cookies, nuestros sitios web no funcionarían correctamente y usted no podría utilizar ciertas funciones importantes. También utilizamos cookies para ayudarnos a comprender cómo se utiliza nuestro sitio web y cómo podemos mejorar su experiencia en él. Esto nos proporciona información anónima para ayudarnos a comprender qué partes de nuestro sitio son de mayor interés para nuestros visitantes y monitorear cómo nos llegan. Estas cookies se denominan comúnmente cookies de 'análisis' y 'rendimiento'.</p>" +
+    "<p>Tomamos su respuesta al mensaje emergente que se muestra en nuestro sitio web, y el uso continuo de nuestro sitio web, como su consentimiento. Si lo desea, puede desactivar ciertas cookies no esenciales que se bloquearán durante su navegación en nuestro sitio web, cambiando la configuración de cookies de su navegador.</p>" +
     "<h3>Propósito</h3>" +
     "<p>Tus datos personales serán utilizados sólo para:</p>" +
     "<ul> " +
     "<li>El funcionamiento óptimo de la aplicación móvil OdourCollect: registro, inicio de sesión, cierre de sesión, recuperación de la contraseña, descarga de datos personales propios, descarga de datos de episodios de olores propios cargados, eliminación de datos personales, cancelación de la cuenta.</li>" +
     "<li>Nos pondremos en contacto contigo para informarle sobre eventos específicos o sobre resultados relacionados con el proyecto D-NOSES.</li>" +
     "</ul>" +
+    "<h3>Cuánto tiempo se conservarán sus datos e información personal</h3>" +
+    "<p>Los datos del usuario se guardan hasta el final del proyecto y hasta un año después de su último inicio de sesión. Para hacer eso, programamos recordatorios (correos electrónicos) a los 6 meses y 1 mes y luego los usuarios se darán de baja si no han iniciado sesión en un año.</p>" +
     "<h3>¿Quién es el responsable del procesamiento de datos?</h3>" +
     "<p>Ibercivis es el responsable de todos los datos obtenidos en OdourCollect, sean datos personales como no personales. Ibercivis es una fundación privada sin fines de lucro con CIF: G99330094. Fue creada el 14 de noviembre de 2011 en Madrid. Sus objetivos son continuar con su labor de colaboración con la investigación ciudadana y llevar a cabo actividades de difusión y formación. Tiene su domicilio fiscal en el Campus Río Ebro, Edificio de I+D, C/ Mariano Esquillor, s/n, 50018 Zaragoza.</p>" +
     "<h3>Cesión de datos personales</h3>" +
@@ -516,7 +525,8 @@ export default {
     "<li>Solicitar la transferencia de tus datos personales a ti o a un tercero en un formato electrónico y estructurado - comúnmente conocido como el derecho a la portabilidad de datos.</li>" +
     "<li>Puedes ejercer cualquiera de estos derechos a través de la aplicación OdourCollect o por correo electrónico a ethics@ibercivis.es.</li>" +
     "<li>No tendrás que pagar ninguna cuota para acceder a tus datos personales - o para ejercer cualquier otro de sus derechos.</li>" +
-    "</ul>"
+    "</ul>" +
+    "</br></br></br></br></br></br>"
   },
   ETHICS: {
     TEXT: "<h2>Documento informativo para el voluntariado sobre aspectos éticos </h2>" +

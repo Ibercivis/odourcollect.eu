@@ -494,31 +494,41 @@ export default {
     "<p>Αν δεν ενδιαφέρεστε να αναφέρετε κάποιο επεισόδιο οσμής αλλά είστε περίεργοι για τις οσμές που έχουν γίνει αντιληπτές στην περιοχή σας, ελέγξτε απλώς τον χάρτη και τις αναφορές οσμών που συμπληρώνονται από άλλους πολίτες. Θα μπορείτε να ελέγχετε και να φιλτράρετε το χάρτη ανάλογα με τον τύπο οσμής. Μπορείτε επίσης να προσθέτετε παρατήρησεις σχετικά με οσμές σε οποιοδήποτε μέρος του κόσμου, όχι μόνο σε πληγείσες κοινότητες. Επίσης ωραίες μυρωδιές! Νιώστε ελεύθεροι να περιηγηθείτε και να κυνηγήσετε οσμές!</p>"
   },
   LEGAL: {
-    TEXT: "<h2>Protection of Personal Data volunteer information document for OdourCollect</h2>" +
-    "<h3>Dear volunteer</h3>" +
-    "<p>You are willing to participate in OdourCollect, used in D-NOSES project which has received funding from the European Union's Horizon 2020 Research and Innovation Programme under Grant Agreement No 789315, a citizen science project based on citizen interventions to tackle odour pollution involving citizens, policy makers, scientist, industries and SMEs. For OdourCollect promoters is essential that you understand which personal data are we collecting and how we will be treating this information. Please, read this information carefully. If you have any doubt or something is unclear to you, please ask any of the project partners - face-to-face when possible or by email at ethics@ibercivis.es.</p>" +
-    "<h3>Personal data gathered</h3>" +
-    "<p>In order to use the mobile app Odour Collect you will be asked for your email and nickname, together with your age, gender and place of residence for statistical purposes. The date and time of your signup will be also stored.</p>" +
-    "<h3>Purpose</h3>" +
-    "<p>Your personal data will be used only for:</p>" +
-    "<ul> " +
-    "<li>Optimum operation of the mobile app Odour Collect: sign-up, login, logout, recover password, download own personal data, download own odour episodes data uploaded, delete personal data, cancel account.</li>" +
-    "<li>We will contact you to inform about specific events or about results related with D-NOSES project.</li>" +
+    TEXT: 
+    "<p> Ο Γενικός Κανονισμός για την Προστασία Δεδομένων (GDPR) τέθηκε σε ισχύ στις 25 Μαΐου 2018, αντικαθιστώντας τον Νόμο περί Προστασίας Δεδομένων 1998. Αυτός ο νέος κανονισμός στοχεύει πρωτίστως στον έλεγχο των πολιτών και των κατοίκων των προσωπικών τους δεδομένων και στην απλοποίηση του ρυθμιστικού περιβάλλοντος για τις διεθνείς επιχειρήσεις ενοποιώντας τον κανονισμό εντός της ΕΕ. </p> "+
+    "<h2> Προστασία εγγράφου πληροφοριών εθελοντών προσωπικών δεδομένων για το OdourCollect </h2>" +
+    "<h3> Αγαπητέ εθελοντή </h3>" +
+    "<p> Είστε πρόθυμοι να συμμετάσχετε στο OdourCollect, που χρησιμοποιείται στο έργο D-NOSES, το οποίο έχει λάβει χρηματοδότηση από το πρόγραμμα έρευνας και καινοτομίας« Ορίζοντας 2020 »της Ευρωπαϊκής Ένωσης στο πλαίσιο της συμφωνίας επιχορήγησης αριθ. εμπλέκοντας πολίτες, υπεύθυνους χάραξης πολιτικής, επιστήμονες, βιομηχανίες και ΜΜΕ. Για τους προωθητές του OdourCollect είναι απαραίτητο να καταλάβετε ποια προσωπικά δεδομένα συλλέγουμε και πώς θα αντιμετωπίσουμε αυτές τις πληροφορίες. Παρακαλούμε, διαβάστε προσεκτικά αυτές τις πληροφορίες. Εάν έχετε οποιαδήποτε αμφιβολία ή κάτι είναι ασαφές για εσάς, ρωτήστε οποιονδήποτε από τους συνεργάτες του έργου - πρόσωπο με πρόσωπο όταν είναι δυνατόν ή μέσω email στη διεύθυνση ethics@ibercivis.es. </p> "+
+    "<h3> Συλλέχθηκαν προσωπικά δεδομένα </h3>" +
+    "<p> Για να χρησιμοποιήσετε την εφαρμογή για κινητά Odor Collect θα σας ζητηθεί το email και το ψευδώνυμό σας, μαζί με την ηλικία, το φύλο και τον τόπο διαμονής σας για στατιστικούς σκοπούς. Θα αποθηκευτεί επίσης η ημερομηνία και η ώρα της εγγραφής σας. < / p> "+
+    "<h3> Πολιτική cookie </h3>" +
+    "<p> Ο ιστότοπός μας χρησιμοποιεί cookie, όπως σχεδόν όλοι οι ιστότοποι, για να σας προσφέρει την καλύτερη δυνατή εμπειρία. </p>" +
+    "<p> Τα cookie είναι μικρά αρχεία κειμένου που τοποθετούνται αυτόματα στον υπολογιστή ή στην κινητή συσκευή σας όταν επισκέπτεστε σχεδόν οποιονδήποτε ιστότοπο. Αποθηκεύονται από το πρόγραμμα περιήγησής σας στο Διαδίκτυο. Τα cookie περιέχουν βασικές πληροφορίες σχετικά με τη χρήση του διαδικτύου σας, αλλά συνήθως δεν σας αναγνωρίζουν προσωπικά. Το πρόγραμμα περιήγησής σας στέλνει αυτά τα cookie πίσω στον ιστότοπο κάθε φορά που τα επισκέπτεστε ξανά, ώστε να αναγνωρίζει τον υπολογιστή ή την κινητή συσκευή σας και να το εξατομικεύει ανάλογα για να βελτιώσει την εμπειρία του ιστότοπού σας. </p> "+
+    "<p> Χρησιμοποιούμε ορισμένα cookie που είναι απαραίτητα για να σας βοηθήσουμε να αποκτήσετε πρόσβαση και να μετακινηθείτε στους ιστότοπούς μας και να χρησιμοποιήσετε όλες τις δυνατότητές του. Χωρίς αυτά τα cookie, οι ιστότοποί μας δεν θα λειτουργούσαν σωστά και δεν θα μπορούσατε να χρησιμοποιήσετε ορισμένες σημαντικές δυνατότητες. χρησιμοποιήστε cookies για να μας βοηθήσετε να κατανοήσουμε πώς χρησιμοποιείται ο ιστότοπός μας και πώς μπορούμε να βελτιώσουμε την εμπειρία σας σε αυτόν. Αυτό μας παρέχει ανώνυμες πληροφορίες που μας βοηθούν να κατανοήσουμε ποια μέρη του ιστότοπού μας ενδιαφέρουν περισσότερο τους επισκέπτες μας και να παρακολουθήσουμε τον τρόπο προσέγγισης των επισκεπτών μας Αυτά τα cookie αναφέρονται συνήθως ως cookie «Analytics» και «Απόδοση». </p> "+
+    "<p> Παίρνουμε την απάντησή σας στο αναδυόμενο μήνυμα που εμφανίζεται στον ιστότοπό μας και τη συνεχή χρήση του ιστότοπού μας, ως συγκατάθεσή σας. Εάν το επιθυμείτε, μπορείτε να απενεργοποιήσετε ορισμένα μη απαραίτητα cookie τα οποία θα αποκλειστούν κατά τη διάρκεια την πλοήγησή σας στον ιστότοπό μας, αλλάζοντας τη ρύθμιση cookie του προγράμματος περιήγησής σας. </p> "+
+    "<h3> Σκοπός </h3>" +
+    "<p> Τα προσωπικά σας δεδομένα θα χρησιμοποιηθούν μόνο για: </p>" +
+    "<ul>" +
+    "<li> Βέλτιστη λειτουργία της εφαρμογής για κινητά Odor Collect: εγγραφή, σύνδεση, αποσύνδεση, ανάκτηση κωδικού πρόσβασης, λήψη προσωπικών δεδομένων, λήψη δεδομένων επεισοδίων οσμής που μεταφορτώθηκαν, διαγραφή προσωπικών δεδομένων, ακύρωση λογαριασμού. </li>" +
+    "<li> Θα επικοινωνήσουμε μαζί σας για να ενημερώσουμε σχετικά με συγκεκριμένα συμβάντα ή για αποτελέσματα που σχετίζονται με το έργο D-NOSES. </li>" +
     "</ul>" +
-    "<h3>Who is responsible for data processing</h3>" +
-    "<p>Ibercivis is the data controller of OdourCollect. All personal - and no personal - data obtained. Ibercivis is a non-profit private foundation with NIF: G99330094. It was created on November 14, 2011 in Madrid. Its objectives are to continue with its work of collaboration with citizen research and carry out dissemination and training activities. It has a fiscal address in Campus Río Ebro, R & D Building, C / Mariano Esquillor, s / n, 50018 Zaragoza.</p>" +
-    "<h3>Personal data transfer</h3>" +
-    "<p>We follow strict security procedures when storing personal data. Under no circumstances we will transfer personal data to third parties.</p>" +
-    "<h3>Rights and how to exercise them</h3>" +
-    "<p>You have the right to:</p>" +
-    "<ul> " +
-    "<li>Request information about whether we have personal data about you and, if so, what information we have, why we have it and how we are using it.</li>" +
-    "<li>Request access to your personal data. This allow the volunteer to receive a copy of your personal data and to correct any incomplete or incorrect information we have about him/her.</li>" +
-    "<li>Request personal data deletion. This allow you to delete or ask us to delete your personal data.</li>" +
-    "<li>Request to transfer your personal data to you or to a third party in an electronic and structured format - commonly known as the right to data portability.</li>" +
-    "<li>You can exercise any of these rights through the OdourCollect App, the International Odour Observatory or by mail to ethics@ibercivis.es.</li>" +
-    "<li>You will not have to pay any fee to access your personal data - or to exercise any other of your rights.</li>" +
-    "</ul>"
+    "<h3> Πόσο καιρό θα διατηρηθούν τα δεδομένα και τα προσωπικά σας στοιχεία </h3>" +
+    "<p> Τα δεδομένα χρήστη αποθηκεύονται μέχρι το τέλος του έργου και έως ένα έτος μετά την τελευταία σύνδεσή τους. Για να το κάνουμε αυτό, προγραμματίζουμε υπενθυμίσεις (email) σε 6 μήνες και 1 μήνα και στη συνέχεια οι χρήστες θα καταργήσουν την εγγραφή τους εάν δεν έχουν συνδεθεί σε ένα χρόνο. </p> "+
+    "<h3> Ποιος είναι υπεύθυνος για την επεξεργασία δεδομένων </h3>" +
+    "<p> Το Ibercivis είναι ο ελεγκτής δεδομένων της OdourCollect. Λήφθηκαν όλα τα προσωπικά - και όχι τα προσωπικά - δεδομένα. Το Ibercivis είναι ένα μη κερδοσκοπικό ιδιωτικό ίδρυμα με NIF: G99330094. Δημιουργήθηκε στις 14 Νοεμβρίου 2011 στη Μαδρίτη. Οι στόχοι του είναι να συνεχίζει με το έργο της συνεργασίας με την έρευνα των πολιτών και πραγματοποιεί δραστηριότητες διάδοσης και κατάρτισης. Έχει φορολογική διεύθυνση στο Campus Río Ebro, το κτίριο Ε & Α, το C / Mariano Esquillor, s / n, 50018 Σαραγόσα. </p> "+
+    "<h3> Προσωπική μεταφορά δεδομένων </h3>" +
+    "<p> Ακολουθούμε αυστηρές διαδικασίες ασφαλείας κατά την αποθήκευση προσωπικών δεδομένων. Σε καμία περίπτωση δεν θα μεταφέρουμε προσωπικά δεδομένα σε τρίτους. </p>" +
+    "<h3> Δικαιώματα και τρόπος άσκησής τους </h3>" +
+    "<p> Έχετε το δικαίωμα να: </p>" +
+    "<ul>" +
+    "<li> Ζητήστε πληροφορίες σχετικά με το αν έχουμε προσωπικά δεδομένα για εσάς και, εάν ναι, ποιες πληροφορίες έχουμε, γιατί τις έχουμε και πώς τις χρησιμοποιούμε. </li>" +
+    "<li> Ζητήστε πρόσβαση στα προσωπικά σας δεδομένα. Αυτό επιτρέπει στον εθελοντή να λάβει ένα αντίγραφο των προσωπικών σας δεδομένων και να διορθώσει τυχόν ελλιπείς ή λανθασμένες πληροφορίες που έχουμε σχετικά με αυτόν. </li>" +
+    "<li> Ζητήστε προσωπικά δεδομένα delαιτίου. Αυτό σας επιτρέπει να διαγράψετε ή να μας ζητήσετε να διαγράψουμε τα προσωπικά σας δεδομένα. </li> "+
+     "<li> Αίτημα για μεταφορά των προσωπικών σας δεδομένων σε εσάς ή σε τρίτο μέρος σε ηλεκτρονική και δομημένη μορφή - κοινώς γνωστή ως το δικαίωμα στη φορητότητα δεδομένων. </li>" +
+     "<li> Μπορείτε να ασκήσετε οποιοδήποτε από αυτά τα δικαιώματα μέσω της εφαρμογής OdourCollect, του Διεθνούς Παρατηρητηρίου Οσμών ή μέσω ταχυδρομείου στη διεύθυνση ethics@ibercivis.es. </li>" +
+     "<li> Δεν θα χρειαστεί να πληρώσετε καμία αμοιβή για πρόσβαση στα προσωπικά σας δεδομένα - ή για να ασκήσετε οποιοδήποτε άλλο από τα δικαιώματά σας. </li>" +
+     "</ul>" +
+     "</br> </br> </br> </br> </br> </br>"
   },
   ETHICS: {
     TEXT: "<h2>Έγγραφο εθελοντών για το έργο D-NOSES για  Ανθρώπινα (Η) και άλλα θέματα Ηθικής (ΟΕΙ)</h2>" +
