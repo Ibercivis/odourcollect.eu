@@ -24,6 +24,9 @@
             left: -43px!important;
         }
 
+        .center{
+            text-align:center;
+        }
     </style>
 
     <div class="dashboard-wrapper">
@@ -201,7 +204,7 @@
                                             <th scope="col">Observation Subtype</th>
                                             <th scope="col">Address</th>
                                             <th scope="col">User ID</th>
-                                            <th scope="col">Verified</th>
+                                            <th scope="col" class="center">Verified</th>
                                             <th scope="col">Published at</th>
                                             <th></th>
                                         </tr>
@@ -215,8 +218,15 @@
                                                 <td>{{$odour->odour_type}}</td>
                                                 <td>{{$odour->address}}</td>
                                                 <td>{{$odour->id_user}}</td>
+                                                <!-- Aqui -->
                                                 @if ($odour->verified == 1)
-                                                    <td>Yes</td>
+                                                <!-- <td>Yes</td> -->
+                                                    <td>
+                                                        {!! Form::open(['route' => 'odour.update.status', 'method' => 'POST', 'id' => 'updateOdourStatus', 'class' => '']) !!}
+                                                            <input type="hidden" id="odour_id" name="odour_id" value="{{$odour->id_odor}}">
+                                                            <input type="hidden" id="status" value="off"  name="status">
+                                                            <input type="submit" class="btn-primary" value="Unverified" style="margin:0px">
+                                                        {!! Form::close() !!}
                                                 @else
                                                 
                                                 @if(Auth::guard('web')->check())
