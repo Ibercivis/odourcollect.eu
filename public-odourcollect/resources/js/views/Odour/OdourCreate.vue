@@ -102,7 +102,6 @@
                                 <label :for="oddourType.id+1000" id="label" style="">{{oddourType.name}}</label>
                                 <div class="check"><div class="inside" style="background-image:url(../../../img/general/checked-white.svg);"></div></div>
                             </div>
-                            
                         </div>
                         
                     </vue-scrollbar>
@@ -855,7 +854,7 @@
         width: 35%;
         min-width: 100%;
         height: calc(100vh - 240px);
-        overflow: scroll;
+        overflow: hidden;
     }
     .my-scrollbar.final-step{
         height: calc(100vh - 190px);
