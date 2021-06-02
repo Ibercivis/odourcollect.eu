@@ -53,7 +53,6 @@ export default {
           7: 'Nice odours',
           8: 'Other',
           9: 'No Odour'
-          
       },
       SUBTYPE: {
           1: 'Fresh waste',
