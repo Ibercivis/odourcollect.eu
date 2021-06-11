@@ -756,7 +756,6 @@
         width: 100%;
     }
     .centrar-v .container {
-        vertical-align:middle;
         display:table-cell;
     }
     .display-1{
@@ -812,7 +811,7 @@
         margin-left: 0px !important;
     }
     .container.grid-list-lg .layout .flex {
-        padding:8px 20px !important;
+        padding:8px 11px !important;
     }
     .bottom{
         position: absolute;
@@ -953,8 +952,9 @@
         font-weight: 600;
         margin-top: 5px;
         height: 24px;
-        margin-bottom:0;
+        margin-bottom:25px;
     }
+ 
     .step-type-description{
         height: 30px;
         margin-bottom: 0;
