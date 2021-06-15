@@ -114,6 +114,53 @@
                         </div>
                     </div>
 
+
+                    <div class="card">
+                        <h5 class="card-header">Email notifications</h5>
+                        <div class="card-body">
+                            An email notification will be sent if all conditions are met
+                            <ul>
+                                                                
+                                
+
+                                {!! Form::open(['route' => 'admin.zone.send.email', 'method' => 'POST', 'id' => 'sendEmailForm', 'class' => '']) !!}
+                                    {!! Form::hidden('zone_id', $zone->id, ['id' => 'zone_id']) !!}
+                                    <li>Number of observations</li>
+                                    {!! Form::number('number_observations','',['min'=>1] ) !!}
+                                    <li>Period of time in hours</li>
+                                    {!! Form::number('hours','',['min'=>1] ) !!}
+                                
+                                   
+                                    @if(Auth::guard('web')->check())                                
+                                        {!! Form::model(Request::all(), ['route' => array('odour.list'), 'method' => 'GET', 'id' => 'list_form', 'class' => 'navbar-form navbar-left']) !!}
+                                        <li>Odor type list selection</li>
+                                        {!! Form::select('type', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'type']) !!}
+                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'annoy']) !!}
+                                        
+                                        {!! Form::close() !!}
+                                        @else                                        
+                                        {!! Form::model(Request::all(), ['route' => array('admin.odour.list'), 'method' => 'GET', 'id' => 'list_form', 'class' => 'navbar-form navbar-left']) !!}
+                                        <li>Odor type list selection</li>
+                                        {!! Form::select('type', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'type']) !!}
+                                        <li>Hedonic tone</li>
+                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'annoy']) !!}
+                                        
+                                        {!! Form::close() !!}
+                                    @endif
+                                    <li>Intensity</li>
+                                        Min: {{Form::number('name', 0,['min'=>1,'max'=>5])}}
+                                        Max: {{Form::number('name', 5,['min'=>1,'max'=>5])}}
+                                    <div style="width: 90%;">
+                                        <input style="margin-left: 88%;" id="updatenotification" type="button" class="btn btn-primary" value="Update">
+                                    </div>
+                                {!! Form::close() !!}
+                                
+
+                            </ul>
+                        </div>
+                    </div>
+
+
                     <div id="myModal" class="modal">
                         <div class="modal-content">
                             <span class="close close_action">&times;</span>
@@ -132,7 +179,10 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+
+
     <script>
+
         map_id ='';
 
         $(document).on('ready', function() {
@@ -158,6 +208,14 @@
             window.onclick = function(event) {
                 if (event.target == modal) {modal.style.display = "none";}
             }
+            $('#updatenotification').on("click", function(event) {
+                event.preventDefault();
+                
+                //alert("type: " + $('#type').val());
+                //alert("annoy: " + $('#annoy').val());
+                $("#sendEmailForm").submit();
+            });
+
         });
 
         var map = L.map( 'map', {

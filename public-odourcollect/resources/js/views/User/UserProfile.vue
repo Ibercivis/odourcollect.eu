@@ -3,6 +3,14 @@
         <h1 class="font-weight-medium display-1">{{$t('MENU.USER_PROFILE')}}</h1>
         <p class="user_id">Id: {{user.id}}</p>
         <form>          
+		<v-text-field
+                    v-model="input_username"
+                    :error-messages="usernameErrors"
+                    :label="$t('UPDATE_PROFILE.USERNAME')"
+                    required
+                    @input="$v.input_username.$touch()"
+                    @blur="$v.input_username.$touch()"
+            ></v-text-field>
 
             <v-text-field
                     v-model="input_email"
@@ -15,9 +23,22 @@
                     @input="$v.input_email.$touch()"
                     @blur="$v.input_email.$touch()"
             ></v-text-field>
+       <v-checkbox
+      v-model="input_newsletter"
+      @input="$v.input_newsletter.$touch()"
+      @blur="$v.input_newsletter.$touch()"
+      :label="$t('UPDATE_PROFILE.NEWSLETTER')"
+    ></v-checkbox>
+
 
             <div class="align fix-bottom">
                 <v-btn color="secondary" class="body-2 font-weight-regular" @click="saveProfileChanges">{{$t('UPDATE_PROFILE.SAVE')}}</v-btn>
+            </div>
+     	    <div class="align fix-bottom">
+                <v-btn color="secondary" class="body-2 font-weight-regular" @click="downloadProfile">{{$t('UPDATE_PROFILE.DOWNLOAD_PROFILE')}}</v-btn>
+            </div>
+            <div class="align fix-bottom">
+                <v-btn color="secondary" class="body-2 font-weight-regular" @click="downloadContributions">{{$t('UPDATE_PROFILE.DOWNLOAD_CONTRIBUTIONS')}}</v-btn>
             </div>
             <div class="align fix-bottom">
                 <v-btn color="red" class="body-2 font-weight-regular" @click="deleteProfileDialog">{{$t('UPDATE_PROFILE.DELETE')}}</v-btn>
@@ -105,6 +126,7 @@
         mixins: [validationMixin],
 
         validations: {
+	    input_username: { required },
             input_email: { required, email },
         },
 
@@ -117,6 +139,7 @@
                 input_surname: '',
                 input_email: '',
                 input_telf: '',
+		input_newsletter: '',
                 e2: false,
                 e3: false,
                 user: '',
@@ -174,14 +197,16 @@
             //Save the new profile information
             saveProfileChanges () {
                 var vm = this;
+		console.log(vm.input_username);
 
                 axios.post('../../api/user/update/' + vm.user.id, {
                     token: vm.token,
-                    //username: vm.input_username,
-                    name: "name",
-                    surname: "surname",
+                    username: vm.input_username,
+                    name: "not_used",
+                    surname: "not_used",
                     email: vm.input_email,
-//                    datebirth: vm.input_datebirth,
+		    newsletter: vm.input_newsletter
+//                  datebirth: vm.input_datebirth,
                     //phone: vm.input_telf
                 }).then(response => {
                     vm.state.status = true;
@@ -212,7 +237,125 @@
                     console.log("error al intentar borrar profile");
                 });
                 
-            }
+            },
+	   		downloadProfile(){
+		   		console.log('downloadProfile');
+				var vm = this;
+				if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
+            	if( this.isLoggedIn ){
+                	//If logged in save the user name in the data
+                	vm.user = JSON.parse( localStorage.getItem('user') );
+                	vm.token = localStorage.getItem('auth-token');
+            	}
+				console.log(this)
+    			//Get the user information
+            	axios.post('../../api/user/' + vm.user.id, {
+                	token: vm.token
+            	}).then(response => {
+                	var data = response.data.object;
+					var str='';
+					var line= '';
+					for (var index in data){
+						line += index;
+						line += ','
+					}
+					str += line + '\r\n';
+					line='';
+					 for (var index in data){
+                        line += data[index];
+                        line += ','
+                    }
+					str += line + '\r\n';
+
+					var exportedFilename = 'personal_data_odourcollect.csv';
+    				var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
+    				if (navigator.msSaveBlob) { // IE 10+
+        				navigator.msSaveBlob(blob, exportedFilenmae);
+    				} else {
+        				var link = document.createElement("a");
+        				if (link.download !== undefined) { // feature detection
+            				// Browsers that support HTML5 download attribute
+            				var url = URL.createObjectURL(blob);
+            				link.setAttribute("href", url);
+            				link.setAttribute("download", exportedFilename);
+            				link.style.visibility = 'hidden';
+            				document.body.appendChild(link);
+           				 link.click();
+            				document.body.removeChild(link);
+        				}
+    				}		
+            	}).catch(error => {
+						console.log(error);
+            	});
+
+	   		},
+	   		downloadContributions(){
+				var vm=this;
+   				if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
+        		if( this.isLoggedIn ){
+            		//If logged in save the user name in the data
+            		var user = JSON.parse( localStorage.getItem('user') );
+            		this.name = user.name + ' ' + user.surname;
+            		this.user_id = user.id;
+            		vm.token = localStorage.getItem('auth-token');
+        		}
+
+        		var a = localStorage.language;
+
+        		//Get user odour list
+        		axios.post('../api/user/' + user.id + '/odours', {
+            			token: vm.token
+           		 }).then(response => {
+					var str='';
+                	var points = response.data.object;
+					line= ''
+					for (var index in points[0]){
+						if (index == 'location')
+							line +='latitude,longitude,Other'
+					else{
+						line += index;
+						line +=',';
+					}
+				}
+				str += line + '\r\n';
+				for (var i = 0; i < points.length; i++) {
+        			var line = '';
+        			for (var index in points[i]) {
+            				if (line != '') line += ','
+					if(index=='location')
+						for(var subindex in points[i][index])
+							if (subindex=='longitude' || subindex=='latitude'){
+								line += points[i][index][subindex]
+								line += ','
+							}
+            				line += points[i][index];
+
+        			}
+        			str += line + '\r\n';
+    			}
+				var exportedFilename = 'export.csv';
+				console.log('here');
+    			var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
+    			if (navigator.msSaveBlob) { // IE 10+
+        			navigator.msSaveBlob(blob, exportedFilenmae);
+    			} else {
+        			var link = document.createElement("a");
+        			if (link.download !== undefined) { // feature detection
+            				// Browsers that support HTML5 download attribute
+            				var url = URL.createObjectURL(blob);
+            				link.setAttribute("href", url);
+            				link.setAttribute("download", exportedFilename);
+            				link.style.visibility = 'hidden';
+            				document.body.appendChild(link);
+           				 link.click();
+            				document.body.removeChild(link);
+        			}
+    			}		
+
+            	}).catch(error => {
+            	});
+
+	   		},
         },
         mounted(){
 
@@ -231,17 +374,12 @@
                 token: vm.token
             }).then(response => {
                 var data = response.data.object;
-
                 vm.input_username = data.username;
                 vm.input_name = data.name;
                 vm.input_surname = data.surname;
                 vm.input_email = data.email;
-
-                //vm.input_telf = data.phone;
-//                if(data.datebirth){
-//                    vm.input_datebirth = data.datebirth;
-//                }
-
+		var data2 = response.data.newsletter;
+		vm.input_newsletter = data2;
             }).catch(error => {
             });
 

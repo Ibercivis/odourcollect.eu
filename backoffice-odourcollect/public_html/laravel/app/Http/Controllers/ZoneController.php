@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Email;
 use App\PointOfInterestZone;
 use App\UserZone;
+use App\OdorParentType;
+use App\OdorAnnoy;
+use App\Mail\NotificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator, Input, Redirect;
@@ -15,6 +19,8 @@ use App\Classes\ZonesClass;
 
 use App\Services\ZoneSlug;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class ZoneController extends Controller
 {
@@ -101,6 +107,8 @@ class ZoneController extends Controller
      */
     public function show($id)
     {
+        $types = OdorParentType::get();
+        $annoys = OdorAnnoy::get();
          if(Auth::guard('web')->check()){
 
             $ZonesClass = new ZonesClass();
@@ -124,7 +132,7 @@ class ZoneController extends Controller
             }
         }
 
-        return view('zones.show' , ['users' => $users, 'zone' => $zone, 'success' => false]);
+        return view('zones.show' , ['users' => $users, 'zone' => $zone, 'success' => false, 'types' => $types, 'annoys' => $annoys]);
     }
 
 
@@ -292,5 +300,100 @@ class ZoneController extends Controller
         }
 
         return $zones;
+    }
+
+     /**
+     * Send and email to the user
+     */
+    public function sendEmail(Request $request)
+    {
+        // Recoger parametros
+        $type = $request->get('type');
+        $annoy = $request->get('annoy');
+        $zone_id = $request->get('zone_id');
+        $hours = $request->get('hours');
+
+        $filters = [];
+
+        if($type){
+            $filters[ 'id_odor_parent_type']= $type;
+        }
+
+        if($annoy){
+            $filters[ 'id_odor_annoy']= $annoy;
+        }
+
+        //Crear registro Notificacion /update
+
+
+        //consulta zone with type, annoy...
+        //$ZonesClass = new ZonesClass();
+        //$array_zones = $ZonesClass->ArrayZones();
+        
+        $odours = DB::table('odors')
+        //->select('odors.*', 'odor_zones.id_zone')
+        ->join('odor_zones', 'odor_zones.id_odor', '=', 'odors.id')
+        ->join('odor_types','odors.id_odor_type','=','odor_types.id')
+        //->whereIn('odor_zones.id_zone', $array_zones)
+        //->where('odors.verified', 0)
+        ->where($filters)
+        ->where('odor_zones.id_zone', $zone_id)
+        ->whereNull('odors.deleted_at')
+        //->orderBy('published_at', 'desc')
+        ->get();
+
+
+
+        if (count($odours)){
+            //sacar todos los zone admin
+            //$zoneAdmins = '';
+            $zoneAdmins = array();
+            
+            $users = DB::table('users')->get();
+            foreach ($users as $user){            
+                $user->belong = false;
+                $belong_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone_id)->orderBy('id', 'desc')->first();
+
+                if ($belong_zone){
+                    if ($belong_zone->deleted_at == NULL){
+                        //user belongs zone
+                        //$user->belong = true;
+                        //$zoneAdmins .= ' '.$user->email;
+                        array_push($zoneAdmins, $user->email);
+                    }
+                }                        
+            }
+
+
+            $subject = 'notification';
+            $body = 'body test'.' [type:'.$type.' annoy:'.$annoy.' zoneID:'.$zone_id.' hours:'.$hours.']';
+            
+            /*
+            $body .= '##### zoneAdmins: ';
+            
+            foreach ($zoneAdmins as $zoneAdmin) {
+                $body .= ' '.$zoneAdmin;
+            }
+            */
+
+            if ($odours){
+                $body .= '##### ODORS: '.$odours;
+            }
+
+            $email = 'vval@bifi.es';
+            $email_to_user = new Email();
+            $email_to_user->id_user = '3';//$user->id;
+            $email_to_user->email = $email;
+            $email_to_user->subject = $subject;
+            $email_to_user->body = $body;
+            //$email_to_user->save();
+            
+            //$zoneAdmins = Array("vval@bifi.es", "victorvalvesga@gmail.com");
+            //Mail::to($zoneAdmins)->send(new NotificationEmail($email_to_user));
+            Mail::to("vval@bifi.es")->send(new NotificationEmail($email_to_user));
+
+        }
+
+        return redirect()->back()->withInput()->withErrors(['success']);
     }
 }

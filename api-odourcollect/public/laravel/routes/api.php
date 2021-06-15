@@ -22,6 +22,7 @@ Route::post('/points-of-interest/list', 'PointOfInterestController@index')->name
 
 //Odor Routes
 Route::get('/odor/list', 'OdorController@index')->name('odor.index');
+Route::get('/odor/listretro', 'OdorController@retro')->name('odor.retro');
 Route::post('/odor/list', 'OdorController@index')->name('odor.index');
 Route::get('/odor/{odor}', 'OdorController@show')->name('odor.show');
 Route::get('/odor/{odor}/comments', 'OdorController@comments')->name('odor.comments');
@@ -53,7 +54,7 @@ Route::group(['middleware' => ['jwt.auth']], function() {
 
     Route::post('/odor', 'OdorController@store')->name('odor.store');
     Route::put('/odor/{odor}', 'OdorController@update')->name('odor.update');
-	Route::delete('/odor/{odor}', 'OdorController@destroy')->name('odor.destroy');
+    Route::delete('/odor/{odor}', 'OdorController@destroy')->name('odor.destroy');
     Route::get('/odor/{odor}/is-confirmed/{user}', 'OdorController@isConfirmed')->name('odor.is.confirmed');
     Route::get('/odor/{odor}/confirm/{user}', 'OdorController@confirm')->name('odor.confirm');
     Route::get('/odor/{odor}/unconfirm/{user}', 'OdorController@unconfirm')->name('odor.unconfirm');

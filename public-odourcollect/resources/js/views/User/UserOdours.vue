@@ -13,20 +13,15 @@
             </div>
 
             <div v-show="!cargador" v-else>
-                <!-- Boton route="array('odour.download')" method="GET" id="download" name="download"-->
-                <!--
-                <form id="download" action="odour.download" method="get" >    
                     <div width="50%" class="align fix-bottom">
-                        <input id="user_id" type="hidden" :value="user_id">
-                        <v-btn  class="body-2 font-weight-regular" color="#00b187" style="font" type="submit" ><p class="font-white">Download xlsx</p></v-btn>
+                        <v-btn  class="body-2 font-weight-regular" color="#00b187" style="font"  @click="downloadcsv"><p class="font-white">Download CSV</p></v-btn>
                     </div>
-                </form> -->
+                </form>
                 <li v-for="oddour in oddours">
                     <a :id="'oddour-' + oddour.id">
                         <div @click="show_marker(oddour.id)">
                             <div>
                                 <p class="font-weight-medium date">{{oddour.created_at}}</p>
-                                <p class="font-weight-regular place"><img :src="loc_icon">{{oddour.location.place}}</p>
                             </div>
                             <img class="arrow flip" :src="arrow_icon">
                         </div>
@@ -36,8 +31,6 @@
                     </v-card-actions>
                     <v-divider></v-divider>
                 </li>
-                <!-- <v-btn color="secondary" class="large-button body-2 font-weight-regular btn-delete" v-if="myauthor && login" @click="deleteOdour = true">adasdas</v-btn> -->
-
             </div>
         </ul>
         
@@ -108,11 +101,76 @@ export default {
                 }).catch(error => {
                     this.alert = true
                 });
-            }
+         },
+	downloadcsv(){
+		var vm=this;
+   		if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
+        	if( this.isLoggedIn ){
+            		//If logged in save the user name in the data
+            		var user = JSON.parse( localStorage.getItem('user') );
+            		this.name = user.name + ' ' + user.surname;
+            		this.user_id = user.id;
+            		vm.token = localStorage.getItem('auth-token');
+        	}
+
+        	var a = localStorage.language;
+
+        	//Get user odour list
+        	axios.post('../api/user/' + user.id + '/odours', {
+            		token: vm.token
+            }).then(response => {
+				var str='';
+                var points = response.data.object;
+				line= ''
+				for (var index in points[0]){
+					if (index == 'location')
+						line +='latitude,longitude,Other'
+					else{
+						line += index;
+						line +=',';
+					}
+				}
+				str += line + '\r\n';
+				for (var i = 0; i < points.length; i++) {
+        			var line = '';
+        			for (var index in points[i]) {
+            				if (line != '') line += ','
+					if(index=='location')
+						for(var subindex in points[i][index])
+							if (subindex=='longitude' || subindex=='latitude'){
+								line += points[i][index][subindex]
+								line += ','
+							}
+            				line += points[i][index];
+
+        			}
+        			str += line + '\r\n';
+    			}
+				var exportedFilename = 'export.csv';
+				console.log('here');
+    			var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
+    			if (navigator.msSaveBlob) { // IE 10+
+        			navigator.msSaveBlob(blob, exportedFilenmae);
+    			} else {
+        			var link = document.createElement("a");
+        			if (link.download !== undefined) { // feature detection
+            				// Browsers that support HTML5 download attribute
+            				var url = URL.createObjectURL(blob);
+            				link.setAttribute("href", url);
+            				link.setAttribute("download", exportedFilename);
+            				link.style.visibility = 'hidden';
+            				document.body.appendChild(link);
+           				 link.click();
+            				document.body.removeChild(link);
+        			}
+    			}		
+
+            	}).catch(error => {
+            	});
+    	},
     },
     mounted(){
         var vm = this;
-
         var element = document.getElementById("scroll");
         var top = element.offsetTop;
         window.scrollTo(0, top - 20);

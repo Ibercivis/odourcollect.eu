@@ -54,6 +54,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+	$newsletter = DB::table('newsletters')
+	->whereRaw('email="'.$user->email.'"')
+	->count();
         if($user){
 
             return response()->json(
@@ -63,6 +66,7 @@ class UserController extends Controller
                     'finded' => true,
                     'message' => "User ".$id." has been finded.",
                     'object' => $user,
+		    'newsletter' => $newsletter
                 ]
             ], 200);
 

@@ -157,6 +157,7 @@ class AuthController extends Controller
             }
 
             $user->save();
+	    $this->addOrRemoveFromNewsletter($request);
 
             return response()->json(
             [
@@ -465,5 +466,27 @@ class AuthController extends Controller
 
         return true;
     }
+    private function addOrRemoveFromNewsletter(Request $request){
+        $email = $request->get('email');
+        $accepted = $request->get('newsletter');
+
+        if($accepted){
+            $nn = Newsletter::email($email)->first();
+            if(!$nn){
+                $newsletter = new Newsletter();
+                $newsletter->email = $email;
+                $newsletter->accepted = 1;
+                $newsletter->save();
+            }
+        }
+	else{
+		DB::table('newsletters')
+		->where('email', $email)
+		->delete();
+	}
+
+        return true;
+    }
+
 
 }

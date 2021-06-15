@@ -120,6 +120,27 @@ class OdorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function retro()
+    {
+	    $odours = DB::statement('select locations.id_odor, group_concat(odor_tracks.latitude SEPARATOR '/'), group_concat(odor_tracks.longitude SEPARATOR '/'), locations.latitude , locations.longitude   from odor_tracks, locations where odor_tracks.id_odor = locations.id_odor group by locations.id_odor limit 10')
+	    ->get();
+	    return response() ->json(
+		    [
+			    'status_code' => 200,
+			    'data' => [
+				    'message' => 'OK',
+				    'content' => $odours,
+			    ]
+		    ], 200);
+
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
