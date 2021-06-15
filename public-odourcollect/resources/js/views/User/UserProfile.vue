@@ -92,8 +92,12 @@
                                     <p>MENSAJE {{delete_dialog.msg}}</p>
                                 </div>
                                     <div class="inline">                                       
-                                        <v-checkbox color="#384658" :id="'deleteData_id'" v-model="deleteData" :data="deleteData" :value="deleteData"></v-checkbox>
-                                        <label :for="'deleteData_id'">BORRAR TUS DATOS SUBIDOS </label>                                
+                                        <v-checkbox 
+						v-model="input_deleteData" 
+						@input="$v.input_deleteData.$touch()"
+						@blur= "$v.input_deleteData.$touch()"
+      						:label="$t('UPDATE_PROFILE.DELETE_ALLDATA')"
+					></v-checkbox>
                                     </div>
                             </div>
                             
@@ -101,7 +105,7 @@
 
                         <div class="apply-btn">
                             <v-divider style="margin-top: 0px;"></v-divider>
-                            <h2 class="apply" @click="delete_dialog.status = false;deleteProfile()">{{$t('UPDATE_PROFILE.AGREE')}}</h2>
+                            <h2 class="apply" @click="deleteProfile">{{$t('UPDATE_PROFILE.AGREE')}}</h2>
                         </div>
 
                         <div style="flex: 1 1 auto;"></div>
@@ -155,7 +159,7 @@
                     msg: '',
                     title: ''
                 },
-                deleteData: false,
+                input_deleteData: false,
                 close_icon: '../../../img/general/close-mini.svg',
 
             }
@@ -197,8 +201,6 @@
             //Save the new profile information
             saveProfileChanges () {
                 var vm = this;
-		console.log(vm.input_username);
-
                 axios.post('../../api/user/update/' + vm.user.id, {
                     token: vm.token,
                     username: vm.input_username,
@@ -228,14 +230,19 @@
             },
             deleteProfile(){
                 var vm = this;
-                
-                axios.post('../../api/user/delete/' + vm.user.id, {
+		var deleteData = vm.input_deleteData;
+		console.log(deleteData);
+		console.log("----");
+                axios.post('../api/user/' + vm.user.id + '/deleteAccount',  {
                     token: vm.token,
+		    dat: vm.input_deleteData,
                 }).then(response => {
-                    console.log("respuesta ok");
+                    console.log(response.data.object);
                 }).catch(error => {
-                    console.log("error al intentar borrar profile");
+                    console.log(error);
                 });
+    		vm.delete_dialog.status = false;
+
                 
             },
 	   		downloadProfile(){

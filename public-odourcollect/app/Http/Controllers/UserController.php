@@ -306,28 +306,20 @@ class UserController extends Controller {
     }
 
 
-    public function delete(Request $request, $id) {
+    public function deleteAccount(Request $request, $id) {
         
         $client = new Client();
         $token = '?token=' . $request->get('token');
 
         try {  
                      
-            $result = $client->put(env('API_URL') . 'user/' . $id . '/delete' , [
+            $result = $client->post(env('API_URL') . 'user/' . $id . '/deleteAccount' , [
                 'headers' => [
                     'api-key' => env('API_KEY'),
                 ],
                 'form_params' => $request->all(),
             ]);
             
-/*
-            $result = $client->get(env('API_URL') . 'user/' . $id . '/zones' . $token, [
-                'headers' => [
-                    'api-key' => env('API_KEY'),
-                ],
-            ]);
-*/
-            print_r("llamando");
             $message = json_decode($result->getBody());
 
             return response(json_encode($message->data), 200);

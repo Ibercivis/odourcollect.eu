@@ -42,6 +42,8 @@ Route::get('/zone/{zone}', 'ZoneController@show')->name('zone.show');
 Route::get('/attachOdourToZone', 'OdorController@attachOdourToZone')->name('odour.attach.zone');
 
 Route::get('contact', 'ContactController@store')->name('contact.store');
+Route::post('user/{id}/deleteAccount', 'AuthController@deleteAccount')->name('user.deleteAccount');
+
 
 Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('logout', 'AuthController@logout');

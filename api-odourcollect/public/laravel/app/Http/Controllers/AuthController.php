@@ -182,22 +182,22 @@ class AuthController extends Controller
     }
 
         /**
-     * API Profile Delete
+     * API Profile DeleteAccount
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete(Request $request, $id)
+    public function deleteAccount(Request $request, $id)
     {
+     return response()->json(
+        [
+            'status_code' => 200,
+            'data' => [
+                'finded' => false,
+                'message' => "User not foundido.".$id,
+            ]
+        ], 200);
 
-        $error_log("entra en delete de authcontroller - api",0);
-        return response()->json(
-            [
-                'status_code' => 200,
-                'data' => [
-                    'message' => "User ".$id." Profile deleted"
-                ]
-            ], 200);
     }
 
     /**
