@@ -1353,7 +1353,6 @@
                 var maxAnnoy = annoy[1];
                 var minIntensity = intensity[0];
                 var maxIntensity = intensity[1];
-
                 var temp_date_init=this.date_init;
                 if(!temp_date_init){
                     temp_date_init = "2000-01-01 00:00:01";
@@ -1371,8 +1370,8 @@
                     maxAnnoy: maxAnnoy,
                     minIntensity: minIntensity,
                     maxIntensity: maxIntensity,
-                    date_init: moment(temp_date_init).format('YYYY-MM-DD H:mm:ss'),
-                    date_end: moment(temp_date_end).format('YYYY-MM-DD H:mm:ss')
+                    date_init: moment(temp_date_init).format('YYYY-MM-DD'),
+                    date_end: moment(temp_date_end).format('YYYY-MM-DD')
                     }).then(response => {
                         var points = response.data.content;
 						
