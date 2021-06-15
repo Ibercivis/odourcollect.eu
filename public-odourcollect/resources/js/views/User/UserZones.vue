@@ -15,8 +15,8 @@
 
             <div v-show="!cargador" v-else>
                 <li v-for="zone in zones">
-                    <a :id="'zone-' + zone.id">
-                        <div @click="show_zone(zone.id)">
+                    <a :id="'zone-' + zone.id_zone">
+                        <div @click="show_zone(zone.id_zone)">
                             <p class="font-weight-medium title">{{zone.name}}</p>
                             <img class="arrow flip" :src="arrow_icon">
                         </div>
@@ -66,12 +66,15 @@ export default {
             token: token
         }).then(response => {
             var data = response.data.object;
-
+            console.log("e tra aqui");
+            console.log(data);
             if (data !== null){
                 //Cargar la informacion
                 data.forEach(function (point){
                     vm.zones.push(point);
                 });
+                console.log("----");
+                console.log(data);
             }
             vm.cargador = false;
 

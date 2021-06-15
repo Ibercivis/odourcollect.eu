@@ -52,7 +52,6 @@ export default {
           6: 'Urban',
           7: 'Nice odours',
           8: 'Other',
-          8: 'Other',
           9: 'No Odour'
       },
       SUBTYPE: {

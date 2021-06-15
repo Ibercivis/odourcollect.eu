@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\LocationController;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Odor;
 use App\Location;
 use App\User;
@@ -123,13 +123,22 @@ class UserController extends Controller
      */
     public function zones($id)
     {
-        $user = User::with('zones')->find($id);
-        if($user){
+        //$user = User::with('zones')->find($id);//->where('user_zones.deleted_at',  NULL)->get(); ->whereNull('user_zones.deleted_at')
+        //$user = Zone::where('deleted_at',"NULL")->where('id_user',$id)->get();
 
-            if( count( $user->zones ) > 0){
+        $user_zones = DB::table('zones')
+        ->join('user_zones','zones.id','=','id_zone')
+        ->where('id_user', '=', $id)
+        ->whereNull('user_zones.deleted_at')
+        ->get();
 
-                foreach ($user->zones as $key => $zone) {
-                    $points = Point::zone($zone->id)->get();
+        if($user_zones){
+
+            if( count( $user_zones ) > 0){
+
+                
+                foreach ($user_zones as $key => $zone) {
+                    $points = Point::zone($zone->id_zone)->get();
                     $zone->points = $points;
                 }
 
@@ -138,7 +147,7 @@ class UserController extends Controller
                     'status_code' => 200,
                     'data' => [
                         'message' => "User ".$id." Zones finded.",
-                        'object' => $user->zones,
+                        'object' => $user_zones,
                     ]
                 ], 200);
             }else{
