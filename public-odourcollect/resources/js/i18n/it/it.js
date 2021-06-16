@@ -510,6 +510,13 @@ export default {
     "<p> Il nostro sito web utilizza i cookie, come quasi tutti i siti web, per aiutarti a fornirti la migliore esperienza possibile. </p>" +
     "<p> I cookie sono piccoli file di testo che vengono automaticamente inseriti sul tuo computer o dispositivo mobile quando visiti quasi tutti i siti web. Vengono memorizzati dal tuo browser Internet. I cookie contengono informazioni di base sul tuo utilizzo di Internet, ma normalmente non ti identificano personalmente. Il tuo browser invia questi cookie al sito ogni volta che lo visiti nuovamente, in modo che possa riconoscere il tuo computer o dispositivo mobile e personalizzarlo di conseguenza per migliorare la tua esperienza sul sito. </p> "+
     "<p> Utilizziamo alcuni cookie necessari per aiutarti ad accedere e spostarti nei nostri siti e utilizzare tutte le sue funzionalità. Senza questi cookie, i nostri siti Web non funzionerebbero correttamente e non potresti utilizzare alcune importanti funzionalità. Inoltre, utilizza i cookie per aiutarci a capire come viene utilizzato il nostro sito Web e come possiamo migliorare la tua esperienza su di esso. Questo ci fornisce informazioni anonime per aiutarci a capire quali parti del nostro sito sono di maggiore interesse per i nostri visitatori e monitorare come i nostri visitatori raggiungono us. Questi cookie sono comunemente denominati cookie di 'analisi' e 'prestazioni'. </p> "+
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p> Prendiamo la tua risposta al messaggio pop-up che viene visualizzato sul nostro sito web e l'uso continuo del nostro sito web come tuo consenso. Se lo desideri, puoi disabilitare alcuni cookie non essenziali che verranno bloccati durante la tua navigazione sul nostro sito web, modificando le impostazioni dei cookie del tuo browser. </p> "+
     "<h3> Scopo </h3>" +
     "<p> I tuoi dati personali verranno utilizzati solo per: </p>" +

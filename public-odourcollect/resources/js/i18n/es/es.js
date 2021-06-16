@@ -508,6 +508,13 @@ export default {
     "<p>Nuestro sitio web utiliza cookies, como lo hacen casi todos los sitios web, para ayudarlo a brindarle la mejor experiencia posible.</p>" +
     "<p>Las cookies son pequeños archivos de texto que se colocan automáticamente en su computadora o dispositivo móvil cuando visita casi cualquier sitio web. Se almacenan en su navegador de Internet. Las cookies contienen información básica sobre su uso de Internet, pero normalmente no lo identifican personalmente. Su navegador envía estas cookies al sitio cada vez que lo vuelve a visitar, para que pueda reconocer su computadora o dispositivo móvil y personalizarlo en consecuencia para mejorar su experiencia en el sitio.</p>" +
     "<p>Usamos algunas cookies que son necesarias para ayudarlo a acceder y moverse por nuestros sitios y utilizar todas sus funciones. Sin estas cookies, nuestros sitios web no funcionarían correctamente y usted no podría utilizar ciertas funciones importantes. También utilizamos cookies para ayudarnos a comprender cómo se utiliza nuestro sitio web y cómo podemos mejorar su experiencia en él. Esto nos proporciona información anónima para ayudarnos a comprender qué partes de nuestro sitio son de mayor interés para nuestros visitantes y monitorear cómo nos llegan. Estas cookies se denominan comúnmente cookies de 'análisis' y 'rendimiento'.</p>" +
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p>Tomamos su respuesta al mensaje emergente que se muestra en nuestro sitio web, y el uso continuo de nuestro sitio web, como su consentimiento. Si lo desea, puede desactivar ciertas cookies no esenciales que se bloquearán durante su navegación en nuestro sitio web, cambiando la configuración de cookies de su navegador.</p>" +
     "<h3>Propósito</h3>" +
     "<p>Tus datos personales serán utilizados sólo para:</p>" +

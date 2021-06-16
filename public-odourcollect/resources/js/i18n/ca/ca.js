@@ -507,6 +507,13 @@ export default {
     "<p> El nostre lloc web utilitza galetes, com fan gairebé tots els llocs web, per ajudar-vos a proporcionar la millor experiència possible. </p>" +
     "<p> Les galetes són petits fitxers de text que es col·loquen automàticament al vostre ordinador o dispositiu mòbil quan visiteu gairebé qualsevol lloc web. Les emmagatzema el navegador d'Internet. Les galetes contenen informació bàsica sobre el vostre ús d'Internet, però normalment no us identifiquen personalment. El vostre navegador envia aquestes cookies al lloc cada vegada que el torneu a visitar, de manera que pugui reconèixer el vostre equip o dispositiu mòbil i personalitzar-lo en conseqüència per millorar la vostra experiència al lloc. </p> "+
     "<p> Utilitzem algunes cookies necessàries per ajudar-vos a accedir i moure's pels nostres llocs i utilitzar totes les seves funcions. Sense aquestes cookies, els nostres llocs web no funcionarien correctament i no podríeu utilitzar certes funcions importants. També utilitzeu galetes per ajudar-nos a entendre com s’utilitza el nostre lloc web i com podem millorar la vostra experiència al respecte. Això ens proporciona informació anònima per ajudar-nos a comprendre quines parts del nostre lloc són d’interès més per als nostres visitants i controlar com arriben els nostres visitants nosaltres. Aquestes galetes es coneixen habitualment com a galetes 'Analytics' i 'Performance'. </p> "+
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p> Acceptem la vostra resposta al missatge emergent que es mostra al nostre lloc web i a l'ús continuat del nostre lloc web, segons el vostre consentiment. Si ho desitgeu, podeu desactivar determinades cookies no essencials que es bloquejaran durant la vostra navegació al nostre lloc web, canviant la configuració de cookies del navegador. </p> "+
     "<h3> Propòsit </h3>" +
     "<p> Les vostres dades personals només s'utilitzaran per a: </p>" +

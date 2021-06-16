@@ -511,6 +511,13 @@ export default {
     "<p>Our website use cookies, as almost all websites do, to help provide you with the best experience we can.</p>" +
     "<p>Cookies are small text files that are automatically placed on your computer or mobile device when you visit almost any website. They are stored by your internet browser. Cookies contain basic information about your internet use, but they do not normally identify you personally. Your browser sends these cookies back to the site every time you revisit it, so it can recognise your computer or mobile device and personalise it accordingly to improve your site experience.</p>" +
     "<p>We use some cookies which are necessary to help you access and move around our sites and use all its features. Without these cookies, our websites would not work properly and you would not be able to use certain important features. We also use cookies to help us understand how our website is being used and how we can improve your experience on it. This provides us with anonymous information to help us understand which parts of our site are of most interest to our visitors and monitor how our visitors reach us. These cookies are commonly referred to as ‘Analytics’ and ‘Performance’ cookies.</p>" +
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p>We take your answer to the pop-up message which displays on our website, and the continuous use of our website, as your consent. Should you wish so, you can disable certain non-essential cookies which will be blocked during your navigation on our website, by changing your browser’s cookie setting.</p>" +
     "<h3>Purpose</h3>" +
     "<p>Your personal data will be used only for:</p>" +

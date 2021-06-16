@@ -507,6 +507,13 @@ export default {
     "<p> Nosso site usa cookies, como quase todos os sites, para ajudar a fornecer a você a melhor experiência possível. </p>" +
     "<p> Cookies são pequenos arquivos de texto que são colocados automaticamente no seu computador ou dispositivo móvel quando você visita quase qualquer site da Web. Eles são armazenados pelo seu navegador da Internet. Os cookies contêm informações básicas sobre o seu uso da Internet, mas normalmente não o identificam pessoalmente. Seu navegador envia esses cookies de volta ao site sempre que você o visita novamente, para que ele possa reconhecer seu computador ou dispositivo móvel e personalizá-lo de acordo para melhorar sua experiência no site. </p> "+
     "<p> Usamos alguns cookies que são necessários para ajudá-lo a acessar e navegar em nossos sites e usar todos os seus recursos. Sem esses cookies, nossos sites não funcionariam corretamente e você não seria capaz de usar alguns recursos importantes. Nós também use cookies para nos ajudar a entender como nosso site está sendo usado e como podemos melhorar sua experiência nele. Isso nos fornece informações anônimas para nos ajudar a entender quais partes de nosso site são de maior interesse para nossos visitantes e monitorar como nossos visitantes chegam nós. Esses cookies são comumente chamados de cookies 'Analytics' e 'Desempenho'. </p> "+
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p> Aceitamos a sua resposta à mensagem pop-up que aparece no nosso site e ao uso contínuo do mesmo, como seu consentimento. Se desejar, você pode desativar alguns cookies não essenciais que serão bloqueados durante sua navegação em nosso site, alterando a configuração de cookies do seu navegador. </p> "+
     "<h3> Objetivo </h3>" +
     "<p> Seus dados pessoais serão usados ​​apenas para: </p>" +

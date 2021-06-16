@@ -510,6 +510,13 @@ export default {
     "<p>Unsere Website verwendet wie fast alle Websites Cookies, um Ihnen die bestmögliche Erfahrung zu bieten.</p>" +
     "<p>Cookies sind kleine Textdateien, die automatisch auf Ihrem Computer oder Mobilgerät abgelegt werden, wenn Sie fast jede Website besuchen. Sie werden von Ihrem Internetbrowser gespeichert. Cookies enthalten grundlegende Informationen zu Ihrer Internetnutzung, identifizieren Sie jedoch normalerweise nicht persönlich. Ihr Browser sendet diese Cookies bei jedem erneuten Besuch an die Website zurück, damit er Ihren Computer oder Ihr Mobilgerät erkennen und entsprechend personalisieren kann, um Ihre Website-Erfahrung zu verbessern.</p>" +
     "<p>Wir verwenden einige Cookies, die erforderlich sind, damit Sie auf unsere Websites zugreifen, sich darin bewegen und alle Funktionen nutzen können. Ohne diese Cookies würden unsere Websites nicht ordnungsgemäß funktionieren und Sie könnten bestimmte wichtige Funktionen nicht nutzen. Wir verwenden auch Cookies, um zu verstehen, wie unsere Website verwendet wird und wie wir Ihre Erfahrungen damit verbessern können. Auf diese Weise erhalten wir anonyme Informationen, die uns helfen, zu verstehen, welche Teile unserer Website für unsere Besucher am interessantesten sind, und zu überwachen, wie unsere Besucher uns erreichen. Diese Cookies werden üblicherweise als 'Analytics' - und 'Performance' -Cookies bezeichnet.</p>" +
+    "<table>"+
+    "<tr><td>&nbsp;Cookie&nbsp;</td><td>&nbspType&nbsp   </td><td>&nbsp;Age&nbsp;</td><td>&nbsp;Explanation&nbsp;</td></tr>" +
+    "<tr><td>_ga               </td><td>&nbsp;Request          </td><td>&nbsp;2 years        </td><td>Google analytics</td></tr>" +
+    "<tr><td>_gid              </td><td>&nbsp;Request          </td><td>&nbsp;24 Hours&nbsp;       </td><td>Google analytics</td></tr>" +
+    "<tr><td>XSRF_TOKEN        </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Token to keep session</td></tr>" +
+    "<tr><td>laravel_session   </td><td>&nbsp;Request, Response&nbsp;</td><td>&nbsp;2 hours        </td><td>Laravel</td></tr>" +
+    "</table><br/>"+
     "<p>Wir nehmen Ihre Antwort auf die Popup-Nachricht, die auf unserer Website angezeigt wird, und die kontinuierliche Nutzung unserer Website als Ihre Zustimmung. Wenn Sie dies wünschen, können Sie bestimmte nicht wesentliche Cookies deaktivieren, die während Ihrer Navigation auf unserer Website blockiert werden, indem Sie die Cookie-Einstellung Ihres Browsers ändern.</p>" +
     "<h3>Zweck</h3>" +
     "<p>Ihre personenbezogenen Daten werden nur für folgende Zwecke verwendet:</p>" +
