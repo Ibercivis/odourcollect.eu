@@ -170,6 +170,8 @@ export default {
     PERSONAL_DATA: 'el Documento de Información Voluntaria sobre la Protección de Datos Personales',
     ETHICAL: 'el Documento de Información Voluntaria sobre Cuestiones Humanas y Otras Cuestiones Éticas',
     NEWSLETTER: 'Acepto recibir información y comunicaciones de OdourCollect',
+    DELETE_TITLE: 'Be careful!, you are going to delete your profile. This can not be undone',
+    DELETE_ALLDATA: 'Your contributions are very useful. But you can still delete them by selecting this',
     ERROR_CONDITIONS: 'Debes leer y aceptar los Términos y Condiciones',
     ERROR_PERSONAL: 'Debes leer y aceptar el Documento de Información Voluntaria sobre la Protección de Datos Personales',
     ERROR_ETHIC: 'Debes leer y aceptar el Documento de Información Voluntaria sobre Cuestiones Humanas y Otras Cuestiones Éticas',

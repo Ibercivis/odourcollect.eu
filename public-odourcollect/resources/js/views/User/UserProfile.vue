@@ -80,7 +80,7 @@
                 <v-dialog v-model="delete_dialog.status" transition="dialog-bottom-transition" scrollable>
                     <v-card flat>
 
-                        <h2 color="primary" class="subheading font-weight-medium title">{{delete_dialog.title}}
+                        <h2 color="primary" class="subheading font-weight-medium title">{{$t('UPDATE_PROFILE.DELETE')}}
                             <div class="info-close" @click="delete_dialog.status = false"><img :src="close_icon"></div>
                         </h2>
 
@@ -89,7 +89,7 @@
                         <v-card-text style="padding-top: 60px;padding-bottom: 100px;">
                             <div class="apply-btn">
                                 <div class="apply-btn map">
-                                    <p>MENSAJE {{delete_dialog.msg}}</p>
+                                    <p>{{$t('UPDATE_PROFILE.DELETE_TITLE')}}</p>
                                 </div>
                                     <div class="inline">                                       
                                         <v-checkbox 
@@ -230,23 +230,27 @@
             },
             deleteProfile(){
                 var vm = this;
-		var deleteData = vm.input_deleteData;
-		console.log(deleteData);
-		console.log("----");
+		        var deleteData = vm.input_deleteData;
                 axios.post('../api/user/' + vm.user.id + '/deleteAccount',  {
                     token: vm.token,
-		    dat: vm.input_deleteData,
-                }).then(response => {
-                    console.log(response.data.object);
-                }).catch(error => {
-                    console.log(error);
+		            dat: vm.input_deleteData,
+                    }).then(response => {
+                        vm.delete_dialog.status = false;
+                        this.logout();
+                    }).catch(error => {
                 });
-    		vm.delete_dialog.status = false;
-
-                
+    		},
+            logout(){
+                localStorage.removeItem('user');
+                localStorage.removeItem('auth-token');
+                this.$store.commit('token', null);
+                this.$store.commit('user', null);
+                this.isLoggedIn = null;
+                this.drawerRight = false;
+                this.create_odours = false;
+                location.reload();
             },
 	   		downloadProfile(){
-		   		console.log('downloadProfile');
 				var vm = this;
 				if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
             	if( this.isLoggedIn ){
@@ -254,7 +258,6 @@
                 	vm.user = JSON.parse( localStorage.getItem('user') );
                 	vm.token = localStorage.getItem('auth-token');
             	}
-				console.log(this)
     			//Get the user information
             	axios.post('../../api/user/' + vm.user.id, {
                 	token: vm.token
@@ -292,7 +295,6 @@
         				}
     				}		
             	}).catch(error => {
-						console.log(error);
             	});
 
 	   		},
@@ -341,7 +343,6 @@
         			str += line + '\r\n';
     			}
 				var exportedFilename = 'export.csv';
-				console.log('here');
     			var blob = new Blob([str], { type: 'text/csv;charset=utf-8;' });
     			if (navigator.msSaveBlob) { // IE 10+
         			navigator.msSaveBlob(blob, exportedFilenmae);

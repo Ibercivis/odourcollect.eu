@@ -308,17 +308,25 @@ class ZoneController extends Controller
     public function sendEmail(Request $request)
     {
         // Recoger parametros
-        $type = $request->get('type');
+        //$type = $request->get('type[]');
+        $type = array();
+        foreach($request->get('type') as $type_temp){
+            array_push($type, $type_temp);
+        }
         $annoy = $request->get('annoy');
         $zone_id = $request->get('zone_id');
         $hours = $request->get('hours');
+        $number_observations = $request->get('number_observations');
+        $min_intensity = $request->get('min_intensity');
+        $max_intensity = $request->get('max_intensity');
 
         $filters = [];
 
+        /*
         if($type){
             $filters[ 'id_odor_parent_type']= $type;
         }
-
+        */
         if($annoy){
             $filters[ 'id_odor_annoy']= $annoy;
         }
@@ -337,13 +345,14 @@ class ZoneController extends Controller
         //->whereIn('odor_zones.id_zone', $array_zones)
         //->where('odors.verified', 0)
         ->where($filters)
+        ->whereIn('id_odor_parent_type', $type)
         ->where('odor_zones.id_zone', $zone_id)
         ->whereNull('odors.deleted_at')
         //->orderBy('published_at', 'desc')
         ->get();
 
-
-
+        
+        //$odours =["1","2"];
         if (count($odours)){
             //sacar todos los zone admin
             //$zoneAdmins = '';
@@ -366,7 +375,7 @@ class ZoneController extends Controller
 
 
             $subject = 'notification';
-            $body = 'body test'.' [type:'.$type.' annoy:'.$annoy.' zoneID:'.$zone_id.' hours:'.$hours.']';
+            $body = 'body test'.' [type:'.implode("|",$type).' annoy:'.$annoy.' zoneID:'.$zone_id.' hours:'.$hours.'.'.' min_intensity:'.$min_intensity.'number_observations:'. $number_observations.']';
             
             /*
             $body .= '##### zoneAdmins: ';

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Newsletter;
+use App\Odor;
 use JWTAuth;
 
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -189,12 +190,30 @@ class AuthController extends Controller
      */
     public function deleteAccount(Request $request, $id)
     {
+        $delete_contributions = $request->get('dat');
+        if($delete_contributions){
+            $odors= DB::table('odors')
+            ->select('id')
+            ->whereRaw('id_user='.$id)
+            ->delete();
+        }
+        else{
+            DB::table('odors')
+            ->select('id')
+            ->whereRaw('id_user='.$id)
+            ->update(array('id_user' => '11'));
+        }
+        DB::table('users')
+        ->select('id')
+        ->whereRaw('id='.$id)
+        ->delete();
+
      return response()->json(
         [
             'status_code' => 200,
             'data' => [
                 'finded' => false,
-                'message' => "User not foundido.".$id,
+                'message' => "User not foundido."
             ]
         ], 200);
 

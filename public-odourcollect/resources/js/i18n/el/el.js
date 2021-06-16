@@ -314,6 +314,8 @@ export default {
 	  DOWNLOAD_PROFILE: 'Download personal data',
 	  DOWNLOAD_CONTRIBUTIONS: 'Download contributions',
       NEWSLETTER: 'Subscribed to newsletter',
+      DELETE_TITLE: 'Be careful!, you are going to delete your profile. This can not be undone',
+      DELETE_ALLDATA: 'Your contributions are very useful. But you can still delete them by selecting this',
       UPDATE: 'Ενημέρωση κωδικού πρόσβασης',
       AGREE: 'OK',
       USERNAME: 'Όνομα χρήστη',

@@ -134,22 +134,18 @@
                                     @if(Auth::guard('web')->check())                                
                                         {!! Form::model(Request::all(), ['route' => array('odour.list'), 'method' => 'GET', 'id' => 'list_form', 'class' => 'navbar-form navbar-left']) !!}
                                         <li>Odor type list selection</li>
-                                        {!! Form::select('type', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'type']) !!}
-                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'annoy']) !!}
-                                        
-                                        {!! Form::close() !!}
-                                        @else                                        
+                                        {!! Form::select('type[]', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'multiple'=>'multiple', 'id' => 'type']) !!}
+                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'id' => 'annoy']) !!}                                        
+                                    @else                                        
                                         {!! Form::model(Request::all(), ['route' => array('admin.odour.list'), 'method' => 'GET', 'id' => 'list_form', 'class' => 'navbar-form navbar-left']) !!}
                                         <li>Odor type list selection</li>
-                                        {!! Form::select('type', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'type']) !!}
+                                        {!! Form::select('type[]', [null => 'Type'] + $types->pluck('name', 'id')->all(), null, [ 'multiple'=>'multiple', 'id' => 'type']) !!}
                                         <li>Hedonic tone</li>
-                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'onchange' => 'alert("change")', 'id' => 'annoy']) !!}
-                                        
-                                        {!! Form::close() !!}
+                                        {!! Form::select('annoy', [null => 'Nice/foul'] + $annoys->pluck('name', 'id')->all(), null, ['class' => 'form-control', 'id' => 'annoy']) !!}                                                                                
                                     @endif
                                     <li>Intensity</li>
-                                        Min: {{Form::number('name', 0,['min'=>1,'max'=>5])}}
-                                        Max: {{Form::number('name', 5,['min'=>1,'max'=>5])}}
+                                        Min: {{Form::number('min_intensity', '',['min'=>1,'max'=>5])}}
+                                        Max: {{Form::number('max_intensity', '',['min'=>1,'max'=>5])}}
                                     <div style="width: 90%;">
                                         <input style="margin-left: 88%;" id="updatenotification" type="button" class="btn btn-primary" value="Update">
                                     </div>
