@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Email;
+use App\NotificationEmailModel;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -13,16 +13,16 @@ class NotificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $zone;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Email $user)
+    public function __construct(NotificationEmailModel $zone)
     {
-        $this->user = $user;
+        $this->zone = $zone;
     }
 
     /**
@@ -32,6 +32,6 @@ class NotificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->user->subject)->view('emails.zone_notification', ['user' => $this->user]);
+        return $this->subject($this->zone->subject)->view('emails.zone_notification', ['zone' => $this->zone]);
     }
 }

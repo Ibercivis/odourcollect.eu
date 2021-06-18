@@ -18,6 +18,7 @@ Route::prefix('admin')->group(function() {
 	Route::get('/zone/{id}/add/{user}', 'ZoneController@addUser')->name('admin.zone.add.user')->middleware('auth:admin');
 	Route::get('/zone/active/{id}/', 'ZoneController@active')->name('admin.zone.active')->middleware('auth:admin');
 	Route::post('/sendNotificationEmail', 'ZoneController@sendEmail')->name('admin.zone.send.email')->middleware('auth:admin');
+	Route::get('/zone/{id}/deleteNotificationZone', 'ZoneController@deleteNotificationZone')->name('admin.zone.delete.notification')->middleware('auth:admin');
 
 	Route::resource('/zone', 'ZoneController');
 

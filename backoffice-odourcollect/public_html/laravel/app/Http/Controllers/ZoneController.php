@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Email;
+use App\NotificationEmailModel;
 use App\PointOfInterestZone;
 use App\UserZone;
 use App\OdorParentType;
 use App\OdorAnnoy;
+use App\NotificationZone;
+use App\NotificationZoneOdourType;
 use App\Mail\NotificationEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +22,7 @@ use App\Classes\ZonesClass;
 use App\Services\ZoneSlug;
 use Auth;
 use Illuminate\Support\Facades\Mail;
-
+use Carbon\Carbon;
 
 class ZoneController extends Controller
 {
@@ -132,7 +134,19 @@ class ZoneController extends Controller
             }
         }
 
-        return view('zones.show' , ['users' => $users, 'zone' => $zone, 'success' => false, 'types' => $types, 'annoys' => $annoys]);
+        $notification_zone = NotificationZone::where('zone_id', $id)->first();
+        if($notification_zone){
+            $odourTypes = NotificationZoneOdourType::where('id_notification_zone', $notification_zone->id)->select("id_odour_type")->get();
+            $auxiliar_array = [];
+            foreach($odourTypes as $row){
+                $auxiliar_array[] = $row->id_odour_type;
+            }
+            $notification_zone->types = $auxiliar_array;
+        }else{
+            $notification_zone = new NotificationZone();
+        }
+
+        return view('zones.show' , ['users' => $users, 'zone' => $zone, 'success' => false, 'types' => $types, 'annoys' => $annoys, 'notification_zone' => $notification_zone]);
     }
 
 
@@ -307,102 +321,99 @@ class ZoneController extends Controller
      */
     public function sendEmail(Request $request)
     {
-        // Recoger parametros
-        //$type = $request->get('type[]');
+
         $type = array();
-        foreach($request->get('type') as $type_temp){
-            array_push($type, $type_temp);
-        }
-        $annoy = $request->get('annoy');
+
         $zone_id = $request->get('zone_id');
         $hours = $request->get('hours');
         $number_observations = $request->get('number_observations');
+        $min_hedonic_tone = $request->get('min_hedonic_tone');
+        $max_hedonic_tone = $request->get('max_hedonic_tone');
         $min_intensity = $request->get('min_intensity');
         $max_intensity = $request->get('max_intensity');
 
-        $filters = [];
 
-        /*
-        if($type){
-            $filters[ 'id_odor_parent_type']= $type;
+        $notification_zone = NotificationZone::where('zone_id', $zone_id)->first();
+        if ($notification_zone === null) {
+            $notification_zone = new NotificationZone();
+        }        
+        $notification_zone->zone_id = $zone_id;
+        $notification_zone->number_observations = $number_observations;
+        $notification_zone->hours = $hours;
+        $notification_zone->min_hedonic_tone = $min_hedonic_tone;
+        $notification_zone->max_hedonic_tone = $max_hedonic_tone;
+        $notification_zone->min_intensity = $min_intensity;
+        $notification_zone->max_intensity = $max_intensity;
+        $notification_zone->save();
+
+        $notificationZoneOdourType = NotificationZoneOdourType::where('id_notification_zone', $notification_zone->id)->delete();
+        foreach($request->get('type') as $type_temp){
+            array_push($type, $type_temp);
+            $notificationZoneOdourType = new NotificationZoneOdourType();
+            $notificationZoneOdourType->id_odour_type = $type_temp;
+            $notificationZoneOdourType->id_notification_zone = $notification_zone->id;
+            $notificationZoneOdourType->save();
         }
-        */
-        if($annoy){
-            $filters[ 'id_odor_annoy']= $annoy;
-        }
 
-        //Crear registro Notificacion /update
-
-
-        //consulta zone with type, annoy...
-        //$ZonesClass = new ZonesClass();
-        //$array_zones = $ZonesClass->ArrayZones();
-        
-        $odours = DB::table('odors')
-        //->select('odors.*', 'odor_zones.id_zone')
+        $odours = DB::table('odors')        
         ->join('odor_zones', 'odor_zones.id_odor', '=', 'odors.id')
         ->join('odor_types','odors.id_odor_type','=','odor_types.id')
-        //->whereIn('odor_zones.id_zone', $array_zones)
-        //->where('odors.verified', 0)
-        ->where($filters)
-        ->whereIn('id_odor_parent_type', $type)
         ->where('odor_zones.id_zone', $zone_id)
+        ->whereIn('id_odor_parent_type', $type)        
+        ->where('id_odor_intensity', '>=', ($min_intensity + 1)) //id=1 power=0
+        ->where('id_odor_intensity', '<=', ($max_intensity + 1)) 
+        ->where('id_odor_annoy', '>=', ($min_hedonic_tone + 5)) //id=1 index=-4
+        ->where('id_odor_annoy', '<=', ($max_hedonic_tone + 5))
         ->whereNull('odors.deleted_at')
-        //->orderBy('published_at', 'desc')
+        ->where('odors.created_at', '>', Carbon::now()->subHours($hours)->toDateTimeString() )
+        ->where('status', '=', "published")
+        ->where('odors.verified', '=', 1)
         ->get();
 
         
-        //$odours =["1","2"];
-        if (count($odours)){
-            //sacar todos los zone admin
-            //$zoneAdmins = '';
+        if (count($odours) >= $number_observations){    
             $zoneAdmins = array();
             
             $users = DB::table('users')->get();
             foreach ($users as $user){            
                 $user->belong = false;
                 $belong_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone_id)->orderBy('id', 'desc')->first();
-
                 if ($belong_zone){
                     if ($belong_zone->deleted_at == NULL){
-                        //user belongs zone
-                        //$user->belong = true;
-                        //$zoneAdmins .= ' '.$user->email;
                         array_push($zoneAdmins, $user->email);
                     }
                 }                        
             }
 
 
-            $subject = 'notification';
-            $body = 'body test'.' [type:'.implode("|",$type).' annoy:'.$annoy.' zoneID:'.$zone_id.' hours:'.$hours.'.'.' min_intensity:'.$min_intensity.'number_observations:'. $number_observations.']';
+            $subject = 'Zone notification';
+            $body = $odours;
             
-            /*
-            $body .= '##### zoneAdmins: ';
-            
-            foreach ($zoneAdmins as $zoneAdmin) {
-                $body .= ' '.$zoneAdmin;
-            }
-            */
-
-            if ($odours){
-                $body .= '##### ODORS: '.$odours;
-            }
-
-            $email = 'vval@bifi.es';
-            $email_to_user = new Email();
-            $email_to_user->id_user = '3';//$user->id;
-            $email_to_user->email = $email;
+            $email_to_user = new NotificationEmailModel();
+            $email_to_user->zone_id = $zone_id;
             $email_to_user->subject = $subject;
             $email_to_user->body = $body;
-            //$email_to_user->save();
-            
-            //$zoneAdmins = Array("vval@bifi.es", "victorvalvesga@gmail.com");
-            //Mail::to($zoneAdmins)->send(new NotificationEmail($email_to_user));
-            Mail::to("vval@bifi.es")->send(new NotificationEmail($email_to_user));
+
+            Mail::to($zoneAdmins)->send(new NotificationEmail($email_to_user));       
 
         }
 
         return redirect()->back()->withInput()->withErrors(['success']);
     }
+
+     /**
+     * Delete notification zone
+     */
+    public function deleteNotificationZone($id)
+    {
+        $notificationZone = NotificationZone::where('zone_id', $id)->first();
+        //$notificationZone = DB::table('notification_zones')->where('zone_id', $id)->first();
+        if($notificationZone){
+            $odourTypes = NotificationZoneOdourType::where('id_notification_zone', $notificationZone->id)->delete();
+            $notificationZone->delete();
+        }
+
+        return redirect()->back()->withInput()->withErrors(['success']);
+    }
+    
 }

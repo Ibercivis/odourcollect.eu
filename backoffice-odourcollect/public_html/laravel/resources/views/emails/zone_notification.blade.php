@@ -33,34 +33,18 @@
 </head>
 
 <body style="margin:0; padding:0; background-color:#FFFFFF;" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-    <center>
-        <table align="center" cellpadding="0" cellspacing="0" width="100%" height="100%" style="border-collapse:collapse;">
-            <tbody>
-            <tr>
-                <td valign="top" align="center">
-                    <table cellpadding="0" cellspacing="0" width="600" style="border-collapse:collapse;padding:30px;">
-                        <tbody>
-                            <tr>
-                                <td valign="top" align="center">
-                                    <p style="text-align:center;">
-                                        <img src="https://api.odourcollect.eu//img/logo.png" alt="OdourCollect">
-                                    </p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style="padding:20px 50px;margin:10px 0; text-align:center;">
-                                    <p>Prueba</p>
-                                    <p>{{$user->body}}</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </center>
+    <p>You are receiving this email because there have been changes in a zone in which you are zoneAdmin.</p>
+    <p>Zone {{$zone->zone_id}}</p>
+    <p>There are new observations:</p>
+    <ul>
+    <?php 
+        $odours = $zone->body;
+        for ($i = 0; $i < count($odours); $i++) {
+            echo '<li>'.$odours[$i]->id_odor.'</li>';
+        }
+    ?>
+    </ul>
+   
 </body>
 
 </html>
