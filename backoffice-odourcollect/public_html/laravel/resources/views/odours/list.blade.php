@@ -225,7 +225,7 @@
                                                         {!! Form::open(['route' => 'odour.update.status', 'method' => 'POST', 'id' => 'updateOdourStatus', 'class' => '']) !!}
                                                             <input type="hidden" id="odour_id" name="odour_id" value="{{$odour->id_odor}}">
                                                             <input type="hidden" id="status" value="off"  name="status">
-                                                            <input type="submit" class="btn-primary" value="Unverified" style="margin:0px">
+                                                            <input type="submit" class="btn-primary" value="Unverify" style="margin:0px">
                                                         {!! Form::close() !!}
                                                 @else
                                                 
