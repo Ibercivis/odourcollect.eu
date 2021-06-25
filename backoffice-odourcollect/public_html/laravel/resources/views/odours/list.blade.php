@@ -78,7 +78,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="menu">
+<!--                                     <div class="menu">
                                         <form id="maps_radio">
                                             <div class="dropdown">
                                                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,7 +100,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
                                     <div id='map' style='width: 100%; height: 500px; z-index: 1'></div>
                                 </div>
                             </div>
@@ -256,8 +256,11 @@
         </div>
     </div>
 
+
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+    
+
     @if(Auth::guard('web')->check())
     <script>
         var markers = [];
@@ -475,7 +478,7 @@
 
         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic2xpbmdzaG90MDgiLCJhIjoiY2puMnZzZm02MXN0dzNrcGw1em9yZmZjdCJ9.En40T_Cg1OtKJVpulVLxNg').addTo(map);
 
-        function chargeMap(){
+        function chargeMap(){          
             selected_value = $("input[name='radio-map']:checked").val();
 
             $.ajax({
@@ -483,7 +486,7 @@
                 type: "GET",
                 beforeSend : function() {},
                 success: function(response) {
-
+                    console.log(response);
                     markers_layout = L.markerClusterGroup({
                         removeOutsideVisibleBounds: true,
                         disableClusteringAtZoom: 19,
