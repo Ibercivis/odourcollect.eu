@@ -76,7 +76,11 @@
                                                 @if ($odour->verified == 1)
                                                     <td>Yes</td>
                                                 @else
-                                                    <td><a class="btn-primary" href="{{ route('odour.verify', ['id' => $odour->id])}}">Verify</a></td>
+                                                    @if(Auth::guard('web')->check())
+                                                        <td><a class="btn-primary" href="{{ route('odour.verify', ['id' => $odour->id])}}">Verify</a></td>
+                                                    @else
+                                                    <td><a class="btn-primary" href="{{ route('admin.odour.verify', ['id' => $odour->id])}}">Verify</a></td>
+                                                    @endif
                                                 @endif
                                                 <td>{{$odour->published_at}}</td>
                                                 @if(Auth::guard('web')->check())

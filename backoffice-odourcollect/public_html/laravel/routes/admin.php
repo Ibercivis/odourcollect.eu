@@ -48,6 +48,7 @@ Route::prefix('admin')->group(function() {
 	Route::get('/odour/download', 'OdourController@download')->name('odour.admin.download')->middleware('auth:admin');
 	Route::get('/odour/list', 'OdourController@index')->name('admin.odour.list')->middleware('auth:admin');
 	Route::get('/odour/{id}/verify', 'OdourController@verify')->name('odour.verify')->middleware('auth:admin');
+	Route::get('/odour/{id}/verify', 'OdourController@verify')->name('admin.odour.verify')->middleware('auth:admin');
 	Route::get('/odour/{id}/comments', 'OdourController@comments')->name('odour.comments')->middleware('auth:admin');
 	Route::get('/odour/{id}/markers', 'OdourController@getMarkers')->name('odour.markers');
 	Route::get('/odour/zone/{id}/markers', 'OdourController@getZoneMarkers')->name('odour.zone.markers')->middleware('auth:admin');
