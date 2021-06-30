@@ -705,17 +705,20 @@ class OdorController extends Controller
                 //is inside the zone
                 $verified = 0;
                 $user = User::with('zones')->find($odour->id_user);
+                /*
                 if($user){
                     foreach ($user->zones as $key => $z) {
                         if($z->id = $zone->id){
                             $odour->verified = 0;
                         }
                     }
-                }
+                } 
 
                 if ($verification == 1){
                     $odour->verified = 1;
                 }
+                */
+                $odour->verified = 1;
                 $odour->save();
 
                 $user_belong_to_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone->id)->first();
