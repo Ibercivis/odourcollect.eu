@@ -33,9 +33,9 @@
 </head>
 
 <body style="margin:0; padding:0; background-color:#FFFFFF;" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-    <p>You are receiving this email because there have been changes in a zone in which you are zoneAdmin.</p>
+    <p> You are receiving this email as an OdourCollect Zone Administrator because there have been new observations made in your area.</p>
     <p>Zone {{$zone->zone_id}}</p>
-    <p>There are new observations:</p>
+    <p>The new observations are:</p>
     <ul>
     <?php 
         $odours = $zone->body;

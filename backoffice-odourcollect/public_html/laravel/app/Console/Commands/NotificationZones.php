@@ -86,7 +86,7 @@ class NotificationZones extends Command
                 $email_to_user->zone_id = $notificationZone->zone_id;
                 $email_to_user->subject = $subject;
                 $email_to_user->body = $body;
-    
+                
                 Mail::to($zoneAdmins)->send(new NotificationEmail($email_to_user));
             }
         }
