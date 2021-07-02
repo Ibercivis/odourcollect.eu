@@ -39,10 +39,43 @@
     <ul>
     <?php 
         $odours = $zone->body;
-        for ($i = 0; $i < count($odours); $i++) {
-            echo '<li>'.$odours[$i]->id_odor.'</li>';
-        }
-    ?>
+    ?> 
+
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th><?php echo "Id"?></th>
+                    <th><?php echo "User id"?></th>
+                    <th><?php echo "Type"?></th>
+                    <th><?php echo "Subtype"?></th>
+                    <th><?php echo "Intensity"?></th>
+                    <th><?php echo "Annoy"?></th>
+                    <th><?php echo "Time"?></th>
+                    <th><?php echo "Description"?></th>
+                    <th><?php echo "Origin"?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php for ($i = 0; $i < count($odours); $i++) {?>
+                <tr>
+                    <td><?php echo $odours[$i]->id_odor; ?></td>
+                    <td><?php echo $odours[$i]->id_user; ?></td>
+                    <td><?php echo $odours[$i]->type; ?></td>
+                    <td><?php echo $odours[$i]->subtype; ?></td>
+                    <td><?php echo $odours[$i]->intensity; ?></td>
+                    <td><?php echo $odours[$i]->annoy; ?></td>
+                    <td><?php echo $odours[$i]->created_at; ?></td>
+                    <td><?php echo $odours[$i]->description; ?></td>
+                    <td><?php echo $odours[$i]->origin; ?></td>
+                    
+                </tr>
+                
+            <?php } ?>
+           
+       
+          </tbody>    
+        </table>
+    
     </ul>
    
 </body>
