@@ -595,7 +595,6 @@
             }
             this.route = this.$route.fullPath;
             this.show = true;
-
             this.locale = localStorage.language;
         }
     }

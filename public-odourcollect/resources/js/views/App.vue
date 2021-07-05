@@ -43,7 +43,7 @@ export default {
         if (localStorage.language){
             this.language = localStorage.language;
         } else{
-            localStorage.language = navigator.language
+            localStorage.language = navigator.language.split(/-|_/)[0];
         }
 
         if( this.isLoggedIn ){
@@ -58,7 +58,9 @@ export default {
             localStorage.language = 'en';
         } else {
             this.$i18n.locale = localStorage.language;
+            this.locale = this.$i18n.locale;
         }
+        this.language = localStorage.language;        
     }
 }
 </script>
