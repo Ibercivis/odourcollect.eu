@@ -19,7 +19,8 @@ export default {
             isLoggedIn : null,
             name : null,
             reload: 0,
-            language: ''
+            language: '',
+            navigator: false
         }
     },
     computed: {
@@ -39,11 +40,12 @@ export default {
     mounted(){
         //Looks if the user is logged in
         if( localStorage.getItem('auth-token') != null ) { this.isLoggedIn = true }
-
+        this.navigator = false;
         if (localStorage.language){
             this.language = localStorage.language;
         } else{
             localStorage.language = navigator.language.split(/-|_/)[0];
+            this.navigator = true;
         }
 
         if( this.isLoggedIn ){
@@ -58,9 +60,14 @@ export default {
             localStorage.language = 'en';
         } else {
             this.$i18n.locale = localStorage.language;
-            this.locale = this.$i18n.locale;
+            this.locale = this.$i18n.locale;            
         }
-        this.language = localStorage.language;        
+        this.language = localStorage.language;
+
+        if(this.navigator){
+            location. reload();
+        }
+        
     }
 }
 </script>
