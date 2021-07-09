@@ -398,7 +398,7 @@ class ZoneController extends Controller
             $email_to_user->subject = $subject;
             
             $email_to_user->body = $body;
-
+            
             Mail::bcc($zoneAdmins)->send(new NotificationEmail($email_to_user));       
 
         }

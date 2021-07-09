@@ -56,14 +56,14 @@ class NotificationZones extends Command
             ->join('odor_parent_types','odor_parent_types.id','=','odor_types.id_odor_parent_type')
             ->join('odor_intensities','odor_intensities.id','=','odors.id_odor_intensity')
             ->join('odor_annoys','odor_annoys.id','=','odors.id_odor_annoy')
-            ->where('odor_zones.id_zone', $zone_id)
-            ->whereIn('id_odor_parent_type', $type)        
-            ->where('id_odor_intensity', '>=', ($min_intensity + 1)) //id=1 power=0
-            ->where('id_odor_intensity', '<=', ($max_intensity + 1)) 
-            ->where('id_odor_annoy', '>=', ($min_hedonic_tone + 5)) //id=1 index=-4
-            ->where('id_odor_annoy', '<=', ($max_hedonic_tone + 5))
+            ->where('odor_zones.id_zone', $notificationZone->zone_id)
+            ->whereIn('id_odor_parent_type', $odourTypes)        
+            ->where('id_odor_intensity', '>=', ($notificationZone->min_intensity + 1)) //id=1 power=0
+            ->where('id_odor_intensity', '<=', ($notificationZone->max_intensity + 1)) 
+            ->where('id_odor_annoy', '>=', ($notificationZone->min_hedonic_tone + 5)) //id=1 index=-4
+            ->where('id_odor_annoy', '<=', ($notificationZone->max_hedonic_tone + 5))
             ->whereNull('odors.deleted_at')
-            ->where('odors.created_at', '>', Carbon::now()->subHours($hours)->toDateTimeString() )
+            ->where('odors.created_at', '>', Carbon::now()->subHours($notificationZone->hours)->toDateTimeString() )
             ->where('status', '=', "published")
             ->where('odors.verified', '=', 1)
             ->get();
