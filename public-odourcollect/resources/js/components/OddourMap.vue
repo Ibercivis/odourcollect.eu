@@ -106,7 +106,7 @@
                             <div class="preload">
                                <div class="row">								
 
-                                    <div class="col-12 pb-4 sub-container">
+                                    <div class="col-12 d-none d-md-block pb-4 sub-container">
                                         <div class="row">
                                             <div class="col-4">
                                                 <div class="map-btn pb-4">Date range</div>
@@ -123,17 +123,17 @@
 
 									<div class="col-12">
                                         <div class="row">
-                                            <div class="col-4 pb-4">
-                                                <div class="map-btn pb-4">Type & Subtype:</div>
+                                            <div class="col-12 col-sm-4 pb-5">
+                                                <div class="map-btn">Type & Subtype:</div>
                                             </div>
-                                            <div class="col-4 pr-5 pl-5">
+                                            <div class="col-12 col-sm-4  pr-5 pl-5 pb-5">
                                                 <select title="Select an item"  class="myselect" v-model="typeSelected" style="border: 1px solid #555;" @change="typeSelectedChange()">										
                                                     <option v-for="it in item" v-bind:value="it.id" :selected="typeSelected === it.id">
                                                         {{ it.name_t }}
                                                     </option>
                                                 </select>								
                                             </div>
-                                            <div class="col-4 pl-5 pr-5">
+                                            <div class="col-12 col-sm-4 pl-5 pr-5 pb-5">
                                                 <select title="Select an item" class="myselect" v-model="subtypeSelected" style="border: 1px solid #555;" v-if="typeSelected">										
                                                     <option v-for="values in getEligibleSubTypes()" v-bind:value="values.id" :selected="subtypeSelected === values.id">
                                                         {{ values.name }}
@@ -145,13 +145,13 @@
 
                                     <div class="col-12">
                                         <div class="row">
-                                            <div class="col-4">
-                                                <div class="map-btn pb-5">Intensity & Hedonic tone:</div><br /><br/><br />
+                                            <div class="col-12 col-sm-4 pb-5">
+                                                <div class="map-btn">Intensity & Hedonic tone:</div>
                                             </div>
-                                            <div class="col-4 pl-5 pr-5">
+                                            <div class="col-12 col-sm-4 pl-5 pr-5 pb-5">
                                                 <vue-slider class="pl-3 pr-3" ref="slider" v-model="intensity"  v-bind="intensitySliderOptions"></vue-slider>
                                             </div>                                        
-                                            <div class="col-4 pl-5 pr-5">
+                                            <div class="col-12 col-sm-4 pl-5 pr-5 pb-5">
                                                  <vue-slider class="pl-3 pr-3" ref="annoySlider" v-model="annoy"  v-bind="annoySliderOptions" />
                                              </div>                                        
                                         </div>
