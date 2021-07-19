@@ -53,6 +53,7 @@
                     <th><?php echo "Time"?></th>
                     <th><?php echo "Description"?></th>
                     <th><?php echo "Origin"?></th>
+                    <th><?php echo "Address"?></th>
                 </tr>
             </thead>
             <tbody>
@@ -64,9 +65,10 @@
                     <td><?php echo $odours[$i]->subtype; ?></td>
                     <td><?php echo $odours[$i]->intensity; ?></td>
                     <td><?php echo $odours[$i]->annoy; ?></td>
-                    <td><?php echo $odours[$i]->created_at; ?></td>
+                    <td><?php echo $odours[$i]->created_at.' UTC'; ?></td>
                     <td><?php echo $odours[$i]->description; ?></td>
                     <td><?php echo $odours[$i]->origin; ?></td>
+                    <td><?php echo $odours[$i]->address; ?></td>
                     
                 </tr>
                 

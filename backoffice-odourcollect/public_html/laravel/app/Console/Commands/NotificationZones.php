@@ -50,12 +50,13 @@ class NotificationZones extends Command
             $odourTypes = NotificationZoneOdourType::where('id_notification_zone', $notificationZone->id)->select("id_odour_type")->get();
 
             $odours = DB::table('odors')
-            ->select('odors.*', 'odor_parent_types.name as type','odor_types.name as subtype', 'odor_zones.id_odor', 'odor_intensities.name as intensity','odor_annoys.name as annoy')    
+            ->select('odors.*', 'odor_parent_types.name as type','odor_types.name as subtype', 'odor_zones.id_odor', 'odor_intensities.name as intensity','odor_annoys.name as annoy', 'locations.address')    
             ->join('odor_zones', 'odor_zones.id_odor', '=', 'odors.id')
             ->join('odor_types','odors.id_odor_type','=','odor_types.id')
             ->join('odor_parent_types','odor_parent_types.id','=','odor_types.id_odor_parent_type')
             ->join('odor_intensities','odor_intensities.id','=','odors.id_odor_intensity')
             ->join('odor_annoys','odor_annoys.id','=','odors.id_odor_annoy')
+            ->join('locations','locations.id_odor','=','odors.id')
             ->where('odor_zones.id_zone', $notificationZone->zone_id)
             ->whereIn('id_odor_parent_type', $odourTypes)        
             ->where('id_odor_intensity', '>=', ($notificationZone->min_intensity + 1)) //id=1 power=0
