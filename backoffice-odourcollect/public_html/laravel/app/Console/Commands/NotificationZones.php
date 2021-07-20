@@ -92,7 +92,7 @@ class NotificationZones extends Command
                 $email_to_user->subject = $subject;
                 $email_to_user->body = $body;
 
-                Mail::to($zoneAdmins)->send(new NotificationEmail($email_to_user));
+                Mail::bcc($zoneAdmins)->send(new NotificationEmail($email_to_user));
             }
         }
 
