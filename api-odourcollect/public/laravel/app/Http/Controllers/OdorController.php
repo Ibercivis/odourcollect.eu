@@ -780,7 +780,8 @@ class OdorController extends Controller
             $time = intval($time[0]);
 
             if ($loc){
-                $url = 'https://www.troposfera.es/siami/retros/novaretro/' . $date . '/' . $time . '/' . $loc->latitude .'/' . $loc->longitude . '/';
+                $url = 'https://airadvanced.net/airadvanced/retros/novaretro/' . $date . '/' . $time . '/' . $loc->latitude .'/' . $loc->longitude . '/';
+                //$url = 'https://www.troposfera.es/siami/retros/novaretro/' . $date . '/' . $time . '/' . $loc->latitude .'/' . $loc->longitude . '/';
 //                $url = 'https://www.troposfera.es/siami/retros/novaretro/2019-04-04/1/41.3859000/2.1675000/';
 
                 $ch = curl_init();
