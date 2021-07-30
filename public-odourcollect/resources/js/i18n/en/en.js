@@ -270,7 +270,7 @@ export default {
         DEFINITION: 'Extremely unpleasant',
         DESCRIPTION: 'The odour is extremely unpleasant',
       },
-      MODERATE_UNPLEASANT: {
+      VERY_UNPLEASANT: {
         DEFINITION: 'Very unpleasant',
         DESCRIPTION: 'The odour is very unpleasant',
       },
@@ -294,7 +294,7 @@ export default {
         DEFINITION: 'Pleasant',
         DESCRIPTION: 'The odour is pleasant',
       },
-      MODERATE_PLEASANT: {
+      VERY_PLEASANT: {
         DEFINITION: 'Very pleasant',
         DESCRIPTION: 'The odour is very pleasant',
       },

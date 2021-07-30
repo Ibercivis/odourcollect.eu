@@ -270,7 +270,7 @@ export default {
         DEFINITION: 'Ιδιαίτερα δυσάρεστη',
         DESCRIPTION: 'Η οσμή είναι ιδιαίτερα δυσάρεστη',
       },
-      MODERATE_UNPLEASANT: {
+      VERY_UNPLEASANT: {
         DEFINITION: 'Πολύ δυσάρεστη',
         DESCRIPTION: 'Η οσμή είναι πολύ δυσάρεστη',
       },
@@ -294,7 +294,7 @@ export default {
         DEFINITION: 'Ευχάριστη',
         DESCRIPTION: 'Η οσμή είναι ευχάριστη',
       },
-      MODERATE_PLEASANT: {
+      VERY_PLEASANT: {
         DEFINITION: 'Πολύ ευχάριστη',
         DESCRIPTION: 'Η οσμη είναι πολύ ευχάριστη',
       },
