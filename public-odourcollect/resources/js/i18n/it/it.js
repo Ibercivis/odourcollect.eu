@@ -3,7 +3,7 @@ export default {
     ES: 'Español',
     CA: 'Català',
     EN: 'English',
-    PT: 'Portugues',
+    PT: 'Português',
     DE: 'Deutsch',
     IT: 'Italiano',
     EL: 'ελληνικά'
