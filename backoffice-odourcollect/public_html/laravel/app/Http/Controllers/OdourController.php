@@ -154,7 +154,7 @@ class OdourController extends Controller
             $odour->odour_type = $type->name;
             $odour->odour_type_father = $typefather->name;
 
-            /*$address = Location::where('id_odor', $odour->id)->first();
+            /* $address = Location::where('id_odor', $odour->id)->first();
             if (isset($address->address)){
                 $odour->address = $address->address;
             } else{
@@ -164,14 +164,14 @@ class OdourController extends Controller
             print_r($odour);
             echo "</pre>";
 
-            die();*/
+            die(); */
         
-            $userTimezone = new DateTimeZone('Europe/Berlin');
+            # $userTimezone = new DateTimeZone('Europe/Berlin');
             $gmtTimezone = new DateTimeZone('UTC');
             $myDateTime = new DateTime($odour->published_at, $gmtTimezone);
-            $offset = $userTimezone->getOffset($myDateTime);
-            $myInterval=DateInterval::createFromDateString((string)7200 . 'seconds');
-            $myDateTime->add($myInterval);
+            # $offset = $userTimezone->getOffset($myDateTime);
+            # $myInterval=DateInterval::createFromDateString((string)0 . 'seconds');
+            # $myDateTime->add($myInterval);
             $result = $myDateTime->format('Y-m-d H:i:s');
             $odour->published_at = $result;
 
@@ -324,12 +324,12 @@ class OdourController extends Controller
         $type = OdorParentType::where('id', $subtype->id_odor_parent_type)->first();
         $odour->type = $type->name;
 
-        $userTimezone = new DateTimeZone('Europe/Berlin');
+        # $userTimezone = new DateTimeZone('Europe/Berlin');
         $gmtTimezone = new DateTimeZone('UTC');
         $myDateTime = new DateTime($odour->published_at, $gmtTimezone);
-        $offset = $userTimezone->getOffset($myDateTime);
-        $myInterval=DateInterval::createFromDateString((string)7200 . 'seconds');
-        $myDateTime->add($myInterval);
+        # $offset = $userTimezone->getOffset($myDateTime);
+        # $myInterval=DateInterval::createFromDateString((string)7200 . 'seconds');
+        # $myDateTime->add($myInterval);
         $result = $myDateTime->format('Y-m-d H:i:s');
         $odour->published_at = $result;
         $odour->published_at = date('F j, Y, g:i a', strtotime($odour->published_at));

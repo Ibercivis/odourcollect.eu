@@ -197,11 +197,11 @@ class OdorController extends Controller
             $odor->location = $location;
 
                        
-            $email_admin = new OdorEmail();
-            $email_admin->user = $user->name . ' ' . $user->surname;
-            $email_admin->subject = 'New odour entry';
-            $email_admin->location = $location->place;
-            $email_admin->save(); 
+           # $email_admin = new OdorEmail();
+           # $email_admin->user = $user->name . ' ' . $user->surname;
+           # $email_admin->subject = 'New odour entry';
+           # $email_admin->location = $location->place;
+           # $email_admin->save(); 
             
 
             //Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
@@ -691,6 +691,7 @@ class OdorController extends Controller
 
         $zones = Zone::with('points')->get();
 
+
         foreach ($zones as $key => $zone) {
             $polygon = [];
             foreach ($zone->points as $key => $point) {
@@ -700,9 +701,10 @@ class OdorController extends Controller
             }
 
             $result = $pointLocation->pointInPolygon($odor_location, $polygon);
-
+          
             if($result != 0){
                 //is inside the zone
+
                 $verified = 0;
                 $user = User::with('zones')->find($odour->id_user);
                 /*
@@ -718,8 +720,6 @@ class OdorController extends Controller
                     $odour->verified = 1;
                 }
                 */
-                $odour->verified = 1;
-                $odour->save();
 
                 $odour->zones()->detach($zone->id);
                 $odour->zones()->attach($zone->id, ['verified' => 0]);
