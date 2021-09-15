@@ -721,14 +721,16 @@ class OdorController extends Controller
                 $odour->verified = 1;
                 $odour->save();
 
-                $user_belong_to_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone->id)->first();
+                $odour->zones()->detach($zone->id);
+                $odour->zones()->attach($zone->id, ['verified' => 0]);
+                #$user_belong_to_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone->id)->first();
 
-                if ($user_belong_to_zone){
-                    $odour->zones()->detach($zone->id);
-                    $odour->zones()->attach($zone->id, ['verified' => $verified]);
-                } else {
-                    $odour->zones()->detach($zone->id);
-                }
+                #if ($user_belong_to_zone){
+                #    $odour->zones()->detach($zone->id);
+                #    $odour->zones()->attach($zone->id, ['verified' => $verified]);
+                #} else {
+                #    $odour->zones()->detach($zone->id);
+                #}
             }
         }
     }

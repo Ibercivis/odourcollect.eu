@@ -204,11 +204,7 @@ class UserController extends Controller
         if ($publish_date_src == null) $publish_date_src = '';
         if ($publish_date_dst == null) $publish_date_dst = '';
 
-        /*$users = User::select('users.*', 'users.id as id_user_real', 'user_zones.id_zone', 'user_zones.id_user', 'user_zones.deleted_at')->join('user_zones', 'user_zones.id_user', '=', 'users.id')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->whereIn('user_zones.id_zone', $array_zones)->where('user_zones.deleted_at', NULL)->groupBy('user_zones.id_user')->where('type', 'User')->get();*/
-
         $users = User::select('users.*', 'users.id as id_user_real')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->where('type', 'User')->get();
-       
-        
 
        $maps = Zone::whereIn('id', $array_zones)->get();
 
@@ -227,9 +223,10 @@ class UserController extends Controller
         if ($publish_date_src == null) $publish_date_src = '';
         if ($publish_date_dst == null) $publish_date_dst = '';
 
-         $users = User::select('users.*')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->get();
-
-        
+        $users = User::select('users.*', 'users.id as id_user_real')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst);
+        if($map)
+            $users = $users->where('user_zones.deleted_at', NULL);
+        $users=$users->get();
 
         $maps = Zone::get();
         }
@@ -582,7 +579,15 @@ class UserController extends Controller
         if ($publish_date_src == null) $publish_date_src = '';
         if ($publish_date_dst == null) $publish_date_dst = '';
 
-        $users = User::select('users.*')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->get();
+        /*$users = User::select('users.*')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst)->get();*/
+         $users = User::select('users.*', 'users.id as id_user_real')->status($status)->permission($permission)->map($map)->registered($register_date_src, $register_date_dst)->publishing($publish_date_src, $publish_date_dst);
+        if($map)
+            $users = $users->where('user_zones.deleted_at', NULL);
+        $users=$users->get();
+
+
+
+        
          $name_file = 'users';
         }
 
