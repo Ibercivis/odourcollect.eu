@@ -8,7 +8,7 @@
                         <v-form ref="form" style="padding-top: 50px;">
                            <v-text-field
                                 name="username"
-                                :label="this.$t('UPDATE_PROFILE.USERNAME')"
+                                :label="$t('UPDATE_PROFILE.USERNAME')"
                                 :rules="usernameRules"
                                 type="text"
                                 v-model="username"
@@ -262,7 +262,6 @@
                 
                     axios.post('../api/register', {
                         username: this.username,
-                        username: "username",
                         age: this.age_selected,
                         gender: this.gender,
                         email: this.email,
