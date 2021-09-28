@@ -325,6 +325,7 @@ export default {
       FEMALE: 'Frau',
       MALE: 'Mann',
       OTHER: 'Sonstiges',
+      NOTSET:  'Not stated',
       SURNAME: 'Nachname',
       EMAIL: 'E-Mail',
       PHONE: 'Telefon',

@@ -204,7 +204,7 @@ class OdorController extends Controller
            # $email_admin->save(); 
             
 
-            //Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
+           # Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
 
             $this->zoneAttach($odor->id, $user->without_validation);
 

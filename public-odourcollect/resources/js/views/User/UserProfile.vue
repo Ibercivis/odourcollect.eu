@@ -23,6 +23,18 @@
                     @input="$v.input_email.$touch()"
                     @blur="$v.input_email.$touch()"
             ></v-text-field>
+            <input type="radio" id="male" value="male" v-model="input_gender"> 
+            <label class="label-gender" for="male">{{$t('UPDATE_PROFILE.MALE')}}&nbsp;</label>
+            <input type="radio" id="female" value="female" v-model="input_gender">
+            <label class="label-gender" for="female">{{$t('UPDATE_PROFILE.FEMALE')}}&nbsp;</label>
+            <input type="radio" id="other" value="other" v-model="input_gender">
+            <label class="label-gender" for="other">{{$t('UPDATE_PROFILE.OTHER')}}&nbsp;</label>
+            <input type="radio" id="notset" value="NULL" v-model="input_gender">
+            <label class="label-gender" for="notset">{{$t('UPDATE_PROFILE.NOTSET')}}&nbsp;</label>
+
+
+
+
        <v-checkbox
       v-model="input_newsletter"
       @input="$v.input_newsletter.$touch()"
@@ -143,7 +155,8 @@
                 input_surname: '',
                 input_email: '',
                 input_telf: '',
-		input_newsletter: '',
+	        	input_newsletter: '',
+                input_gender: '',
                 e2: false,
                 e3: false,
                 user: '',
@@ -206,10 +219,11 @@
                     username: vm.input_username,
                     name: "not_used",
                     surname: "not_used",
+                    gender: vm.input_gender,
                     email: vm.input_email,
-		    newsletter: vm.input_newsletter
-//                  datebirth: vm.input_datebirth,
-                    //phone: vm.input_telf
+		            newsletter: vm.input_newsletter
+                    // datebirth: vm.input_datebirth,
+                    // phone: vm.input_telf
                 }).then(response => {
                     vm.state.status = true;
                     vm.state.msg = this.$t('UPDATE_PROFILE.OK');
@@ -386,8 +400,9 @@
                 vm.input_name = data.name;
                 vm.input_surname = data.surname;
                 vm.input_email = data.email;
-		var data2 = response.data.newsletter;
-		vm.input_newsletter = data2;
+                vm.input_gender = data.gender;
+		        var data2 = response.data.newsletter;
+		        vm.input_newsletter = data2;
             }).catch(error => {
             });
 

@@ -48,6 +48,8 @@
                             <label class="label-gender" for="female">{{$t('UPDATE_PROFILE.FEMALE')}}</label>
                             <input type="radio" id="other" value="other" v-model="gender">
                             <label class="label-gender" for="other">{{$t('UPDATE_PROFILE.OTHER')}}</label>
+                            <input type="radio" id="notset" value="NULL" v-model="input_gender">
+                            <label class="label-gender" for="notset">{{$t('UPDATE_PROFILE.NOTSET')}}&nbsp;</label>
 
                             <v-text-field
                                 name="password"

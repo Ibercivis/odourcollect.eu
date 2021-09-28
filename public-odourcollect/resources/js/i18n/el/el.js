@@ -324,6 +324,7 @@ export default {
       FEMALE: 'Γυναίκα',
       MALE: 'Άνδρας',
       OTHER: 'Άλλο',
+      NOTSET:  'Not stated',
       SURNAME: 'Επώνυμο',
       EMAIL: 'Ηλεκτρονική Διεύθυνση',
       PHONE: 'Τηλέφωνο',
