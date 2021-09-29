@@ -179,7 +179,7 @@
         </v-layout>
        
         
-        <cookie-law theme="dark-lime--rounded">
+        <cookie-law theme="dark-lime--rounded" v-on:accept="ThankYouMethod()">
             <div slot="message">
                 This website stores cookies. These cookies are used to improve your website experience and provide more personalized services to you. To find out more about the cookies we use, see our <a @click="goLegal"><u>Privacy Policy</u></a>
             </div>
@@ -199,8 +199,6 @@
 </template>
 
 <script>
-
-
     import OddourDetail from '../components/OddourDetail.vue';
     import OddourComment from '../components/OddourComment.vue';
     import OddourBottomNav from '../components/OddourBttomNav.vue'
@@ -213,8 +211,6 @@
     import CookieLaw from 'vue-cookie-law';
     import LegalPage from '../views/Legal.vue';
 
-
-    
     export default {
         components: {OddourDetail, OddourBottomNav, VueScrollbar, OddourComment, UserZones, Datepicker, VueSlider, CookieLaw, LegalPage},
 
@@ -551,6 +547,19 @@
                  /*if(vm.markers == ''){
                      vm.getAllMarkers();
                  }*/
+            },
+            ThankYouMethod(){
+                console.log('Thanks')
+                var script = document.createElement('script');
+                script.onload = function () {
+                //do stuff with the script
+                        window.dataLayer = window.dataLayer || [];   
+                        function gtag(){dataLayer.push(arguments);}   
+                        gtag('js', new Date());   
+                        gtag('config', 'UA-165577055-1');
+                };
+                script.src = "https://www.googletagmanager.com/gtag/js?id=UA-165577055-1"
+                document.head.appendChild(script);
             },
             //Only type filter
             only_type: function(event){
