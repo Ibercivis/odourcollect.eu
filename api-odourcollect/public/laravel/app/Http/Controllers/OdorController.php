@@ -197,11 +197,11 @@ class OdorController extends Controller
             $odor->location = $location;
 
                        
-            $email_admin = new OdorEmail();
-            $email_admin->user = $user->name . ' ' . $user->surname;
-            $email_admin->subject = 'New odour entry';
-            $email_admin->location = $location->place;
-            $email_admin->save(); 
+            # $email_admin = new OdorEmail();
+            # $email_admin->user = $user->name . ' ' . $user->surname;
+            # $email_admin->subject = 'New odour entry';
+            # $email_admin->location = $location->place;
+            # $email_admin->save(); 
             
 
             //Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
