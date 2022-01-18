@@ -136,6 +136,7 @@ class AuthController extends Controller
             $user->username = $request->get('username');
             $user->email = $request->get('email');
             $user->phone = $request->get('phone');
+            $user->gender = $request->get('gender');
             $user->datebirth = $request->get('datebirth');
 
             $name = $user->name;

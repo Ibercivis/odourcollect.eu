@@ -3,7 +3,7 @@ export default {
     ES: 'Español',
     CA: 'Català',
     EN: 'English',
-    PT: 'Portugues',
+    PT: 'Português',
     DE: 'Deutsch',
     IT: 'Italiano',
     EL: 'ελληνικά'
@@ -272,7 +272,7 @@ export default {
         DEFINITION: 'Estremamente sgradevole',
         DESCRIPTION: 'L´odore è estremamente sgradevole',
       },
-      MODERATE_UNPLEASANT: {
+      VERY_UNPLEASANT: {
         DEFINITION: 'Molto sgradevole',
         DESCRIPTION: 'L´odore è molto sgradevole',
       },
@@ -296,7 +296,7 @@ export default {
         DEFINITION: 'Piacevole',
         DESCRIPTION: 'L´odore è piacevole',
       },
-      MODERATE_PLEASANT: {
+      VERY_PLEASANT: {
         DEFINITION: 'Molto piacevole',
         DESCRIPTION: 'L´odore è molto piacevole',
       },
@@ -324,6 +324,7 @@ export default {
       FEMALE: 'Donna',
       MALE: 'Uomo',
       OTHER: 'Altro',
+      NOTSET:  'Not stated',
       SURNAME: 'Cognome',
       EMAIL: 'E-mail',
       PHONE: 'Telefono',
@@ -469,7 +470,7 @@ export default {
     "<p>OdourCollect è uno strumento per dare voce alle comunità colpite dalle molestie olfattive, segnalandolo al mondo! Le osservazioni sugli odori saranno convalidate da scienziati ed esperti di odori per raccogliere dati relativi a una area particolarmente colpita dal problema. L'obiettivo è di progettare insieme soluzioni specifiche per le parti coinvolte.</p>" +
     "<p>Grazie per aver partecipato a questo progetto, aiutandoci a costruire mappe degli odori interattive!</p>" +
     "<p>OdourCollect è ispirato a una procedura europea standardizzata per valutare episodi di molestie olfattive attraverso il coinvolgimento diretto dei cittadini: la norma tedesca, la VDI 3940: 2006 (Misura dell'impatto degli odori mediante ispezione sul campo. Misura della frequenza di impatto degli odori riconoscibili - Misura a griglia), che è diventata una norma europea, la CEN 16841. Sebbene la norma definisca una metodica rigorosa per misurare gli odori (le osservazioni sugli odori devono essere raccolte durante un deterianto periodo - tipicamente un anno - in un'area specifica e vengono eseguite da “nasi” o osservatori adeguatamente selezionati), la app OdourCollect adatta questo approccio per raccogliere dati in tempo reale sulla percezione degli odori in qualsiasi luogo, in qualsiasi momento e da qualsiasi cittadino. La nostra metodica è in fase di validazione in 10 progetti pilota in tutto il mondo e miriamo a sviluppare un nuovo standard da replicare in tutto il mondo.</p>" +
-    "<p>OdourCollect è un'idea di Science for Change. Questa app è stata sviluppata nell'ambito del progetto D-NOSES (rete distribuita per il rilevamento degli odori, l'empowerment e la sostenibilità). Stiamo convalidando la nostra metodologia dal basso verso l'alto in 10 progetti pilota in 10 paesi (Spagna, Portogallo, Grecia, Bulgaria, Cile, Italia, Regno Unito, Germania, Austria e Uganda).</p><p> Questo progetto ha ricevuto finanziamenti dal programma di ricerca e innovazione di Orizzonte 2020 dell'Unione europea nell'ambito della convenzione di sovvenzione n. 789315. Questo progetto ha anche ricevuto finanziamenti da FECYT.</p><p>OdourCollect fa parte del Citizen Science Office di Barcellona.</p> "
+    "<p>OdourCollect è un’idea di Science for Change. Questa app è stata realizzata grazie al progetto D-NOSES (dall’ inglese Distributed Network for Odour Sensing, Empowerment and Sustainability). Adesso la nostra metodologia bottom-up è in fase di convalida a 10 progetti pilota in Spagna, Portogallo, Grecia, Bulgaria, Cile, Italia, Regno Unito, Germania, Austria e Uganda.</p><p>OdourCollect ha ricevuto finanziamenti dal programma di ricerca e innovazione di Horizon 2020 dell’Unione Europea sotto l’accordo Nº 789315 oltre a ricevere finanziamenti dal FECYT, la Fondazione Spagnola per la Scienza e la Tecnologia- Ministero della scienza e dell’innovazione. </p><p style='text-align:center;margin-top:50px;margin-bottom:50px;'><img style='max-width:400px;' src='../../../img/general/fecyt.png'/></p><p>Questo progetto rientra nelle attività dal Ufficio di Citizen Science da Barcellona.</p>"
   },
   METHODOLOGY: {
     TEXT: '<p>Attraverso OdourCollect ogni cittadino può agire come un "naso" e raccogliere dati geolocalizzati su un episodio di odore, segnalandone il luogo e l´istante, che possono essere utilizzati per costruire mappe degli odori interattive. Sì, anche tu, dato che hai il miglior sensore per misurare gli odori: il tuo naso! Le tue osservazioni e quelle dei tuoi vicini permetteranno di dimostrare che esiste un problema di molestia olfattiva in una specifica area, consentendo ai cittadini di evidenziare il problema. Per la prima volta, i dati in tempo reale sull´impatto degli odori saranno raccolti dal punto di vista del recettore grazie ai tuoi contributi e sarà possibile correlarli a processi industriali. Dall´analisi e dalla convalida dei dati, progetteremo insieme soluzioni locali coinvolgendo le industrie che emettono odori, i consigli comunali locali e limitrofi, per migliorare la qualità della vita.</p>' +

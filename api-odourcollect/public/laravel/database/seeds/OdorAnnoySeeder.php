@@ -23,8 +23,8 @@ class OdorAnnoySeeder extends Seeder
 
         DB::table('odor_annoys')->insert([
             'index' => -3,
-            'name' => "Moderate unpleasant",
-            'slug' => 'moderate-unpleasant',
+            'name' => "Very unpleasant",
+            'slug' => 'very-unpleasant',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
@@ -71,8 +71,8 @@ class OdorAnnoySeeder extends Seeder
 
         DB::table('odor_annoys')->insert([
             'index' => 3,
-            'name' => "Moderate pleasant",
-            'slug' => 'moderate-pleasant',
+            'name' => "Very pleasant",
+            'slug' => 'very-pleasant',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

@@ -204,7 +204,7 @@ class OdorController extends Controller
             # $email_admin->save(); 
             
 
-            //Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
+           # Mail::to("odourcollect@ibercivis.es")->send(new AdminMail($email_admin));
 
             $this->zoneAttach($odor->id, $user->without_validation);
 
@@ -691,6 +691,7 @@ class OdorController extends Controller
 
         $zones = Zone::with('points')->get();
 
+
         foreach ($zones as $key => $zone) {
             $polygon = [];
             foreach ($zone->points as $key => $point) {
@@ -700,11 +701,13 @@ class OdorController extends Controller
             }
 
             $result = $pointLocation->pointInPolygon($odor_location, $polygon);
-
+          
             if($result != 0){
                 //is inside the zone
+
                 $verified = 0;
                 $user = User::with('zones')->find($odour->id_user);
+
                 /*
                 if($user){
                     foreach ($user->zones as $key => $z) {
@@ -718,17 +721,18 @@ class OdorController extends Controller
                     $odour->verified = 1;
                 }
                 */
-                $odour->verified = 1;
-                $odour->save();
 
-                $user_belong_to_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone->id)->first();
+                $odour->zones()->detach($zone->id);
+                $odour->zones()->attach($zone->id, ['verified' => 0]);
+                $user->zones()->attach($zone->id);
+                #$user_belong_to_zone = DB::table('user_zones')->where('id_user', $user->id)->where('id_zone', $zone->id)->first();
 
-                if ($user_belong_to_zone){
-                    $odour->zones()->detach($zone->id);
-                    $odour->zones()->attach($zone->id, ['verified' => $verified]);
-                } else {
-                    $odour->zones()->detach($zone->id);
-                }
+                #if ($user_belong_to_zone){
+                #    $odour->zones()->detach($zone->id);
+                #    $odour->zones()->attach($zone->id, ['verified' => $verified]);
+                #} else {
+                #    $odour->zones()->detach($zone->id);
+                #}
             }
         }
     }

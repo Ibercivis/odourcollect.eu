@@ -8,7 +8,7 @@
                         <v-form ref="form" style="padding-top: 50px;">
                            <v-text-field
                                 name="username"
-                                :label="this.$t('UPDATE_PROFILE.USERNAME')"
+                                :label="$t('UPDATE_PROFILE.USERNAME')"
                                 :rules="usernameRules"
                                 type="text"
                                 v-model="username"
@@ -48,6 +48,8 @@
                             <label class="label-gender" for="female">{{$t('UPDATE_PROFILE.FEMALE')}}</label>
                             <input type="radio" id="other" value="other" v-model="gender">
                             <label class="label-gender" for="other">{{$t('UPDATE_PROFILE.OTHER')}}</label>
+                            <input type="radio" id="notset" value="NULL" v-model="input_gender">
+                            <label class="label-gender" for="notset">{{$t('UPDATE_PROFILE.NOTSET')}}&nbsp;</label>
 
                             <v-text-field
                                 name="password"
@@ -262,7 +264,6 @@
                 
                     axios.post('../api/register', {
                         username: this.username,
-                        username: "username",
                         age: this.age_selected,
                         gender: this.gender,
                         email: this.email,

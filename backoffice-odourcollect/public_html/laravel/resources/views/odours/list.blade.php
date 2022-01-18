@@ -205,7 +205,7 @@
                                             <th scope="col">Address</th>
                                             <th scope="col">User ID</th>
                                             <th scope="col" class="center">Verified</th>
-                                            <th scope="col">Published at</th>
+                                            <th scope="col">Published at (UTC)</th>
                                             <th></th>
                                         </tr>
                                     </thead>

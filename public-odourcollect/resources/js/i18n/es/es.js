@@ -272,7 +272,7 @@ export default {
         DEFINITION: 'Extremadamente desagradable',
         DESCRIPTION: 'El olor es extremadamente desagradable',
       },
-      MODERATE_UNPLEASANT: {
+      VERY_UNPLEASANT: {
         DEFINITION: 'Muy desagradable',
         DESCRIPTION: 'El olor es muy desagradable',
       },
@@ -296,7 +296,7 @@ export default {
         DEFINITION: 'Agradable',
         DESCRIPTION: 'El olor es agradable',
       },
-      MODERATE_PLEASANT: {
+      VERY_PLEASANT: {
         DEFINITION: 'Muy agradable',
         DESCRIPTION: 'El olor es muy agradable',
       },
@@ -324,6 +324,7 @@ export default {
       FEMALE: 'Mujer',
       MALE: 'Hombre',
       OTHER: 'Otro',
+      NOTSET:  'Not stated',
       SURNAME: 'Apellidos',
       EMAIL: 'Correo electrónico',
       PHONE: 'Teléfono',
@@ -470,7 +471,7 @@ export default {
     "<p>OdourCollect es una herramienta para empoderar a las comunidades afectadas por las molestias de los olores, ¡reportándolas al mundo! Las observaciones de olores serán validadas por expertos en ciencia ciudadana y olores para recopilar datos en un área particular donde una comunidad está sufriendo el problema con el objetivo de co-diseñar soluciones locales con los actores relevantes.</p>" +
     "<p>Gracias por participar en este experimento de ciencia ciudadana, ¡ayudándonos a construir mapas de olores colaborativos!</p>" +
     "<p>OdourCollect está inspirada en una metodología europea estandarizada para evaluar los episodios de olores a través de observaciones de ciudadanos y ciudadanas entrenados: la norma alemana VDI 3940:2006 (Measurement of odour impact by field inspection: measurement of the impact frequency of recognizable odours), que se ha convertido en la norma europea CEN 16841. Aunque la norma define una metodología estricta para medir los olores durante un cierto tiempo en un área específica, donde la molestia es localizada, con una duración específica y un cierto número de mediciones realizadas por narices u observadores humanos certificados, OdourCollect adapta la metodología para recopilar datos en tiempo real sobre la percepción de los olores en cualquier lugar, en cualquier momento, por primera vez.</p>" +
-    "<p>OdourCollect es una idea de Science for Change. Esta app ha sido desarrollada gracias al proyecto D-NOSES (Distributed Network for Odour Sensing, Empowerment and Sustainability). Estamos validando nuestra metodología bottom-up en 10 proyectos piloto en 10 países (España, Portugal, Grecia, Bulgaria, Chile, Italia, Reino Unido, Alemania, Austria y Uganda). </p><p>Este proyecto ha recibido financiación del programa de  Investigación e Innovación de la Unión Europea Horizón 2020 bajo el acorde Nº 789315. Este proyecto también ha recibido financiación de FECYT.</p><p>Este proyecto es parte de la Oficina de Ciencia Ciudadana de Barcelona.</p> "
+    "<p>OdourCollect es una idea de Science for Change. Esta app ha sido desarrollada gracias al proyecto D-NOSES (Distributed Network for Odour Sensing, Empowerment and Sustainability). Estamos validando nuestra metodología bottom-up en 10 proyectos piloto en 10 países (España, Portugal, Grecia, Bulgaria, Chile, Italia, Reino Unido, Alemania, Austria y Uganda).</p><p>Este proyecto ha recibido financiación del programa de  Investigación e Innovación de la Unión Europea Horizón 2020 bajo el acuerdo Nº 789315 así como de FECYT, la Fundación Española para la Ciencia y la Tecnología – Ministerio de Ciencia e Innovación. </p><p style='text-align:center;margin-top:50px;margin-bottom:50px;'><img style='max-width:400px;' src='../../../img/general/fecyt.png'/></p><p>Este proyecto es parte de la Oficina de Ciencia Ciudadana de Barcelona.</p>"
   },
   METHODOLOGY: {
     TEXT: '<p>A través de OdourCollect cualquier ciudadano puede actuar como observador y recopilar datos abiertos geolocalizados sobre un episodio de olor, tanto en el espacio como en el tiempo, que pueden ser utilizados para construir mapas de olores colaborativos. Sí, tú también, ya que tienes el mejor sensor para medir los olores: ¡tu propia nariz! Tus observaciones y las de tus vecinos permitirán demostrar un problema de olores en una comunidad afectada, empoderando a los ciudadanos para que pongan el tema en el mapa. Por primera vez, los datos en tiempo real sobre el impacto por olores se recogerán desde el punto de vista del receptor gracias a sus aportaciones, y se correlacionarán con los procesos industriales. A partir del análisis y validación de los datos, co-diseñaremos soluciones locales junto con las industrias emisoras de olores, los ayuntamientos locales y los vecinos contribuyentes, para mejorar su calidad de vida.</p>' +
